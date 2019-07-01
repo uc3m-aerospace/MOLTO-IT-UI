@@ -9,7 +9,7 @@ class MapComponent extends Component {
             <Map 
                 google={this.props.google}
                 zoom={15}
-                zoomControl={false}
+                zoomControl={true}
                 mapTypeControl={false}
                 scaleControl={true}
                 streetViewControl={false}
@@ -24,5 +24,5 @@ class MapComponent extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyBL8s_RI93x8BwJEeXhOzIIe0GVW6K7_RI'
+    apiKey: ''
   })(MapComponent);
