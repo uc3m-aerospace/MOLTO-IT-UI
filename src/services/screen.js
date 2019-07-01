@@ -1,0 +1,1 @@
+export const isScreenBig = () => window.innerWidth >= 800;
