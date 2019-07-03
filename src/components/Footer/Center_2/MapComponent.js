@@ -1,9 +1,20 @@
 import React, { Component} from 'react';
 import '../../../styles/main.scss'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import axios from 'axios'
 
 class MapComponent extends Component {
+    
+    getApiKey = () => {
+        let url = 'Center_2/apikey.json'
+        return axios.get(url).then(response => response.data)
+    }
 
+    componentDidMount(){
+        this.getApiKey().then((data) => {
+           console.log(data)
+        })
+    }
     render() {
         return (
             <Map 

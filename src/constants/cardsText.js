@@ -1,7 +1,7 @@
 module.exports = Object.freeze({
     molto_it: 'MOLTO-IT (Multi-Objective Low-Thrust Optimizer for Interplanetary Trajectories) is a fully automated Matlab tool for the preliminary design of low-thrust, multi-gravity assist trajectories.',
     molto_or: 'MOLTO-OR (Multi-Objective Low-Thrust Optimizer for Orbit Raising) is as an application the preliminary design of low-thrust transfer trajectories between Earth-centered orbits.',
-    molto_3bp: 'MOLTO-3BP (Multi-Objective Low-Thrust Optimizer for the Three Body Problem) is a fully automated Matlab tool for the preliminary design of low-thrust trajectories in the restricted three body problem. ',
+    molto_3bp: 'MOLTO-3BP (Multi-Objective Low-Thrust Optimizer for the Three Body Problem) is a fully automated Matlab tool for the preliminary design of low-thrust trajectories in the restricted three body problem.               ',
     bio: 'Esta es la buografia de tal persona que ehoy en dia es ingeniero aeroespacial de tal persona que ehoy en dia es ingeniero aeroespacial de tal persona que ehoy en dia es ingeniero aeroespacial de tal persona que ehoy en dia es ingeniero aeroespacial de tal persona que ehoy en dia es ingeniero aeroespacial de tal persona que ehoy en dia es ingeniero aeroespacial de tal persona que ehoy en dia es ingeniero aeroespacial de tal persona que ehoy en dia es ingeniero aeroespacial ',
     molto_description: 'MOLTO is a fully automated tool for the preliminary design of space missions. Created for students and for industry, it makes easier than ever to design a space mission.',
     directionuc3m: 'Universidad Carlos III de Madrid Avda. de la Universidad, 30 28911 Leganés - Madrid - España'
