@@ -1,9 +1,12 @@
 import React, { Component} from 'react';
 import '../../../styles/main.scss'
+
 import Collaboration from '../SectionCollaboration/Collaborators'
 class SectionCollaboration extends Component {
-
+    
     render() {
+        
+   
         return (
             <React.Fragment>
                 <div style={{width: "90%", height: "2px", backgroundColor: "white", alignSelf: "center"}}/>
