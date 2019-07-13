@@ -26,6 +26,15 @@
       url(../assets/fonts/HelveticaLTStd-Cond.otf) format('opentype');
 }
 
+@font-face {
+    font-family: 'HelveticaNeueLTS';
+    font-style: normal;
+    font-weight: 200;
+    src:
+      local('HelveticaNeueLTS'),
+      local('HelveticaNeue-LTS'),
+      url(../assets/fonts/HelveticaNeueLTStd-LtCn.otf) format('opentype');
+}
 
 .Apps {
     top:0;
@@ -34,6 +43,7 @@
     right: 0;
     display: flex;
     flex-direction: column;
+    position: relative;
     flex-grow: 1;
 }
 
@@ -77,6 +87,70 @@
     }
 }
 
+.SectionTabs {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 200px;
+    width: 90%;
+    overflow-y: auto;
+    flex-grow: 1;
+    height: 100%;
+    text-align: center;
+
+    & .paragraph  {
+        color: white;
+        text-align: center;
+        font-style: normal;
+        font-family: 'HelveticaLT';
+        font-size: 40px;
+        margin-bottom: 0px;
+    }
+
+    & p {
+        color: white;
+        font-family: 'HelveticaLT';
+        font-size: 16px;
+        font-style: normal;
+        text-align: center;
+
+    }
+
+   
+    & .Title {
+        color: white;
+        font-family: 'HelveticaNeueLTS';
+        font-size: 30px !important;
+        font-style: normal;
+        text-align: center
+    }
+
+    & button {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        color: white;
+        background-color: #70C483;
+        width: 25%;
+        height: 40px;
+        border-radius: 4px;
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    & input {
+        height: 30px;
+        width: 300px;
+        border-radius: 15px;
+        outline: none;
+        border: none;
+        text-align: center;
+    }
+
+}
 
 .Header {
     justify-content: space-between;
@@ -85,11 +159,16 @@
     align-content: center;
     min-width:100%;
     color: white;
-    
+    //position: fixed; if header fixed
+    //top: 0;
+    //z-index: 9999;
+
     & ul {
         display: flex;
         flex-direction: row;
         text-align: center;
+        align-items: center;
+        align-content: center;
         padding-right: 15%;
         padding-left: 15%;
 
@@ -99,10 +178,10 @@
         & li {
             list-style: none;
             text-align: center;
+            width: 150px;
             align-self: flex-end;
-            margin-left: 10px;
-
             & a {
+                font-family: "HelveticaLT";
                 display: block;
                 padding: 2px 7px 2px 7px;
                 text-decoration: none;
@@ -368,4 +447,184 @@ h1 {
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+.previousButton, .nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: url('http://krionkapps.com/wp-content/uploads/2014/03/arrow-24-xxl.png') no-repeat center center / 16px;
+    width: 32px;
+    height: 32px;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+
+.previousButton:hover, .nextButton:hover {
+    background: url('http://krionkapps.com/wp-content/uploads/2014/03/arrow-24-xxl.png') no-repeat center center / 16px;
+  }
+
+.previousButton {
+    left: 0;
+    -webkit-transform: rotate(180deg) translateY(calc(50% + 0px));
+            transform: rotate(180deg) translateY(calc(50% + 0px));
+}
+  
+.previousButton:hover {
+    left: -10px;
+}
+  
+.nextButton {
+right: 0;
+}
+
+.nextButton:hover {
+right: -10px;
+}
+
+.slider-content {
+    text-align: center;
+}
+
+.inner {
+    padding: 0 70px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    align-self: "center";
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+
+            & h1 {
+                font-weight: 900;
+                margin: 0 auto;
+                max-width: 840px;
+                color: #FFFFFF;
+                font-size: 48px;
+                line-height: 1;
+                align-self: "center"
+              }
+            & p {
+            color: #FFFFFF;
+            font-family: "HelveticaLT";
+            font-size: 22px;
+            line-height: 1.5;
+            margin: 20px auto 30px;
+            max-width: 640px;
+            }
+              
+            
+  }
+  
+  
+  
+.slider-wrapper {
+    position: relative;
+    height: 70vh;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  
+  @media (max-height: 500px) {
+    .slider-wrapper, .slide {
+      height: calc(100vh - 75px);
+    }    
+  }
+  
+  @media (max-width: 640px) {
+    .slider-wrapper, .slide {
+      height: calc(80vh - 75px);
+    }    
+  }
+  
+  @media (max-height: 600px) {
+    .inner h1 {
+      font-size: 32px;
+    }    
+  }
+  
+  @media (max-width: 640px) {
+    .inner h1 {
+      font-size: 32px;
+    }
+  }
+
+
+.slide {
+height: 70vh;
+background-size: cover !important;
+}
+
+.slide::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.9)));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.99));
+    bottom: 0;
+    left: 0;
+}
+
+.buttonTabs {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: white;
+    background-color: #70C483;
+    width: 200px;
+    height: 40px;
+    border-radius: 4px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0px 5% 30px 0px;
+}
+  
+.fixedDateButton {
+    font-size:6px !important;
+    color: white !important;
+    width: 80px !important;
+    height: 20px !important;
+    border-radius: 15px !important;
+    margin: 0px 30px 0px 30px !important
+}
+
+.fixedDateButtonActive {
+    font-size:6px !important;
+    color: white !important;
+    width: 80px !important;
+    height: 20px !important;
+    border-radius: 15px !important;
+    margin: 10px 30px 0px 30px !important
+}
+  
+.Launch {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    width: 50%;
+
+    & p {
+        font-family: 'HelveticaLT';
+        font-size: 12px
+    }
+
 }

@@ -55,12 +55,12 @@ class Typer extends React.Component {
           <React.Fragment>
         <div style={{display: "flex", flexDirection: "column", paddingLeft:"60px", textAlign: "center", alignContent:"center"}}>
                 
-            <p style={{marginBottom: "0px", fontFamily: "HelveticaLT", fontStyle: "normal", fontSize: "50px"}}> { this.props.heading }&nbsp; </p>
+            <p style={{marginBottom: "0px", fontFamily: "HelveticaLT", fontStyle: "normal", fontSize: "35px"}}> { this.props.heading }&nbsp; </p>
                 <h1 style={{ marginBottom: "20px", paddingRight: "9px"}}>        
-                    <span style={{fontSize: "50px", fontFamily: "Avenir Next", color:"#32ff7e", fontStyle: "Bold"}}>{ this.state.text }</span>
+                    <span style={{fontSize: "60px", fontFamily: "HelveticaLT", color:"#32ff7e", fontStyle: "Bold"}}>{ this.state.text }</span>
                     <span id="cursor"/>
                 </h1>
-            <p style={{ marginTop: "0px",fontFamily: "HelveticaLT", fontStyle: "normal", fontSize: "50px"}}>  { this.props.heading2 }&nbsp; </p>
+            <p style={{ marginTop: "0px",fontFamily: "HelveticaLT", fontStyle: "normal", fontSize: "35px"}}>  { this.props.heading2 }&nbsp; </p>
         </div>
         </React.Fragment>
             

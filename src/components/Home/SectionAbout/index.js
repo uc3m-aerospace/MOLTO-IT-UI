@@ -10,24 +10,6 @@ class SectionAbout extends Component {
         return (
             <React.Fragment>
                 <div className="SectionBackground" id="About">
-                   <div style={{textAlign: "center"}}>
-                        <Typer
-                            heading={'Making'}
-                            dataText={[  
-                                'Real     ', 
-                                'Faster     ',
-                                'Cool     ',
-                                'Great     ',
-                                'Real     ', 
-                                'Faster     ',
-                                'Cool     ',
-                                'Great     '
-                                ]} 
-                            heading2={'Space Exploration'} 
-                        />
-                    </div>
-                    <p>{constants.molto_description}
-                    </p>
                     <Images/>
                 </div>
             </React.Fragment>

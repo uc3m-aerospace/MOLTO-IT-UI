@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../../../styles/main.scss'
 import Card from '../SectionCollaboration/CardCollaborators'
 import constants from '../../../constants/cardsText.js'
@@ -12,8 +12,10 @@ const getCollaborators = () => {
 const Collaboration = (props) => {
     const [collaborators, setCollaborators] = useState({});
 
-getCollaborators().then((data) => {
+useEffect(() => {
+    getCollaborators().then((data) => {
         setCollaborators(data)
+    })  
 })
 
     return  <React.Fragment>

@@ -7,6 +7,8 @@ import Background from '../assets/images/Sky.jpeg'
 import '../styles/main.scss';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import MoltoIt from '../components/MoltoIt'
+import ScrollToTop from './ScrollToTop';
 
 
 class App extends Component {
@@ -16,8 +18,12 @@ class App extends Component {
         <div className="mainContainer">
             <Header />
                 <div className="Apps">
+                    <ScrollToTop/>
                     <Switch>
-                        <RouteWithTitle exact path="/" title="Inicio" render={(props) => <Home {...props} refer="hola" />}/>
+                        <RouteWithTitle exact path="/" title="Inicio" render={(props) => <Home {...props}/>}/>
+                        <RouteWithTitle exact path="/moltoit" title="MOLTO-IT" render={(props) => <MoltoIt/>}/>
+                        <RouteWithTitle exact path="/moltoor" title="MOLTO-OR" render={(props) => <MoltoIt/>}/>
+                        <RouteWithTitle exact path="/molto3bp" title="MOLTO-3BP" render={(props) => <MoltoIt/>}/>
                         <Redirect to="/"/>
                     </Switch>
                 </div>
