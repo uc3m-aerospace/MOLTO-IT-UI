@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect,useState} from 'react';
 import '../../styles/main.scss'
 import Level from './Level'
 import LaunchWindow from './Launch'
@@ -50,7 +50,7 @@ const TabTree = (props) => {
 }
 
 const Tabs = (props) => {  
-    console.log(props)
+
   return  <React.Fragment>
              {TabTree({...props})}
           </React.Fragment>

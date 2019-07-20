@@ -9,7 +9,9 @@ import * as reducers from './reducers'
 import './styles/main.scss';
 import {unregister} from './registerServiceWorker';
 import WebService from './services/Webservice'
+
 let store;
+
 
 const init = async () => {
     const combinedReducers = combineReducers({...reducers});

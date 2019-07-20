@@ -8,9 +8,9 @@ import axios from 'axios'
 
 
 
-const getSlider = () => {
-  let url = 'http://163.117.179.251:5000/sliders'
-  return axios.get(url).then(response => response.data)
+const getSlider = async () => {
+let url = 'http://163.117.179.251:5000/sliders'
+  return await axios.get(url).then(response => response.data)
 }
 
 const Images = () => {
@@ -26,6 +26,7 @@ const Images = () => {
                 <Slider className="slider-wrapper" autoplay="4000">
                 {Object.entries(slides).map(([key, value]) => { return <div>
                       <div
+                        key={key}
                         style={{ textAlign: "center", alignContent: "center", height: "100vh",alignSelf: "center", background: `url(${value.image}) no-repeat center center fixed`, backgroundSize: "cover" }}
                       >
                           <div className="inner">

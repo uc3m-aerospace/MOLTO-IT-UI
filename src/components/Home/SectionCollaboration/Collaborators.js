@@ -4,9 +4,9 @@ import Card from '../SectionCollaboration/CardCollaborators'
 import constants from '../../../constants/cardsText.js'
 import axios from 'axios'
 
-const getCollaborators = () => {
+const getCollaborators = async () => {
     let url = 'http://163.117.179.251:5000/collaborators'
-    return axios.get(url).then(response => response.data)
+    return await axios.get(url).then(response => response.data)
 }
 
 const Collaboration = (props) => {
@@ -16,7 +16,7 @@ useEffect(() => {
     getCollaborators().then((data) => {
         setCollaborators(data)
     })  
-})
+}, [collaborators])
 
     return  <React.Fragment>
             <p>MOLTO is an open source project, so we really appreciate all the effort of everyone working in this project. If you want to join us. <a href="https://github.com/uc3m-aerospace/MOLTO-IT">Click here</a></p>
