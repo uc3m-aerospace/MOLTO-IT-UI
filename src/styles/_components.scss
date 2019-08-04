@@ -124,6 +124,15 @@
         text-align: center
     }
 
+    & .TitleMotor {
+        color: white;
+        font-family: 'HelveticaNeueLTS';
+        font-size: 40px !important;
+        font-weight: 900 !important;
+        font-style: normal;
+        text-align: center
+    }
+
     & button {
         margin-left: auto;
         margin-right: auto;
@@ -143,7 +152,7 @@
 
     & input {
         height: 30px;
-        width: 300px;
+        width: 290px;
         border-radius: 15px;
         outline: none;
         border: none;
@@ -620,6 +629,7 @@ background-size: cover !important;
     margin-left: auto;
     margin-right: auto;
     align-items: center;
+    margin-bottom: 20px;
     width: 50%;
 
     & p {
@@ -705,4 +715,35 @@ background-size: cover !important;
     background-color: transparent;
     color: white;
     }
+  }
+
+  .inputPlanets {
+    width: 15px !important;
+    margin-left: 30px !important;
+  }
+
+  .labelPlanets {
+    font-family: 'HelveticaLT';
+    font-size: 12px;
+    text-align: center;
+    align-self: center;
+  }
+
+  .MotorSelected {
+    background-color:  'white';
+  }  
+
+  .newButton {
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: white;
+    background-color: #70C483;
+    width: 200px;
+    height: 40px;
+    border-radius: 4px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0px 5% 70px 0px;
   }

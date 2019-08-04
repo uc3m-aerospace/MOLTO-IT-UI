@@ -2,108 +2,89 @@ import React, {useState, useEffect} from 'react'
 import io from 'socket.io-client'
 import {
     ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer
-  } from 'recharts';
-  
-
-const data = {
-        "problem_name":"Ceres",
-        "problem_type":"rendezvous",
-        "planet_dep":"Earth",
-        "planet_arr":"2000001",
-        "vinf0_max":1.6,
-        "planet_fb":["4"],
-        "rfb_min":200,
-        "Isp":3000,
-        "thrust":100,
-        "nthrusters":1,
-        "mass":1000,
-        "power":5000,
-        "n_fb":[0,1],
-        "rev":[0,0],
-        "ToF":[100,1000],
-        "Initial_Date":["2003-Jan-01","2003-Dec-31"],
-        "init_file":[],
-        "output_file":"Ceres.txt",
-        "plot":0,
-        "useParallel":"no",
-        "options":[],
-        "maxGen":15,
-        "popsize":10,
-        "output_dir":"~/tmp/Ceres"
-    }
-const data_pretty = {
-    'Problem Type:': 'Flyby',
-    'Departure Body:': 'Earth',
-    'Arrival Body:': 'Jupiter',
-    'Available planets:': '[4,3,2]',
-    'Min. Flyby Altitude:': 200,
-    'Min/Max # of possible flybys:': '[0,3]',
-    'Min/Max # of possible Revs:': [0,0],
-    'Min/Max transfer time/leg:': '[100, 1000]',
-    'Motor:': 'HERMeS',
-    'Type of Motor:': 'Electric',
-    'Specific Impulse:': 2600,
-    'Number of Thrusters:': 1,
-    'Mass:': 1000,
-    'Power:': 5000,
-    'Initial Date:': '["03-01-01","03-12-31"]'
-}
-
+} from 'recharts';
+import { useSelector, useDispatch} from "react-redux";
+import {FORM_DATA, RESET_DATA} from '../../constants'
 
 const Results = (props) => {  
     const [generation, setGeneration] = useState([])    
     const [generationtwo, setGenerationTwo] = useState([])    
     const [lastGeneration, setLastGeneration] = useState('')
-       
-     
-    const arrayToJson = (json) => {
 
-        let result = [];
-        let result_1 = [];
+    const moltoItData = useSelector(state => state.moltoItData);
+    const dispatch = useDispatch();
 
-        delete json[Object.keys(json).length-1]
-        
-        Object.entries(json).map(([key, val]) => {
-            let jsonItem1 = {}
-            console.log(json)
-            val.map((value, index) => {
-                jsonItem1[index === 0 ? 'x' : index === 1 ? 'y' : 'z' ] = value
-            })
-            result.push(jsonItem1)
+const data_pretty = {
+    'Problem Type:': moltoItData.problem_type,
+    'Departure Body:': moltoItData.planet_dep,
+    'Arrival Body:': moltoItData.planet_arr,
+    'Available planets:': JSON.stringify(moltoItData.planet_fb), //'[4,3,2]',
+    'Min. Flyby Altitude:': moltoItData.rfb_min, //200,
+    'Min/Max # of possible flybys:': JSON.stringify(moltoItData.n_fb), //'[0,3]',
+    'Min/Max # of possible Revs:': JSON.stringify(moltoItData.rev), //[0,0],
+    'Min/Max transfer time/leg:': JSON.stringify(moltoItData.ToF), // '[100, 1000]',
+    'Motor:': moltoItData.motor, //Get data from other tab
+    'Type of Motor:': moltoItData.motorType, //Get data from other tab
+    'Specific Impulse:': moltoItData.Isp, //2600,
+    'Number of Thrusters:': moltoItData.nthrusters, // 1,
+    'Mass:': moltoItData.mass, //1000,
+    'Power:': moltoItData.power, //5000,
+    'Initial Date:': JSON.stringify(moltoItData.Initial_Date)//'["03-01-01","03-12-31"]'
+}
+    
+const arrayToJson = (json) => {
 
-            result_1 =  result.filter(function (item) {
-                console.log(item)
-               return item['z'].includes("-1");
-           });
-           console.log(result_1);
+    let result = [];
+    let result_1 = [];
+
+    delete json[Object.keys(json).length-1]
+    
+    Object.entries(json).map(([key, val]) => {
+        let jsonItem1 = {}
+        //console.log(json)
+        val.map((value, index) => {
+            jsonItem1[index === 0 ? 'x' : index === 1 ? 'y' : 'z' ] = value
         })
-        setGenerationTwo(result_1)
-        setGeneration(result)
-    }
+        result.push(jsonItem1)
 
-    useEffect(() => {
-        const socket = io('http://163.117.179.251:5000',  {'sync disconnect on unload': true }, {transports: ['polling']})
-
-        socket.on('connect', () => {
-            console.log("Connected!")
-            console.log(socket.connected); // true
-
-            socket.on('tmp', (data) => {
-                console.log(data)
-                if (data.isAnyFile === false) {
-                    console.log("There is no information.")
-                }
-                else {
-                    arrayToJson(data)
-                    setLastGeneration(data[Object.keys(data).sort().pop()])
-                }
-
-            })
+        result_1 =  result.filter(function (item) {
+            //console.log(item)
+            return item['z'].includes("-1");
         });
-        return () => socket.connect()
-      }, [generation]); 
+        //console.log(result_1);
+    })
+    setGenerationTwo(result_1)
+    setGeneration(result)
+}
 
+useEffect(() => {
+    const socket = io('http://163.117.179.251:5000',  {'sync disconnect on unload': true }, {transports: ['polling']})
 
+    socket.on('connect', () => {
+        console.log("Connected!")
+        console.log(socket.connected); // true
+
+        socket.on('tmp', (data) => {
+            console.log(data)
+            console.log(moltoItData)
+            if (data.isAnyFile === false) {
+                console.log("There is no information.")
+            } else if (data[10] === moltoItData.maxGen) {   
+                console.log('Succesful Optimization')
+                console.log(data)
+                console.log(moltoItData)
+            }
+            else {
+                arrayToJson(data)
+                setLastGeneration(data[Object.keys(data).sort().pop()])
+            }
+
+        })
+    });
+    return () => socket.connect()
+}, [generation]); 
+
+    //getPareto(moltoItData)
    return  <React.Fragment>
             <p className="Title">RESULTS</p>
             <div className="ParetoContainer">
@@ -146,7 +127,7 @@ const Results = (props) => {
                 
                 <div style={{flex: 1, backgroundColor:"transparent"}}>
                     <div className="paretoTables">
-                        <p className='ParetoTitles'>Please select one Pareto point once the process finished</p>
+                        <p className='ParetoTitles'>Please select one pareto point once the process is finished</p>
                         <table className="ParetoTable">
                             <thead>
                                 <tr>
@@ -172,4 +153,6 @@ const Results = (props) => {
             </React.Fragment>
   }
   
-  export default Results;
+
+export default Results;
+  

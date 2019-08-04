@@ -1,12 +1,13 @@
-import React, { Component} from 'react';
-import {useStyle, useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useStyle} from 'react';
 import './../../styles/main.scss'
 import { withRouter } from "react-router";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabDecision from './Tabs'
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { any } from 'prop-types';
+import { useSelector, useDispatch} from "react-redux";
+import axios from 'axios'
 
 
 
@@ -23,6 +24,7 @@ const StyledTabs = withStyles({
       },
     },
   })(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
+
 const StyledTab = withStyles(theme => ({
     root: {
       textTransform: 'none',
@@ -40,6 +42,7 @@ const StyledTab = withStyles(theme => ({
       },
     },
   }))(props => <Tab disableRipple {...props} />);
+
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
@@ -57,14 +60,30 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-  const MoltoIt = (props) => {  
 
+
+  const MoltoIt = (props) => {  
+        //const dispatch = useDispatch()
         const [value, setValue] = useState(0);
         const classes = useStyles();
 
         const handleChange = (event, newValue) => {
-            setValue(newValue);
+            setValue(newValue)
+          
         }
+
+        /*if (value === 7) { 
+          const data = useSelector(state => state.moltoItData);
+          delete data['ToF_type'];
+          delete data['motor'];
+          delete data['motorType'];
+          console.log("Se clicko tal btoon")
+          console.log('entro?')
+          console.log(data)
+          getPareto(data)
+        }*/
+
+    
 
         const TabContainer = (props) => {
             return (
