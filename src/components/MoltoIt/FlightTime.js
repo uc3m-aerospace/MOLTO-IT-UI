@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {connect} from "react-redux";
 import { useSelector, useDispatch} from "react-redux";
 import {sendFormData} from '../../actions'
-import {FORM_DATA, RESET_DATA} from '../../constants'
+import {FORM_DATA} from '../../constants'
 import Switch from "react-switch";
 import axios from 'axios';
 
@@ -48,12 +48,12 @@ const FlightTime = (props) => {
     console.log(type)
     useEffect(() => {
         sendFlightTime(min,max)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [min, max])
 
 
 return  <React.Fragment>
                 <p className="Title">FLIGHT TIME</p> 
-                <button className="newButton" onClick={() => {getPareto(data)}}>Call Genetic Algorithm</button>
                 <label> 
                     <Switch 
                         onChange={() => handleChange()} 
@@ -103,7 +103,8 @@ return  <React.Fragment>
                             <input type="number" value={max} onChange={(event) => setMax(event.target.value)} placeholder="Enter the max number of flybys"/>
                         </div>
                     </div>
-                 
+                    <button className="newButton" onClick={() => {getPareto(data)}}>Call Genetic Algorithm</button>
+              
             </React.Fragment>
   }
 

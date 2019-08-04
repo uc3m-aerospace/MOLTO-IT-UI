@@ -1,5 +1,5 @@
 import React from 'react'
-import {Switch, BrowserRouter, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import App from './App'
 import {saveState} from '../services/appState'

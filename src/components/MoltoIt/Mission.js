@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch} from "react-redux";
-import {FORM_DATA, RESET_DATA} from '../../constants'
+import {FORM_DATA} from '../../constants'
 
 const planets = [
     'Mercury',
@@ -31,6 +31,7 @@ const Mission = (props) => {
 
     useEffect(() => {
         sendData(minFb, maxFb)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [minFb, maxFb])    
 
     const handleClick = (type) => {

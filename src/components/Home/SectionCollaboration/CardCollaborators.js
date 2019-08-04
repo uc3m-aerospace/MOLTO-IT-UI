@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import '../../../styles/main.scss'
 
 const CardCollaborators = (props) => {
   console.log(props.image)
   return  <React.Fragment>
-                <img src={props.image}/>
+                <img src={props.image} alt="image_collaborator"/>
                 <h3>{props.name}</h3>
                 <p>{props.body}</p>
           </React.Fragment>

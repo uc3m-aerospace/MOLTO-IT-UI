@@ -19,8 +19,8 @@ export default class Webservice {
     };
 
     put = (path, data = {}, cancelToken) => {
-        const state = this.store.getState();
-        const {token} = state.admin;
+        //const state = this.store.getState();
+        //const {token} = state.admin;
         let config = {
             cancelToken, params: data,
         };

@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {useStyle} from 'react';
+import React, {useState} from 'react';
+//import {useStyle} from 'react';
 import './../../styles/main.scss'
 import { withRouter } from "react-router";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabDecision from './Tabs'
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { useSelector, useDispatch} from "react-redux";
-import axios from 'axios'
+//import { useSelector, useDispatch} from "react-redux";
+//import axios from 'axios'
 
 
 
@@ -112,7 +112,7 @@ const useStyles = makeStyles(theme => ({
                     </div>
                     {<TabContainer value={value} function={handleChange}/>}
 
-                    {value === 0 ? null : <button className="buttonTabs" onClick={() => handleChange(null, value != 7 ? value + 1 : 0)}>SUBMIT</button>}
+                    {value === 0 ? null : <button className="buttonTabs" onClick={() => handleChange(null, value !== 7 ? value + 1 : 0)}>SUBMIT</button>}
             </React.Fragment>
         );
 }

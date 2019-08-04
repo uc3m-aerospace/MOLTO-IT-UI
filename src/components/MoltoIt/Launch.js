@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch, connect } from "react-redux";
 import {sendFormData} from '../../actions'
-import {FORM_DATA, RESET_DATA} from '../../constants'
+import {FORM_DATA} from '../../constants'
 
 
 const Launch = (props) => {  
@@ -26,6 +26,7 @@ const Launch = (props) => {
  
     useEffect(() => {
         sendDates(startDate, endDate)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [startDate, endDate])
 
 

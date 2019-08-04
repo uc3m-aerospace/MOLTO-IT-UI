@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import '../../../styles/main.scss'
 import Card from '../SectionCollaboration/CardCollaborators'
-import constants from '../../../constants/cardsText.js'
+//import constants from '../../../constants/cardsText.js'
 import axios from 'axios'
 
 const getCollaborators = async () => {

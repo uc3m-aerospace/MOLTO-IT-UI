@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import io from 'socket.io-client'
 import {
-    ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer
+    ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer
 } from 'recharts';
-import { useSelector, useDispatch} from "react-redux";
-import {FORM_DATA, RESET_DATA} from '../../constants'
+import { useSelector} from "react-redux";
+//import {FORM_DATA, RESET_DATA} from '../../constants'
 
 const Results = (props) => {  
     const [generation, setGeneration] = useState([])    
@@ -12,7 +12,7 @@ const Results = (props) => {
     const [lastGeneration, setLastGeneration] = useState('')
 
     const moltoItData = useSelector(state => state.moltoItData);
-    const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
 const data_pretty = {
     'Problem Type:': moltoItData.problem_type,
@@ -42,8 +42,10 @@ const arrayToJson = (json) => {
     Object.entries(json).map(([key, val]) => {
         let jsonItem1 = {}
         //console.log(json)
+        console.log(lastGeneration)
         val.map((value, index) => {
             jsonItem1[index === 0 ? 'x' : index === 1 ? 'y' : 'z' ] = value
+            return 'ok'
         })
         result.push(jsonItem1)
 
@@ -51,7 +53,7 @@ const arrayToJson = (json) => {
             //console.log(item)
             return item['z'].includes("-1");
         });
-        //console.log(result_1);
+        return console.log(result_1);
     })
     setGenerationTwo(result_1)
     setGeneration(result)
@@ -82,6 +84,7 @@ useEffect(() => {
         })
     });
     return () => socket.connect()
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [generation]); 
 
     //getPareto(moltoItData)

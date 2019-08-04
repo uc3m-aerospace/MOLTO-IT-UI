@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { useSelector, useDispatch} from "react-redux";
-import {FORM_DATA, RESET_DATA} from '../../constants'
+import {FORM_DATA} from '../../constants'
 import nstar from '../../assets/images/nstar.png'
 import pps1350 from '../../assets/images/pps1350.png'
 import hermes from '../../assets/images/hermes.png'
@@ -58,11 +58,12 @@ const MotorElectric = (props) => {
     console.log(currentMotor)
     return  <React.Fragment >
         {motors.map((motor_) => 
-            <div style={{backgroundColor: currentMotor.name === motor_.name ? '#70C483' : null, opacity: currentMotor.name === motor_.name ? '0.9' : null}} onClick={() => handleClick(motor_)}>
+            <div style={{backgroundColor: currentMotor.name === motor_.name ? '#70C483' : null, opacity: currentMotor.name === motor_.name ? '0.9' : null, width: "100%", height:"100%"}} onClick={() => handleClick(motor_)}>
                 <div>
                     <p className="TitleMotor"> {motor_.name}</p>
                 </div>
-                <img src={motor_.image} style={{width: '350px', height: '350px'}} alt='motors'/>
+                <img src={motor_.image} style={{width: motor_.name === 'NSTAR' ? '50%' : '80%',  height: motor_.name === 'NSTAR' ? '50%' : '80%', marginTop: "30px"}} alt='motors'/>
+                <div style={{height: '200px'}}/>
             </div>
             )
         }

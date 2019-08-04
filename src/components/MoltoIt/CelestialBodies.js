@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import { useSelector, useDispatch, useReducer} from "react-redux";
-import {FORM_DATA, RESET_DATA} from '../../constants'
+import React, {useState} from 'react'
+import { useSelector, useDispatch} from "react-redux";
+import {FORM_DATA} from '../../constants'
 
 const planets = [
     'Mercury',

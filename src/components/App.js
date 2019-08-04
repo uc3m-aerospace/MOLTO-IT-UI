@@ -3,7 +3,7 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 import {connect} from "react-redux";
 import DocumentTitle from 'react-document-title';
 import Home from './Home'
-import Background from '../assets/images/Sky.jpeg'
+//import Background from '../assets/images/Sky.jpeg'
 import '../styles/main.scss';
 import Header from '../components/Header'
 import Footer from '../components/Footer'

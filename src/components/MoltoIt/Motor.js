@@ -2,7 +2,7 @@ import React from 'react'
 import Nuclear from './MotorNuclear'
 import Chemical from './MotorChemical'
 import Electric from './MotorElectric'
-import {useStyle, useState} from 'react';
+import {useState} from 'react';
 import './../../styles/main.scss'
 import { withRouter } from "react-router";
 import Tabs from '@material-ui/core/Tabs';
@@ -63,15 +63,12 @@ const TabTree = (props) => {
 switch(props.value) {
     case 0:
         return <Nuclear/>
-        break;
     case 1:
         return <Electric/>
-        break;
     case 2:
         return <Chemical/>
-        break;
     default:
-        
+        break;    
     }
 }
 

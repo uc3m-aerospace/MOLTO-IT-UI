@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Route , withRouter} from 'react-router-dom';
+import React from 'react';
+import {withRouter} from 'react-router-dom';
 import '../../../styles/main.scss'
 import threebp from '../../../assets/images/3bp.png'
 import or from '../../../assets/images/or.png'

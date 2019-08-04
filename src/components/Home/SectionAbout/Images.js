@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import '../../../styles/main.scss'
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
-import constants from '../../../constants/cardsText';
+//import constants from '../../../constants/cardsText';
 import Typer from './Typer'
 import axios from 'axios'
 

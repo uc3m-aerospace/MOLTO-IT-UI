@@ -14,18 +14,17 @@ class NavBar extends Component {
     render() {
 
         
-        const getLogo = () => {
-            let rightLogo;
+        const getLogo = () => {        
             if (this.props.location.pathname === '/') {
-                return rightLogo = Logo
+                return Logo
             } else if (this.props.location.pathname === '/moltoit') {
-                return rightLogo = LogoIT
+                return LogoIT
             } else if (this.props.location.pathname === '/moltoor') {
-                return rightLogo = LogoOR
+                return LogoOR
             } else if (this.props.location.pathname === '/molto3bp') {
-                return rightLogo = Logo3BP
+                return Logo3BP
             } else {
-                return rightLogo = Logo
+                return Logo
             }
         }
     
@@ -37,7 +36,7 @@ class NavBar extends Component {
 
                               <li><a href="#Missions" target="_self">Space Missions</a></li>
 
-                              <img src={getLogo()} style={{height: "45px", marginLeft: "40px", marginRight: "40px"}}/>
+                              <img src={getLogo()} style={{height: "45px", marginLeft: "40px", marginRight: "40px"}} alt="logo"/>
                               
                               <li><a href="#Collaboration" target="_self">Collaboration</a></li>
 

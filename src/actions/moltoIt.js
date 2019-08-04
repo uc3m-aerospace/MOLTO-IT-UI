@@ -1,4 +1,4 @@
-import {FORM_DATA, RESET_DATA} from '../constants'
+import {FORM_DATA} from '../constants'
 
 const FormData = (data) => ({
     type: FORM_DATA,
