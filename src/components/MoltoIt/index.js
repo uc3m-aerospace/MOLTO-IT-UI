@@ -6,8 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabDecision from './Tabs'
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-//import { useSelector, useDispatch} from "react-redux";
-//import axios from 'axios'
+import FinalResults from './FinalResults'
 
 
 
@@ -55,21 +54,26 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3),
     },
     demo2: {
-      backgroundColor: 'transaparent',
+      backgroundColor: 'transparent',
       textAlign: 'center'
     },
   }));
 
 
-
   const MoltoIt = (props) => {  
-        //const dispatch = useDispatch()
         const [value, setValue] = useState(0);
         const classes = useStyles();
-
+        
+      
         const handleChange = (event, newValue) => {
+
+            if (newValue === 9) {
+              window.location.reload()
+              props.history.push('/moltoit')
+            }
+
+
             setValue(newValue)
-          
         }
 
         /*if (value === 7) { 
@@ -93,27 +97,35 @@ const useStyles = makeStyles(theme => ({
             );
         }
 
-        return (      
+        return (  
             <React.Fragment>
+          
+              {value !== 8 ?
                     <div className={classes.root}>
                         <div className={classes.demo2}>
                             <StyledTabs variant="fullWidth" value={value} onChange={handleChange}>
-                                <StyledTab label="Level" />
+                                <StyledTab label="Configuration" />
                                 <StyledTab label="Launch Window" />
                                 <StyledTab label="From" />
                                 <StyledTab label="Destination" />
                                 <StyledTab label="Mission Type" />
                                 <StyledTab label="Motor" />
                                 <StyledTab label="Flight Time" />
-                                <StyledTab label="Results" />
+                                <StyledTab label="Pareto Front" />
                             </StyledTabs>
                         </div>
-
                     </div>
+                :
+                <FinalResults/>
+              } 
                     {<TabContainer value={value} function={handleChange}/>}
 
-                    {value === 0 ? null : <button className="buttonTabs" onClick={() => handleChange(null, value !== 7 ? value + 1 : 0)}>SUBMIT</button>}
+                    {value === 0 || value === 6 || value === 7 ? null : <button className="buttonTabs" onClick={() => handleChange(null, value !== 7 ? value + 1 : value + 1)}>{value === 8 ? "NEW MISSION" : "SUBMIT"}</button>}
+                    
+                    {value === 8 ? <button className="buttonTabs" style={{left: 0, backgroundColor: 'gray', marginLeft: "60px" }} onClick={() => handleChange(null, value - 1)}>BACK</button> : null}
+            
             </React.Fragment>
+          
         );
 }
 

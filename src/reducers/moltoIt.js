@@ -1,11 +1,11 @@
 import {FORM_DATA, RESET_DATA} from '../constants'
 
 const initialState = {
-    "problem_name": "Ceres",
+    "problem_name": "Ceres", //Definir nombre de mision FINISH
     "problem_type": "rendezvous",
     "planet_dep": "Earth",
     "planet_arr": "2000001",
-    "vinf0_max": 1.6,
+    "vinf0_max": 1.6, //Definir por usuario y que sea definida en el tab de ventana de lanzamiento. ?? % Hyperbolic excess velocity at departure planet (km/s)
     "planet_fb": [],
     "rfb_min": 200,
     "Isp": 3000,
@@ -19,13 +19,13 @@ const initialState = {
     "ToF_type": "days",
     "Initial_Date": ["2003-01-01","2003-12-31"], //Si es ventana de lanzamiento amplia, es mejor una mayor poblacion.
     "init_file": [],
-    "output_file": "Ceres.txt",
-    "plot": 0,
-    "useParallel": "yes",
+    "output_file": "Ceres.txt", //Definir nombrede mision FINISH
+    "plot": 0, // Cambiar plot a 1, indice de frente de pareto
+    "useParallel": "no", //revisar logs 
     "options": [],
     "maxGen": 20, //Maximo 1000
     "popsize": 100, //Maximo 1000 -----> Tiempo de ejecución.
-    "output_dir": "~/tmp/Ceres"    
+    "output_dir": "~/tmp/Ceres"   //problem name define incluso la carpeta de destino.  
 };
 
 const initialState_ = {
@@ -61,7 +61,7 @@ export const moltoItData = (state = initialState, action) => {
     switch (type) {
         case FORM_DATA:
             console.log(payload)
-            console.log("Ejecutado!!!")
+            console.log("Ejecutado!")
             return Object.assign({}, state, payload);
         case RESET_DATA:
             return initialState_;

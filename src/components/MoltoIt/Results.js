@@ -3,16 +3,23 @@ import io from 'socket.io-client'
 import {
     ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer
 } from 'recharts';
-import { useSelector} from "react-redux";
-//import {FORM_DATA, RESET_DATA} from '../../constants'
+import { useSelector, useDispatch} from "react-redux";
+import {FORM_DATA} from '../../constants'
+import axios from 'axios'
+
 
 const Results = (props) => {  
     const [generation, setGeneration] = useState([])    
     const [generationtwo, setGenerationTwo] = useState([])    
     const [lastGeneration, setLastGeneration] = useState('')
-
+    const [loader, setLoader] = useState(false)
     const moltoItData = useSelector(state => state.moltoItData);
-  //const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
+const handleParetoPoint = (index) => {
+
+    dispatch({type: FORM_DATA, payload: {'plot': index }})
+}
 
 const data_pretty = {
     'Problem Type:': moltoItData.problem_type,
@@ -64,8 +71,8 @@ useEffect(() => {
 
     socket.on('connect', () => {
         console.log("Connected!")
+        socket.emit('on_connect_data', moltoItData.problem_name)
         console.log(socket.connected); // true
-
         socket.on('tmp', (data) => {
             console.log(data)
             console.log(moltoItData)
@@ -87,9 +94,42 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [generation]); 
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const getOrbits = async (data) => {
+    let url = 'http://163.117.179.251:5000/optimization/mission/json'
+    delete data['ToF_type'];
+    delete data['motor'];
+    delete data['motorType'];
+    if (data['response']) {
+        return delete data['response']
+    }
+    console.log('entro function getOrbits!')
+    console.log(data.plot)
+    axios.post(url, data).then(response => dispatch({type: FORM_DATA, payload: {'response': response} })).catch(error => console.log(error))
+}
+
+
+const handleClick = async () => {
+    getOrbits(moltoItData)
+    setLoader(true)
+    await sleep(15000);
+    setLoader(false)
+    props.function(null, props.value !== 8 ? props.value + 1 : 0)
+}
     //getPareto(moltoItData)
    return  <React.Fragment>
-            <p className="Title">RESULTS</p>
+           { loader ?
+                    <div>
+                        <div style={{backgroundColor: 'black', opacity: 0.9, position: "absolute", zIndex: 995, top: 0, right: 0, bottom: 0, left: 0}}></div>
+                        <img style={{position: 'absolute', width: "10%", left: "45%", top:"22%", zIndex: 999}} src={'https://d2vrnm4zvhq6yi.cloudfront.net/assets/loader_puntos-df9857dfaf7eeb01c9cb2c2d1d208a8365ea4cdab85e1adeadaceff0c8f27964.gif'} alt="loading..." />
+                    </div>  
+                        : 
+                        null
+            }
+            <p className="Title">PARETO FRONT</p>
             <div className="ParetoContainer">
                 
                 <div style={{flex: 1, backgroundColor:"transparent"}}>
@@ -104,7 +144,6 @@ useEffect(() => {
                             }
                     </div>    
                 </div>
-          
                 
                 <div style={{flex: 3, backgroundColor:"transparent"}}>
                     <div className="paretoTables">
@@ -141,9 +180,9 @@ useEffect(() => {
                             <tbody>
                                 {generation.map((value, index) => {  
                                     return <React.Fragment>
-                                            <tr onClick={() => {console.log(index+1)}} key={index}>
-                                                <td>{value['x']}</td>
-                                                <td>{value['y']}</td>
+                                            <tr onClick={() => { handleParetoPoint(index+1)}} key={index}>
+                                                <td style={{backgroundColor: moltoItData.plot-1 === index ? '#70C483' : null, opacity: moltoItData.plot-1 === index ? 0.9 : null}}>{value['y']}</td>
+                                                <td style={{backgroundColor: moltoItData.plot-1 === index ? '#70C483' : null, opacity: moltoItData.plot-1 === index ? 0.9 : null}}>{value['x']}</td>
                                             </tr>
                                         </React.Fragment>
                                     })
@@ -152,7 +191,10 @@ useEffect(() => {
                         </table>
                     </div>  
                 </div>
+
+        <button className="buttonTabs" style={{marginRight: "80px"}} onClick={() => handleClick()}>SEND</button>
         </div>
+
             </React.Fragment>
   }
   

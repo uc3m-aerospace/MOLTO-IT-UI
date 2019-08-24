@@ -16,6 +16,7 @@ class App extends Component {
   render() {
     return (
         <div className="mainContainer">
+            <div className="mask"/>
             <Header />
                 <div className="Apps">
                     <ScrollToTop/>
@@ -28,7 +29,7 @@ class App extends Component {
                     </Switch>
                 </div>
             <Footer/>
-        </div>
+            </div>
     );
   }
 }

@@ -6,13 +6,15 @@ import {FORM_DATA} from '../../constants'
 import Switch from "react-switch";
 import axios from 'axios';
 
-
 const getPareto = async (data) => {
     let url = 'http://163.117.179.251:5000/optimization/mission/json'
 
     delete data['ToF_type'];
     delete data['motor'];
     delete data['motorType'];
+    if (data['response']) {
+        return delete data['response']
+    }
     console.log('entro function')
     axios.post(url, data).then(response => console.log(response.data)).catch(error => console.log(error))
 }
@@ -22,6 +24,7 @@ const FlightTime = (props) => {
     const data = useSelector(state => state.moltoItData);
     const [min, setMin] = useState(data.ToF[0])
     const [max, setMax] = useState(data.ToF[1])
+    const [loader, setLoader] = useState(false)
     const [checked, setChecked] = useState(false)
     const [type, setType] = useState(data.ToF_type)
 
@@ -50,9 +53,27 @@ const FlightTime = (props) => {
         sendFlightTime(min,max)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [min, max])
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
+    const handleClick = async () => {
+        getPareto(data)
+        setLoader(true)
+        await sleep(15000);
+        setLoader(false)
+        props.function(null, props.value !== 7 ? props.value + 1 : 0)
+    }
 
 return  <React.Fragment>
+                { loader ?
+                <div>
+                    <div style={{backgroundColor: 'black', opacity: 0.9, position: "absolute", zIndex: 995, top: 0, right: 0, bottom: 0, left: 0}}></div>
+                    <img style={{position: 'absolute', width: "10%", left: "45%", top:"22%", zIndex: 999}} src={'https://d2vrnm4zvhq6yi.cloudfront.net/assets/loader_puntos-df9857dfaf7eeb01c9cb2c2d1d208a8365ea4cdab85e1adeadaceff0c8f27964.gif'} alt="loading..." />
+                </div>  
+                    : 
+                    null
+                }
                 <p className="Title">FLIGHT TIME</p> 
                 <label> 
                     <Switch 
@@ -103,12 +124,9 @@ return  <React.Fragment>
                             <input type="number" value={max} onChange={(event) => setMax(event.target.value)} placeholder="Enter the max number of flybys"/>
                         </div>
                     </div>
-                    <button className="newButton" onClick={() => {getPareto(data)}}>Call Genetic Algorithm</button>
-              
-            </React.Fragment>
+
+                    <button className="newButton" onClick={() => handleClick()}>SEND</button>
+                    </React.Fragment>
   }
 
-export default connect(state => ({
-    admin: state.admin,
-    moltoItData: state,
-}), {sendFormData})(FlightTime);
+export default FlightTime;

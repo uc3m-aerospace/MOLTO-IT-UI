@@ -26,9 +26,9 @@ const TabTree = (props) => {
         case 5:
             return <Motor/>
         case 6:
-            return <FlightTtime/>
+            return <FlightTtime value={props.value} function={props.function}/>
         case 7:
-            return <Results/>
+            return <Results value={props.value} function={props.function}/>
         case 8:
             return <Preview/>
         case 9:
