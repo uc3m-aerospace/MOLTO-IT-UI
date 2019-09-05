@@ -6,7 +6,7 @@ import {
 import { useSelector, useDispatch} from "react-redux";
 import {FORM_DATA} from '../../constants'
 import axios from 'axios'
-
+import { Base64 } from 'js-base64';
 
 const Results = (props) => {  
     const [generation, setGeneration] = useState([])    
@@ -49,7 +49,7 @@ const arrayToJson = (json) => {
     Object.entries(json).map(([key, val]) => {
         let jsonItem1 = {}
         //console.log(json)
-        console.log(lastGeneration)
+        //console.log(lastGeneration)
         val.map((value, index) => {
             jsonItem1[index === 0 ? 'x' : index === 1 ? 'y' : 'z' ] = value
             return 'ok'
@@ -60,7 +60,7 @@ const arrayToJson = (json) => {
             //console.log(item)
             return item['z'].includes("-1");
         });
-        return console.log(result_1);
+        return ''//console.log(result_1);
     })
     setGenerationTwo(result_1)
     setGeneration(result)
@@ -108,15 +108,16 @@ const getOrbits = async (data) => {
     }
     console.log('entro function getOrbits!')
     console.log(data.plot)
-    axios.post(url, data).then(response => dispatch({type: FORM_DATA, payload: {'response': response} })).catch(error => console.log(error))
+    //axios.post(url, data).then(response => dispatch({type: FORM_DATA, payload: {'response': response} })).catch(error => console.log(error))
+    return axios.post(url, data)
 }
 
-
 const handleClick = async () => {
-    getOrbits(moltoItData)
-    setLoader(true)
-    await sleep(15000);
-    setLoader(false)
+    getOrbits(moltoItData).then(response => {
+        console.log(response)
+        console.log(response.data)
+        return dispatch({type: FORM_DATA, payload: {'response': `data:${response.headers['content-type'].toLowerCase()};base64,` + response.data}})
+      });
     props.function(null, props.value !== 8 ? props.value + 1 : 0)
 }
     //getPareto(moltoItData)
@@ -179,7 +180,7 @@ const handleClick = async () => {
                             </thead> 
                             <tbody>
                                 {generation.map((value, index) => {  
-                                    return <React.Fragment>
+                                    return <React.Fragment key={index}>
                                             <tr onClick={() => { handleParetoPoint(index+1)}} key={index}>
                                                 <td style={{backgroundColor: moltoItData.plot-1 === index ? '#70C483' : null, opacity: moltoItData.plot-1 === index ? 0.9 : null}}>{value['y']}</td>
                                                 <td style={{backgroundColor: moltoItData.plot-1 === index ? '#70C483' : null, opacity: moltoItData.plot-1 === index ? 0.9 : null}}>{value['x']}</td>

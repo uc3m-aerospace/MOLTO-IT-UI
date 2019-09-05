@@ -21,7 +21,6 @@ const Images = () => {
     })  
   })
   
-  
   return  <React.Fragment>
                 <Slider className="slider-wrapper" autoplay="4000">
                 {Object.entries(slides).map(([key, value]) => { return <div>
