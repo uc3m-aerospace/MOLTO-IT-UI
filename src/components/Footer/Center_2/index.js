@@ -1,11 +1,10 @@
-import React, { Component} from 'react';
+import React,{ useState } from 'react'
 import '../../../styles/main.scss'
 import Map from './MapComponent'
 import constants from '../../../constants/cardsText'
 
-class Center_2 extends Component {
+const Center_2 = () => {
 
-    render() {
         return (
             <React.Fragment>
                 <div className="SectionFooter">
@@ -16,7 +15,6 @@ class Center_2 extends Component {
                 </div>
             </React.Fragment>
         );
-    }
-}
+};
 
 export default Center_2

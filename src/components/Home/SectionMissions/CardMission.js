@@ -7,7 +7,7 @@ import moltoit from '../../../assets/images/moltoit.png'
 
 const CardMission = (props) => {  
   return  <React.Fragment>
-                <h3>{prop>>s.title}</h3>
+                <h3>{props.title}</h3>
                 <img style={{alignSelf: "center"}} src={props.image === "or" ? or : props.image === "threebp" ? threebp : moltoit} alt="typeofmission"/>
                 <p>{props.body}</p>
                 <button onClick={() => props.history.push(`/${props.image}`)}>START</button>
