@@ -8,7 +8,7 @@ class Left extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="SectionFooter">
+                <div className="SectionFooter" style={{height: "100px"}}>
                     <img src={Logo} style={{ margin: "20px 0px 0px 5px",height: "45px"}} alt="molto-logo"/>
                     <p>{constants.molto_description}</p>
                 </div>

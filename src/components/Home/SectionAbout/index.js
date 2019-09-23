@@ -4,6 +4,7 @@ import '../../../styles/main.scss'
 import Images from '../SectionAbout/Images'
 //import Typer from '../SectionAbout/Typer'
 //import constants from '../../../constants/cardsText';
+
 class SectionAbout extends Component {
 
     render() {

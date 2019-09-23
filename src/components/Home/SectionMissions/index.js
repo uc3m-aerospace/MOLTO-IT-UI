@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import '../../../styles/main.scss'
 import Missions from './Missions'
+
 class SectionMissions extends Component {
 
     render() {

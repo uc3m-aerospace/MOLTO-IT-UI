@@ -10,18 +10,16 @@ import '../../../styles/main.scss'
 
 
 
-class NavBar extends Component {
-    render() {
+const NavBar = (props) => {
 
-        
         const getLogo = () => {        
-            if (this.props.location.pathname === '/') {
+            if (props.location.pathname === '/') {
                 return Logo
-            } else if (this.props.location.pathname === '/moltoit') {
+            } else if (props.location.pathname === '/moltoit') {
                 return LogoIT
-            } else if (this.props.location.pathname === '/moltoor') {
+            } else if (props.location.pathname === '/moltoor') {
                 return LogoOR
-            } else if (this.props.location.pathname === '/molto3bp') {
+            } else if (props.location.pathname === '/molto3bp') {
                 return Logo3BP
             } else {
                 return Logo
@@ -54,5 +52,5 @@ class NavBar extends Component {
             </React.Fragment>
         );
     }
-}
+
 export default withRouter(NavBar);

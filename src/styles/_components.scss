@@ -53,11 +53,12 @@
     //https://img.newatlas.com/earth-from-space-6.jpg?auto=format%2Ccompress&fit=max&q=60&w=1000&s=012017ef5bdb0dca8bc0c38e88b13064'
     background-size: contain;
     display: flex;
+    color: #0c0c0c;
     top:0;
     left: 0; 
     right: 0;
     flex-direction: column;
-    min-height: 100vh;
+   
     z-index: 99999;
     position: absolute;    
 }
@@ -240,12 +241,11 @@
 
 .footer {
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    width: 100vw;
     bottom: 0;
     left: 0; 
     right: 0;
-    height: 300px;
+    height: 40vh;
     text-align: center;
     background-color: transparent;
     color: white;
@@ -263,8 +263,11 @@
 
 .SectionFooter {
     width: 100%;
+    height: 100%;
     margin-top: 20px;
+    position: relative;
     background-color:transparent;
+
     & h3 {
         font-family: "HelveticaLT";
         text-align: center;  
@@ -304,11 +307,7 @@
 
     } 
 }
-.SectionFooter div:first-child {
-    position: relative !important;
-    height: 180px !important;
-    margin-top: 20px !important;
-}
+
 .fixedIcons {
     position: absolute; 
     display: flex;
@@ -316,10 +315,9 @@
     align-self: flex-end; 
     right: 5%;
 }
-.fixedIconsFooter {
-    position: absolute; 
+.fixedIconsFooter { 
     display: flex;
-    align-content: center;
+    justify-content: center;
     align-self: center;
     margin-left: 10px;
     margin-right: 10px
@@ -346,6 +344,8 @@
 
 .CardMission {
     height: 500px;
+    display: flex;
+    flex-direction: column;
     align-self: center;
     width: 10px;
     margin: 30px;
@@ -697,102 +697,319 @@ background-size: cover !important;
     overflow-y: scroll;
   }
   
-  .ParetoTable td {
-    cursor: pointer;
-    border: 1px #ddd;
-    border-style: solid none;
-    border-width: 1px 0;
-    font-size: 14px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-  }
-  .ParetoTable th {
-    border: 1px #ddd;
-    border-style: solid none;
-    border-width: 1px 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  .ParetoTable tbody tr:hover {background-color:  #70C483; opacity: 0.9; z-index: 9999}
-  
-  .ParetoTable tr {
-    padding: 4px;
-    & th {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    text-align: center;
-    background-color: transparent;
-    color: white;
-    }
-  }
+.ParetoTable td {
+cursor: pointer;
+border: 1px #ddd;
+border-style: solid none;
+border-width: 1px 0;
+font-size: 14px;
+padding-bottom: 4px;
+padding-top: 4px;
+}
+.ParetoTable th {
+border: 1px #ddd;
+border-style: solid none;
+border-width: 1px 0;
+padding-top: 4px;
+padding-bottom: 4px;
+}
+.ParetoTable tbody tr:hover {background-color:  #70C483; opacity: 0.9; z-index: 9999}
 
-  .inputPlanets {
-    width: 15px !important;
-    margin-left: 30px !important;
-  }
+.ParetoTable tr {
+padding: 4px;
+& th {
+padding-top: 4px;
+padding-bottom: 4px;
+text-align: center;
+background-color: transparent;
+color: white;
+}
+}
 
-  .labelPlanets {
-    font-family: 'HelveticaLT';
-    font-size: 12px;
-    text-align: center;
-    align-self: center;
-  }
+.inputPlanets {
+width: 15px !important;
+margin-left: 30px !important;
+}
 
-  .MotorSelected {
-    background-color:  'white';
-  }  
+.labelPlanets {
+font-family: 'HelveticaLT';
+font-size: 12px;
+text-align: center;
+align-self: center;
+}
 
-  .newButton {
-    border: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: white;
-    background-color: #70C483;
-    width: 200px;
-    height: 40px;
-    border-radius: 4px;
-    align-self: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin: 70px 5% 70px 0px;
-  }
+.MotorSelected {
+background-color:  'white';
+}  
 
-  .TitleFinalResults {
-    color: white;
-    font-family: 'HelveticaNeueLTS';
-    font-size: 30px;
-    font-style: normal;
-    text-align: center;
-    border-bottom:1px solid white;
-    align-self: center !important;
-    }
+.newButton {
+border: none;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+color: white;
+background-color: #70C483;
+width: 200px;
+height: 40px;
+border-radius: 4px;
+align-self: center;
+margin-left: auto;
+margin-right: auto;
+margin: 70px 5% 70px 0px;
+}
+
+.TitleFinalResults {
+color: white;
+font-family: 'HelveticaNeueLTS';
+font-size: 30px;
+font-style: normal;
+text-align: center;
+border-bottom:1px solid white;
+align-self: center !important;
+}
 
 
 
 .ResultsContainer {
-    display: flex;
-    padding: 0 5%;
-    height: 390px;
-    overflow: hidden;
-    
+display: flex;
+padding: 0 5%;
+height: 390px;
+overflow: hidden;
+
 }
 
 .buttonTabsResults {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    border: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: white;
-    background-color: #70C483;
-    width: 200px;
-    height: 40px;
-    border-radius: 4px;
-    align-self: center;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 0;
-    margin-top: 10px;
-    align-self: center
+margin-left: auto;
+margin-right: auto;
+display: block;
+border: none;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+color: white;
+background-color: #70C483;
+width: 200px;
+height: 40px;
+border-radius: 4px;
+align-self: center;
+margin-left: auto;
+margin-right: auto;
+bottom: 0;
+margin-top: 10px;
+align-self: center
+}
+
+.star {
+background: 0 0;   
+}
+
+.star::after {
+position: absolute;
+content: "";
+top: 130vh;
+}
+.star-1 {
+animation: animStars 53s linear infinite;
+-webkit-animation: animStars 60s linear infinite;
+height: 1px;
+width: 1px;
+box-shadow: 0 0 #565656, 321px 678px #565656, 2248px 1956px #565656, 1378px 1391px #565656, 284px 167px #565656, 1881px 318px #565656, 774px 1132px #565656, 1343px 1558px #565656, 1363px 71px #565656, 1529px 1606px #565656, 2428px 487px #565656, 1142px 295px #565656, 2321px 1717px #565656, 843px 1411px #565656, 1761px 1651px #565656, 1257px 1px #565656, 609px 343px #565656, 1853px 2190px #565656, 2195px 390px #565656, 232px 1204px #565656, 728px 2083px #565656, 154px 2105px #565656, 1907px 229px #565656, 2276px 11px #565656, 2546px 1741px #565656, 1250px 841px #565656, 1879px 1319px #565656, 1307px 2000px #565656, 842px 604px #565656, 108px 490px #565656, 2235px 1480px #565656, 2179px 24px #565656, 193px 2406px #565656, 1192px 2199px #565656, 2339px 346px #565656, 453px 1435px #565656, 2480px 2198px #565656, 1784px 1113px #565656, 242px 154px #565656, 2384px 94px #565656, 1082px 1064px #565656, 1076px 2143px #565656, 541px 277px #565656, 703px 2441px #565656, 2073px 1354px #565656, 659px 2470px #565656, 909px 2435px #565656, 1560px 1451px #565656, 1828px 2240px #565656, 687px 503px #565656, 820px 374px #565656, 1495px 17px #565656, 2520px 971px #565656, 2508px 559px #565656, 2524px 234px #565656, 943px 435px #565656, 1892px 1252px #565656, 431px 1057px #565656, 1949px 2197px #565656, 308px 1779px #565656, 1952px 149px #565656, 2069px 2446px #565656, 611px 1500px #565656, 2121px 1463px #565656, 2319px 1825px #565656, 1245px 1484px #565656, 1485px 2456px #565656, 1539px 646px #565656, 1784px 424px #565656, 2018px 174px #565656, 489px 1627px #565656, 2514px 266px #565656, 1077px 193px #565656, 1509px 2520px #565656, 146px 1812px #565656, 1410px 2348px #565656, 1403px 1351px #565656, 345px 1813px #565656, 1074px 273px #565656, 1798px 826px #565656, 1710px 1558px #565656, 1859px 2444px #565656, 1276px 843px #565656, 1932px 904px #565656, 1597px 2346px #565656, 1651px 2141px #565656, 2355px 1615px #565656, 1501px 2345px #565656, 1417px 1520px #565656, 956px 1256px #565656, 2225px 834px #565656, 748px 705px #565656, 842px 491px #565656, 218px 1527px #565656, 1742px 1572px #565656, 2518px 179px #565656, 707px 1490px #565656, 1491px 1162px #565656, 1921px 142px #565656, 1906px 1279px #565656, 778px 575px #565656
+}
+
+@media only screen and (max-width: 910px) {
+    .footer {
+        display: flex;
+        width: 100vw;
+        bottom: 0;
+        left: 0; 
+        right: 0;
+        height: 100%;
+        margin: 0 auto;
+        flex-flow: row wrap;
+        text-align: center;
+        background-color: transparent;
+        color: white;
+        
+        & p {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            text-align: center
+        }
+    
+        
+    }
+    
+    .SectionFooter {
+        width: 100%;
+        height: 230px;
+        margin-top: 20px;
+        position: relative;
+        background-color:transparent;
+    
+        & h3 {
+            font-family: "HelveticaLT";
+            text-align: center;  
+            color: white;  
+            font-size: 24px;
+            margin: 0px;
+        }
+    
+        & ul {
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+    
+            & ul {
+                padding: 0;
+            }
+            & li {
+                list-style: none;
+                text-align: center;
+                align-self: flex-end;
+    
+                & a {
+                    display: block;
+                    padding: 2px 7px 2px 7px;
+                    text-decoration: none;
+                    font-size: 12px;
+                    color: white;
+    
+                }
+                
+                & a:hover {
+                    color: white;
+                }
+    
+            }
+    
+    
+        } 
+    }
+    
+    .fixedIconsFooter { 
+        display: flex;
+        justify-content: center;
+    }
+
+    .SectionMissions {
+        display: flex;
+        width: 100%;
+        flex-flow: column wrap;
+    }
+    
+    .CardMission {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 60%;
+        margin: 30px;
+        flex-grow: 1;
+    
+        & h3 {
+            font-family: "Avenir Next";
+            text-align: center;  
+            color: white;  
+            margin-bottom: 50px;
+        }
+    
+        & img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+    
+        & p {
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            font-size: 12px;
+            text-align: center;
+        }
+            
+        & button {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+            color: white;
+            background-color: #70C483;
+            width: 80%;
+            height: 40px;
+            border-radius: 4px;
+            bottom: 0;
+            align-self: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    
+    .Header {
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        align-content: center;
+        min-width:100%;
+        color: white;
+
+    
+        & ul {
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            align-items: center;
+            align-content: center;
+            padding-right: 15%;
+            padding-left: 15%;
+    
+            & ul {
+                padding: 0;
+            }
+            & li {
+                list-style: none;
+                text-align: center;
+                width: 150px;
+                align-self: flex-end;
+                & a {
+                    font-family: "HelveticaLT";
+                    display: block;
+                    padding: 2px 7px 2px 7px;
+                    text-decoration: none;
+                    font-size: 12px;
+                    color: white;
+    
+                }
+                
+                & a:hover {
+                    color: white;
+                }
+    
+            }
+    
+    
+        }  
+        
+        & li {    
+            list-style: none;
+            flex-grow: 1;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            align-self: flex-end;
+    
+            & a {
+                display: block;
+                padding: 2px 7px 2px 7px;
+                text-decoration: none;
+                font-size: 2px;
+            }
+            
+            & a:hover {
+                color: blanchedalmond;
+            }
+        }
+       }
 }

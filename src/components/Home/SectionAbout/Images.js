@@ -6,8 +6,6 @@ import 'react-animated-slider/build/horizontal.css';
 import Typer from './Typer'
 import axios from 'axios'
 
-
-
 const getSlider = async () => {
 let url = 'http://163.117.179.251:5000/sliders'
   return await axios.get(url).then(response => response.data)
@@ -42,6 +40,7 @@ const Images = () => {
                 )
               }
                 </Slider>
+                
           </React.Fragment>
 }
 
