@@ -7,10 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faSlack } from '@fortawesome/free-brands-svg-icons'
 import { withRouter } from "react-router";
 import '../../../styles/main.scss'
-
-
+import {useWindowSize} from '../../Hooks/useWindowSize'
 
 const NavBar = (props) => {
+        const size = useWindowSize();
+        console.log(size.width)
 
         const getLogo = () => {        
             if (props.location.pathname === '/') {
@@ -29,6 +30,7 @@ const NavBar = (props) => {
         return (
             <React.Fragment>
                       <div className="Header">
+                          {size.width > 810 ?
                           <ul>
                               <li><a href="#About" target="_self">What is MOLTO?</a></li>
 
@@ -45,6 +47,16 @@ const NavBar = (props) => {
                                     <li style={{width: '40px'}}><a href="https://slack.com" ><FontAwesomeIcon icon={faSlack} size="2x"/></a></li>
                              </ul>      
                           </ul>
+                          :
+                          <ul>
+                            <ul className="fixedIcons">
+                                <li style={{width: '40px'}}><a href="https://github.com/uc3m-aerospace/MOLTO-IT" ><FontAwesomeIcon icon={faListg} size="2x"/></a></li>
+                            </ul>    
+
+                            <img src={getLogo()} style={{margin: '0 auto', height: "45px", }} alt="logo"/>
+                                  
+                         </ul> 
+                          }
                         
                        
                        

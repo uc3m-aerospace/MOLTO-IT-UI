@@ -10,7 +10,7 @@ class Center_1 extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="SectionFooter" style={{ height: "90px"}}>
+                <div className="SectionFooter" style={{ height: "80px"}}>
                       <h3>Contact</h3>
                       <div style={{display:"block", width: "60%", height: "2px", backgroundColor: "white", alignSelf: "center", margin: "0px", marginLeft:"auto", marginRight:"auto"}}/>
                       
