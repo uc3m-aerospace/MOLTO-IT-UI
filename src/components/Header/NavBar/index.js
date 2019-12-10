@@ -4,7 +4,7 @@ import LogoIT from '../../../assets/images/MOLTO-IT-BLANCO.png'
 import LogoOR from '../../../assets/images/MOLTO-OR-BLANCO.png'
 import Logo3BP from '../../../assets/images/MOLTO-3BP-BLANCO.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faSlack } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faSlack} from '@fortawesome/free-brands-svg-icons'
 import { withRouter } from "react-router";
 import '../../../styles/main.scss'
 import {useWindowSize} from '../../Hooks/useWindowSize'
@@ -50,7 +50,7 @@ const NavBar = (props) => {
                           :
                           <ul>
                             <ul className="fixedIcons">
-                                <li style={{width: '40px'}}><a href="https://github.com/uc3m-aerospace/MOLTO-IT" ><FontAwesomeIcon icon={faListg} size="2x"/></a></li>
+                                <li style={{width: '40px'}}><a href="https://github.com/uc3m-aerospace/MOLTO-IT" ><FontAwesomeIcon icon={faSlack} size="2x"/></a></li>
                             </ul>    
 
                             <img src={getLogo()} style={{margin: '0 auto', height: "45px", }} alt="logo"/>

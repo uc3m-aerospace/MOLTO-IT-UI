@@ -26,7 +26,7 @@ class MapComponent extends Component {
         <MapGL
         {...viewport}
         width="100%"
-        height="70%"
+        height="65%"
         mapStyle={mapStyle}
         onViewportChange={this._onViewportChange}
         mapboxApiAccessToken={MAPBOX_TOKEN}

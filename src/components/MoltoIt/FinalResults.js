@@ -31,7 +31,7 @@ const FinalResults = (props) => {
 
                 <div style={{flex: 1, backgroundColor:"transparent"}}>
                 <p className="TitleFinalResults" style={{fontSize: "14px", marginLeft: "60px", marginRight: "60px"}}>Options</p>
-                    <button className="buttonTabsResults"><a href={"data:image/png;base64," + data.response} download="orbit.png">DOWNLOAD RESULTS</a></button>
+                    <button className="buttonTabsResults"><a href={"data:image/jpeg;base64," + data.response} download="orbit.jpeg">DOWNLOAD RESULTS</a></button>
                     <button className="buttonTabsResults">SHARE RESULTS</button>
                 </div>
             </div>
