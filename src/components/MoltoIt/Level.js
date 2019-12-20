@@ -12,17 +12,14 @@ const Level = (props) => {
     
 
     const checkName = () => {
-        console.log(data.problem_name.length)
+        //console.log(data.problem_name.length)
         if (data.problem_name.length < 2) {
-            console.log('entro aqui true')
             badName = true
         } else {
-            console.log('entro aqui false')
             badName = false
         }
     }
   
-    console.log(badName)
     const handleEvent = (event) => {
         
         let cleanValue = event.target.value.toLowerCase()
