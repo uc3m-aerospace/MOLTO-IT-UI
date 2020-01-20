@@ -48,7 +48,6 @@ const arrayToJson = (json) => {
     
     Object.entries(json).map(([key, val]) => {
         let jsonItem1 = {}
-
         val.map((value, index) => {
             jsonItem1[index === 0 ? 'x' : index === 1 ? 'y' : 'z' ] = value
             return 'ok'

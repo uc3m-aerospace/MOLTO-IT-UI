@@ -12,6 +12,10 @@ const Level = (props) => {
     
 
     const checkName = () => {
+<<<<<<< HEAD
+=======
+        //console.log(data.problem_name.length)
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
         if (data.problem_name.length < 2) {
             badName = true
         } else {
@@ -56,7 +60,11 @@ const Level = (props) => {
             </div>
             <button onClick={() => props.function(null, props.value !== 7 ? props.value + 1 : 0)}>EASY</button>
             <p>OR</p>
+<<<<<<< HEAD
             <button disabled style={{opacity: 0.3}}onClick={() => props.function(null, props.value !== 7 ? props.value + 1 : 0)}>ADVANCED</button>
+=======
+            <button onClick={() => props.function(null, props.value !== 7 ? props.value + 1 : 0)}>ADVANCE</button>
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
     
             </React.Fragment>
   }

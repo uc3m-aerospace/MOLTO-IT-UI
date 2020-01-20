@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+<<<<<<< HEAD
 import { useSelector, useDispatch} from "react-redux";
 import {FORM_DATA} from '../../constants'
 import Switch from "react-switch";
@@ -7,6 +8,29 @@ import { withMoltoItClient } from './../apiHOCs';
 
 const FlightTime = ({ moltoItApiClient, newProps}) => {  
      
+=======
+import {connect} from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
+import {sendFormData} from '../../actions'
+import {FORM_DATA} from '../../constants'
+import Switch from "react-switch";
+import axios from 'axios';
+
+const getPareto = async (data) => {
+    let url = 'http://163.117.179.251:5000/optimization/mission/json'
+
+    delete data['ToF_type'];
+    delete data['motor'];
+    delete data['motorType'];
+    if (data['response']) {
+        return delete data['response']
+    }
+    console.log('entro function')
+    axios.post(url, data).then(response => console.log(response.data)).catch(error => console.log(error))
+}
+
+const FlightTime = (props) => {  
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
     const dispatch = useDispatch();
     const data = useSelector(state => state.moltoItData);
     const [min, setMin] = useState(data.ToF[0])
@@ -14,6 +38,7 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
     const [loader, setLoader] = useState(false)
     const [checked, setChecked] = useState(false)
     const [type, setType] = useState(data.ToF_type)
+<<<<<<< HEAD
    
 
     const fetch = async (data) => {
@@ -32,6 +57,8 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
         }
     };
 
+=======
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 
     const sendFlightTime = (min, max) => {
         let threshold = []
@@ -40,7 +67,10 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
         dispatch({type: FORM_DATA, payload: {'ToF': threshold} })
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
     const handleChange = () => {
         if (!checked) {
             setChecked(true)
@@ -53,22 +83,38 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
         }     
 
     }
+<<<<<<< HEAD
 
+=======
+    console.log(checked)
+    console.log(type)
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
     useEffect(() => {
         sendFlightTime(min,max)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [min, max])
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     const handleClick = async () => {
+<<<<<<< HEAD
         fetch(data);
         setLoader(true)
         await sleep(1000);
         setLoader(false)
         newProps.function(null, newProps.value !== 7 ? newProps.value + 1 : 0)
+=======
+        getPareto(data)
+        setLoader(true)
+        await sleep(15000);
+        setLoader(false)
+        props.function(null, props.value !== 7 ? props.value + 1 : 0)
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
     }
 
 return  <React.Fragment>
@@ -135,4 +181,8 @@ return  <React.Fragment>
                     </React.Fragment>
   }
 
+<<<<<<< HEAD
 export default withMoltoItClient(FlightTime);
+=======
+export default FlightTime;
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69

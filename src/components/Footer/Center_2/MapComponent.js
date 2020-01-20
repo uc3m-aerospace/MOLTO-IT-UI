@@ -1,7 +1,12 @@
 
 import React, { Component} from 'react';
 import '../../../styles/main.scss'
+<<<<<<< HEAD
 import MapGL from 'react-map-gl'
+=======
+import axios from 'axios'
+import MapGL, {GeolocateControl} from 'react-map-gl'
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 class MapComponent extends Component {

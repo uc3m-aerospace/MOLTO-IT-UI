@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, { Component} from 'react';
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 import Logo from '../../../assets/images/MOLTO-BLANCO.png'
 import LogoIT from '../../../assets/images/MOLTO-IT-BLANCO.png'
 import LogoOR from '../../../assets/images/MOLTO-OR-BLANCO.png'
@@ -11,7 +15,11 @@ import {useWindowSize} from '../../Hooks/useWindowSize'
 
 const NavBar = (props) => {
         const size = useWindowSize();
+<<<<<<< HEAD
         const pathname = window.location.pathname;
+=======
+        console.log(size.width)
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 
         const getLogo = () => {        
             if (props.location.pathname === '/') {
@@ -32,6 +40,7 @@ const NavBar = (props) => {
                       <div className="Header">
                           {size.width > 810 ?
                           <ul>
+<<<<<<< HEAD
                               <li><a href="/#About" target="_self">What is MOLTO?</a></li>
 
                               <li><a href="/#Missions" target="_self">Space Missions</a></li>
@@ -41,6 +50,17 @@ const NavBar = (props) => {
                               <li><a href="/#Collaboration" target="_self">Collaboration</a></li>
 
                               <li><a href={pathname + '#Contact' } target="_self">Contact</a></li>
+=======
+                              <li><a href="#About" target="_self">What is MOLTO?</a></li>
+
+                              <li><a href="#Missions" target="_self">Space Missions</a></li>
+
+                              <img src={getLogo()} style={{height: "45px", marginLeft: "40px", marginRight: "40px"}} alt="logo"/>
+                              
+                              <li><a href="#Collaboration" target="_self">Collaboration</a></li>
+
+                              <li><a href="#Contact" target="_self">Contact</a></li>
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
                               <ul className="fixedIcons">
                                     <li style={{width: '40px'}}><a href="https://github.com/uc3m-aerospace/MOLTO-IT" ><FontAwesomeIcon icon={faGithub} size="2x"/></a></li>
 

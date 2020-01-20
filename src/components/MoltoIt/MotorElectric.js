@@ -55,7 +55,11 @@ const MotorElectric = (props) => {
         dispatch({type: FORM_DATA, payload: {'motor': motor.name}})
         dispatch({type: FORM_DATA, payload: {'motorType': 'Electric'}})
     }
+<<<<<<< HEAD
 
+=======
+    console.log(currentMotor)
+>>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
     return  <React.Fragment >
         {motors.map((motor_) => 
             <div style={{backgroundColor: currentMotor.name === motor_.name ? '#70C483' : null, opacity: currentMotor.name === motor_.name ? '0.9' : null, width: "100%", height:"100%"}} onClick={() => handleClick(motor_)}>
