@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React from 'react'
-=======
-import React,{ useState } from 'react'
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 import '../../../styles/main.scss'
 import Map from './MapComponent'
 import constants from '../../../constants/cardsText'

@@ -60,11 +60,6 @@ export const moltoItData = (state = initialState, action) => {
     let {type, payload} = action;
     switch (type) {
         case FORM_DATA:
-<<<<<<< HEAD
-=======
-            console.log(payload)
-            console.log("Ejecutado!")
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
             return Object.assign({}, state, payload);
         case RESET_DATA:
             return initialState_;

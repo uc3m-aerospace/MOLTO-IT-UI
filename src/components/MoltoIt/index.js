@@ -76,22 +76,6 @@ const useStyles = makeStyles(theme => ({
             setValue(newValue)
         }
 
-<<<<<<< HEAD
-=======
-        /*if (value === 7) { 
-          const data = useSelector(state => state.moltoItData);
-          delete data['ToF_type'];
-          delete data['motor'];
-          delete data['motorType'];
-          console.log("Se clicko tal btoon")
-          console.log('entro?')
-          console.log(data)
-          getPareto(data)
-        }*/
-
-    
-
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
         const TabContainer = (props) => {
             return (
               <div className="SectionTabs">

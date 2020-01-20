@@ -33,21 +33,14 @@ Say what the step will be
 
 For deployment purposes contact brandon.escamilla@aerospaceresearch.net
 
-<<<<<<< HEAD
-=======
 ## Demo 
 
 [Live demo](https://molto.netlify.com)
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 
 ## Contributing
 
 Please read [CONTRIBUTING.md] for details on our code of conduct, and the process for submitting pull requests to us.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 ## Authors
 
 * **Brandon Escamilla** -

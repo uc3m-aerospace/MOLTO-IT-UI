@@ -5,7 +5,6 @@ import {
 } from 'recharts';
 import { useSelector, useDispatch} from "react-redux";
 import {FORM_DATA} from '../../constants'
-import axios from 'axios'
 import { withMoltoItClient } from './../apiHOCs';
 
 
@@ -65,7 +64,7 @@ const arrayToJson = (json) => {
 }
 
 useEffect(() => {
-    const socket = io('https://molto-api-v1.studio',  {'sync disconnect on unload': true }, {transports: ['polling']})
+    const socket = io('https://163.117.179.251',  {'sync disconnect on unload': true }, {transports: ['polling']})
 
     socket.on('connect', () => {
         

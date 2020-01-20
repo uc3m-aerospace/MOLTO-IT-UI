@@ -52,28 +52,14 @@ const Mission = (props) => {
         let checked = event.target.checked;
     
         if (!checked) {
-<<<<<<< HEAD
-=======
-            console.log('Borra')
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
             flybyPlanets.splice(flybyPlanets.indexOf(Planet), 1)
             setFlybyPlanets([...flybyPlanets])
             dispatch({type: FORM_DATA, payload: {'planet_fb': flybyPlanets}})
         } else {
-<<<<<<< HEAD
-=======
-            console.log('Agrega')
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
             flybyPlanets.push(Planet)
             setFlybyPlanets([...flybyPlanets])
             dispatch({type: FORM_DATA, payload: {'planet_fb': flybyPlanets} })
         }
-<<<<<<< HEAD
-=======
-
-        console.log(flybyPlanets) 
-       
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
     }
 
     return  <React.Fragment>

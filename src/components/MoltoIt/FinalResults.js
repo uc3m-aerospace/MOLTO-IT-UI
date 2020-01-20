@@ -1,8 +1,4 @@
 import React, {useState, useEffect} from 'react'
-<<<<<<< HEAD
-=======
-import Orbit from '../../assets/images/orbit.png'
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 import {useSelector} from 'react-redux'
 
 const FinalResults = (props) => {  
@@ -10,14 +6,8 @@ const FinalResults = (props) => {
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {
-<<<<<<< HEAD
         setLoader(data.response)
     }, [data.response])
-=======
-        console.log(data.response)
-        setLoader(data.response)
-    })
->>>>>>> 2c84f0c9035324148407ba22b65462fb7eb25e69
 
     return  <React.Fragment>
            { loader ?
