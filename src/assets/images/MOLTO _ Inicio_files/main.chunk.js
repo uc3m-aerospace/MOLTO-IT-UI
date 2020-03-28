@@ -1015,9 +1015,9 @@ class Home extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ "./src/index.js":
+/***/ "./index.js":
 /*!**********************!*\
-  !*** ./src/index.js ***!
+  !*** ./index.js ***!
   \**********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1401,13 +1401,13 @@ if(true) {
 
 /***/ 0:
 /*!**********************************************************************************!*\
-  !*** multi ./node_modules/react-dev-utils/webpackHotDevClient.js ./src/index.js ***!
+  !*** multi ./node_modules/react-dev-utils/webpackHotDevClient.js ./index.js ***!
   \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/brandonescamilla/BrandonEscamilla/GSoC/AerospaceResearch/UI/molto-it-ui/node_modules/react-dev-utils/webpackHotDevClient.js */"./node_modules/react-dev-utils/webpackHotDevClient.js");
-module.exports = __webpack_require__(/*! /Users/brandonescamilla/BrandonEscamilla/GSoC/AerospaceResearch/UI/molto-it-ui/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Users/brandonescamilla/BrandonEscamilla/GSoC/AerospaceResearch/UI/molto-it-ui/src/index.js */"./index.js");
 
 
 /***/ })

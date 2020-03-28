@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
-import {connect} from "react-redux";
 import DocumentTitle from 'react-document-title';
 import Home from './Home'
 //import Background from '../assets/images/Sky.jpeg'
@@ -16,11 +15,17 @@ import { withLoginClient } from './apiHOCs';
 
 const App = ({loginApiClient})  => {
 
+    const [logged, setLogged] = useState(false)
+
     useEffect(() => {
         const fetch = async () => {
           try {
             const res = await loginApiClient.Login();
             if (res) {
+                console.log(res)
+                if (res.access_token) {
+                    setLogged(true)
+                }
                 console.log('Logged.')
             }
           } catch (error) {
@@ -34,6 +39,7 @@ const App = ({loginApiClient})  => {
 
 
     return (
+        logged ?
         <div className="mainContainer">
         <Background/>    
                 <Header />
@@ -50,6 +56,8 @@ const App = ({loginApiClient})  => {
                 <Footer/>
             
         </div>
+        : 
+        null
     );
 }
 

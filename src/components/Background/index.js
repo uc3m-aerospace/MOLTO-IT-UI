@@ -16,7 +16,7 @@ const Background = () => {
                 },
                 "line_linked": {
                     "enable": true,
-                    "opacity": 0.03
+                    "opacity": 0.23
                 },
                 "move": {
                     "direction": "right",
