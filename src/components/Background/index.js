@@ -8,22 +8,22 @@ const Background = () => {
         params={{
             "particles": {
                 "number": {
-                    "value": 310,
+                    "value": 50,
                     "density": {
                         "enable": true,
-                        "value_area": 3100
+                        "value_area": 500
                     }
                 },
                 "line_linked": {
                     "enable": true,
-                    "opacity": 0.23
+                    "opacity": 0.13
                 },
                 "move": {
                     "direction": "right",
-                    "speed": 0.20
+                    "speed": 0.35
                 },
                 "size": {
-                    "value": 1.4
+                    "value": 1.2
                 },
                 "opacity": {
                     "anim": {

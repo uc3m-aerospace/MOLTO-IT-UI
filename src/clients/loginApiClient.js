@@ -4,16 +4,16 @@
   export default () => {
 
     const Login = async () => {
-      const url = 'https://molto-api-v1.studio/login';
+      const url = 'https://moltoadmin.herokuapp.com/auth/local'; //https://molto-api-v1.studio/login
   
       const params = new URLSearchParams();
-      params.append('username', 'brandon');
-      params.append('password', 'molto');
+      params.append('identifier', 'MOLTO-Client');
+      params.append('password', 'molto2020');
   
       try {
         const { data: respBody } = await axios.post(url, params);
         if (respBody) {
-          setCookie('accessToken', respBody.access_token, 1000000);
+          setCookie('jwt', respBody.jwt, 1000000);
           // idToken will expire in 90 days (7776000 seconds) TODO: make it an env variable?
           return respBody;
         }

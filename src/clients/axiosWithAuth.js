@@ -4,7 +4,7 @@ import https from 'https';
 
 async function getToken() {
   try {
-    return await getCookie('accessToken');
+    return await getCookie('jwt');
   } catch (error) {
     return null;
   }
@@ -13,7 +13,7 @@ async function getToken() {
 const client = history => {
   
   const defaultOptions = {
-    baseURL: 'https://molto-api-v1.studio/',
+    baseURL: 'https://moltoadmin.herokuapp.com/', //https://molto-api-v1.studio/
     method: 'get',
     httpsAgent: new https.Agent({  
       rejectUnauthorized: false

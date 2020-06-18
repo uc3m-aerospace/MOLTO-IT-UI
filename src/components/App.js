@@ -22,8 +22,7 @@ const App = ({loginApiClient})  => {
           try {
             const res = await loginApiClient.Login();
             if (res) {
-                console.log(res)
-                if (res.access_token) {
+                if (res.jwt) {
                     setLogged(true)
                 }
                 console.log('Logged.')

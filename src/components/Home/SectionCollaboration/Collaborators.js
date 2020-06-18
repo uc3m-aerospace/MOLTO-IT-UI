@@ -6,9 +6,9 @@ import { withHomeApiClient } from './../../apiHOCs';
 const Collaboration = ({ homeApiClient }) => {
 
     const [collaborators, setCollaborators] = useState([{
-        "Imagen": "",
-        "Nombre": "",
-        "Descripcion": ""
+        "photo": "",
+        "name": "",
+        "description": ""
     }]);
     const [isLoading, setIsLoading] = useState()
  
@@ -23,16 +23,16 @@ const Collaboration = ({ homeApiClient }) => {
             
           } catch (error) {
             setCollaborators([{
-                "Imagen": "",
-                "Nombre": "",
-                "Descripcion": ""
+                "photo": "",
+                "name": "",
+                "description": ""
             }]);
             setIsLoading(false);
           }
         };
         fetch();
       }, []);
-
+      
     return  <>
                 <p>MOLTO is an open source project, so we really appreciate all the effort of everyone on this team. If you want to join us. <a href="https://github.com/uc3m-aerospace/MOLTO-IT">Click here</a></p>
                 <div className="SectionCollaboration">
@@ -43,7 +43,7 @@ const Collaboration = ({ homeApiClient }) => {
                         :    
                         Object.entries(collaborators).map(([key, value]) => {
                             return  <div className="CardCollaborators" key={key}>
-                                        <Card name={value.Nombre} body={value.Descripcion} image={value.Imagen}/>
+                                        <Card name={value.name} body={value.description} image={value.photo.url}/>
                                     </div>
                         })                
                     }   
