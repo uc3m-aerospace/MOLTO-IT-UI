@@ -13,7 +13,7 @@ async function getToken() {
 const client = history => {
   
   const defaultOptions = {
-    baseURL: 'https://moltoadmin.herokuapp.com/', //https://molto-api-v1.studio/
+    baseURL: 'https://molto-admin.herokuapp.com/', //https://molto-api-v1.studio/
     method: 'get',
     httpsAgent: new https.Agent({  
       rejectUnauthorized: false

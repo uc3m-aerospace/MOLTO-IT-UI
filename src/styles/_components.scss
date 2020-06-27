@@ -192,8 +192,13 @@ button {
     align-items: center;
     text-align: center;
     align-content: center;
-    min-width:100%;
     color: white;
+    display: flex;
+    flex-direction: row;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
     //position: fixed; if header fixed
     //top: 0;
     //z-index: 9999;
@@ -204,8 +209,7 @@ button {
         text-align: center;
         align-items: center;
         align-content: center;
-        padding-right: 15%;
-        padding-left: 15%;
+        padding-left: 5%;
 
         & ul {
             padding: 0;
@@ -255,16 +259,15 @@ button {
    }
 
 .footer {
-    display: flex;
-    width: 100vw;
-    bottom: 0;
-    left: 0; 
-    right: 0;
-    height: 47vh;
+
     text-align: center;
-    background-color: transparent;
+    align-content: center;
     color: white;
-    
+    display: flex;
+    flex-direction: row;
+    padding-left: 5%;
+    padding-right: 5%;
+
     & p {
         color: white;
         font-family: AvertaRegular;
@@ -324,12 +327,12 @@ button {
 }
 
 .fixedIcons {
-    position: absolute; 
     display: flex;
     align-content: flex-end;
     align-self: flex-end; 
     right: 5%;
 }
+
 .fixedIconsFooter { 
     display: flex;
     justify-content: center;
@@ -337,6 +340,7 @@ button {
     margin-left: 10px;
     margin-right: 10px
 }
+
 .SectionImages {
     display: flex;
     flex-direction: row;
@@ -838,18 +842,18 @@ box-shadow: 0 0 #565656, 321px 678px #565656, 2248px 1956px #565656, 1378px 1391
 
 @media only screen and (max-width: 910px) {
     .footer {
-        display: flex;
-        width: 100vw;
-        bottom: 0;
-        left: 0; 
-        right: 0;
-        height: 100%;
-        margin: 0 auto;
-        flex-flow: row wrap;
-        text-align: center;
-        background-color: transparent;
-        color: white;
-        
+    text-align: center;
+    align-content: center;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 100%;
+    flex-flow: row wrap;
+    text-align: center;
+    background-color: transparent;
+    
         & p {
             color: white;
             font-family: Avenir;
@@ -1111,7 +1115,7 @@ box-shadow: 0 0 #565656, 321px 678px #565656, 2248px 1956px #565656, 1378px 1391
             & li {
                 list-style: none;
                 text-align: center;
-                width: 150px;
+                width: 130px;
                 align-self: flex-end;
                 & a {
                     font-family: "HelveticaLT";

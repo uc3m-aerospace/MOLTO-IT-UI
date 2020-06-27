@@ -4,11 +4,11 @@
   export default () => {
 
     const Login = async () => {
-      const url = 'https://moltoadmin.herokuapp.com/auth/local'; //https://molto-api-v1.studio/login
+      const url = 'https://molto-admin.herokuapp.com/auth/local'; //https://molto-api-v1.studio/login
   
       const params = new URLSearchParams();
       params.append('identifier', 'MOLTO-Client');
-      params.append('password', 'molto2020');
+      params.append('password', 'moltoAdmin2020');
   
       try {
         const { data: respBody } = await axios.post(url, params);

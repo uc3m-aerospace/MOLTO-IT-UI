@@ -31,22 +31,25 @@ const NavBar = (props) => {
             <React.Fragment>
                       <div className="Header">
                           {size.width > 810 ?
-                          <ul>
-                              <li><a href="/#About" target="_self">What is MOLTO?</a></li>
+                            <>
+                                <a href="/"><img src={getLogo()} style={{height: "45px", marginRight: "40px"}} alt="logo"/></a>            
+                                <ul>
+                                    
+                                    <li><a href="/#About" target="_self">About Us</a></li>
 
-                              <li><a href="/#Missions" target="_self">Space Missions</a></li>
+                                    <li><a href="/#Missions" target="_self">Space Missions</a></li>                             
+                                    
+                                    <li><a href="/#Collaboration" target="_self">Collaboration</a></li>
 
-                              <a href="/"><img src={getLogo()} style={{height: "45px", marginLeft: "40px", marginRight: "40px"}} alt="logo"/></a>
-                              
-                              <li><a href="/#Collaboration" target="_self">Collaboration</a></li>
+                                    <li><a href={pathname + '#Contact' } target="_self">Contact</a></li>
+                                    
+                                    <ul className="fixedIcons">
+                                            <li style={{width: '40px'}}><a href="https://github.com/uc3m-aerospace/MOLTO-IT" ><FontAwesomeIcon icon={faGithub} size="2x"/></a></li>
 
-                              <li><a href={pathname + '#Contact' } target="_self">Contact</a></li>
-                              <ul className="fixedIcons">
-                                    <li style={{width: '40px'}}><a href="https://github.com/uc3m-aerospace/MOLTO-IT" ><FontAwesomeIcon icon={faGithub} size="2x"/></a></li>
-
-                                    <li style={{width: '40px'}}><a href="https://slack.com" ><FontAwesomeIcon icon={faSlack} size="2x"/></a></li>
-                             </ul>      
-                          </ul>
+                                            <li style={{width: '40px'}}><a href="https://slack.com" ><FontAwesomeIcon icon={faSlack} size="2x"/></a></li>
+                                    </ul>      
+                                </ul>
+                            </>
                           :
                           <ul>
                             <ul className="fixedIcons">

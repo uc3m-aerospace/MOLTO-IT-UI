@@ -38,7 +38,7 @@ const App = ({loginApiClient})  => {
 
 
     return (
-        logged ?
+        
         <div className="mainContainer">
         <Background/>    
                 <Header />
@@ -55,8 +55,7 @@ const App = ({loginApiClient})  => {
                 <Footer/>
             
         </div>
-        : 
-        null
+        
     );
 }
 
