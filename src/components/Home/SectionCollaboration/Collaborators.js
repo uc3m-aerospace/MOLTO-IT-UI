@@ -33,7 +33,7 @@ const Collaboration = ({ homeApiClient }) => {
         fetch();
       }, []);
       
-    return  <>
+    return  <div className="constrain">
                 <p>MOLTO is an open source project, so we really appreciate all the effort of everyone on this team. If you want to join us. <a href="https://github.com/uc3m-aerospace/MOLTO-IT">Click here</a></p>
                 <div className="SectionCollaboration">
                     { isLoading ?
@@ -48,7 +48,7 @@ const Collaboration = ({ homeApiClient }) => {
                         })                
                     }   
                 </div>
-           </>
+           </div>
 }
 
 export default withHomeApiClient(Collaboration);

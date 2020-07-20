@@ -19,9 +19,10 @@ class Footer extends Component {
                         <Center2/>
                         <Rigth/>
                     </footer>
-                    <div style={{display: "flex", flexDirection: "row"}}>
-                        <p style={{color:"white", margin: "0px 0px 10px 50px", fontFamily:"HelveticaLT", fontSize: "12px"}}>© Universidad Carlos III de Madrid</p>
-                        <p style={{color:"white", margin: "0px 0px 10px 50px", fontFamily:"HelveticaLT", fontSize: "12px"}}>Aviso de Privacidad</p>
+                    <div style={{height: "60px", display: "flex",  alignItems: "center", flexDirection: "row", justifyContent: "center"}}>
+                        <p style={{ display: "flex", color:"white",  alignSelf: "center", fontFamily:"HelveticaLT"}}>© Universidad Carlos III de Madrid</p>
+                        <span style={{ height: "100%" ,display: "flex", marginBottom: "10px", alignItems: "center", marginLeft: "10px", marginRight: "10px", color: "white"}}>|</span>
+                        <p style={{display: "flex", color:"white",  alignItems: "center", fontFamily:"HelveticaLT"}}>Aviso de Privacidad</p>
                     </div>
             </React.Fragment>
         );

@@ -90,7 +90,7 @@ const useStyles = makeStyles(theme => ({
               {value !== 8 ?
                     <div className={classes.root}>
                         <div className={classes.demo2}>
-                            <StyledTabs variant="fullWidth" value={value} onChange={handleChange}>
+                            <StyledTabs variant="fullWidth" value={value} onChange={handleChange}>                            
                                 <StyledTab label="Configuration" />
                                 <StyledTab label="Launch Window" />
                                 <StyledTab label="From" />

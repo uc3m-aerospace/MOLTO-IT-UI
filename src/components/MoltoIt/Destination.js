@@ -2,10 +2,10 @@ import React from 'react'
 import SelectBody from './CelestialBodies'
 
 const Destination = (props) => {  
-    return  <React.Fragment>
+    return  <div className="constrain">
                   <p className="Title">SELECT YOUR ARRIVAL BODY</p>
                   <SelectBody/>
-            </React.Fragment>
+            </div>
   }
   
   export default Destination;

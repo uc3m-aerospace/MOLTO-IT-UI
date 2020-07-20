@@ -62,7 +62,7 @@ const Mission = (props) => {
         }
     }
 
-    return  <React.Fragment>
+    return  <div className="constrain">
                 { missionType === 'flyby' ? 
                     <React.Fragment>
                       <p className="Title">PLEASE INPUT NUMBER OF FLYBYS</p>
@@ -110,7 +110,7 @@ const Mission = (props) => {
                     </React.Fragment>
                  
                 }
-            </React.Fragment>
+            </div>
   }
   
   export default Mission;

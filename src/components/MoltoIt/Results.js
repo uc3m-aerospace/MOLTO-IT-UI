@@ -114,7 +114,7 @@ const handleClick = async () => {
     newProps.function(null, newProps.value !== 8 ? newProps.value + 1 : 0)
 }
 
-   return  <React.Fragment>
+   return  <div className="constrain">
            { loader ?
                     <div>
                         <div style={{backgroundColor: 'black', opacity: 0.9, position: "absolute", zIndex: 995, top: 0, right: 0, bottom: 0, left: 0}}></div>
@@ -189,7 +189,7 @@ const handleClick = async () => {
         <button className="buttonTabs" style={{marginRight: "80px"}} onClick={() => handleClick()}>SEND</button>
         </div>
 
-            </React.Fragment>
+            </div>
   }
   
 

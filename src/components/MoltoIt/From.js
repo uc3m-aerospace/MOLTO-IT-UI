@@ -2,10 +2,10 @@ import React from 'react'
 import SelectBody from './CelestialBodies'
 
 const From = (props) => {  
-    return  <React.Fragment>
+    return  <div className="constrain">
                 <p className="Title">SELECT YOUR DEPARTURE BODY</p>
                 <SelectBody component='From'/>
-            </React.Fragment>
+            </div>
   }
   
   export default From;

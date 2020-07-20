@@ -8,10 +8,10 @@ const Background = () => {
         params={{
             "particles": {
                 "number": {
-                    "value": 50,
+                    "value": 20,
                     "density": {
                         "enable": true,
-                        "value_area": 500
+                        "value_area": 800
                     }
                 },
                 "line_linked": {
@@ -23,24 +23,24 @@ const Background = () => {
                     "speed": 0.35
                 },
                 "size": {
-                    "value": 1.2
+                    "value": 1
                 },
                 "opacity": {
                     "anim": {
                         "enable": true,
-                        "speed": 1.6,
-                        "opacity_min": 0.05
+                        "speed": 1.8,
+                        "opacity_min": 0.1
                     }
                 }
             },
             "interactivity": {
                 "events": {
                     "onclick": {
-                        "enable": true,
+                        "enable": false,
                         "mode": "push"
                     },
                     "onhover": {
-                        "enable": true,
+                        "enable": false,
                         "mode": "repulse"
                     }
                 },

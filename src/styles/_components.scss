@@ -5,6 +5,7 @@
 
 button {
     outline: none;
+    margin: 20px;
 }
 
 .typer {
@@ -112,11 +113,16 @@ button {
     }
 }
 
+.constrain {
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
 .SectionTabs {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 150px;
-    width: 90%;
+    width: 100%;
     overflow-y: auto;
     flex-grow: 1;
     height: 100%;
@@ -183,6 +189,7 @@ button {
         outline: none;
         border: none;
         text-align: center;
+        margin: 20px;
     }
 
 }
@@ -449,11 +456,14 @@ h1 {
 }
 
 .CardCollaborators {
-    height: 500px;
+    height: 600px;
     align-self: center;
     width: 10px;
     margin: 30px;
     flex-grow: 1;
+    position: relative;
+    background-color: rgba(111, 111, 111, 0.1);
+    padding: 20px; 
 
     & h3 {
         font-family: "HelveticaLT";
@@ -482,6 +492,44 @@ h1 {
         text-align: center;
     }
 }
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+    }
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0073e6, 0 0 40px #0073e6, 0 0 50px #0073e6, 0 0 60px #0073e6, 0 0 70px #0073e6;
+    }
+  }
+
+.CardCollaborators:after {
+    content: "";
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    -webkit-box-shadow: -4px -4px 5px rgba(255,255,255,0.15);
+    -moz-box-shadow: -4px -4px 5px rgba(255,255,255,0.15);
+         box-shadow: -4px -4px 5px rgba(255,255,255,0.15);
+    border-width: 1px 0 0 1px; border-style: solid; border-color: white;
+    
+}
+
+.CardCollaborators:before {
+    content: "";
+    -webkit-box-shadow: 5px 5px 6px rgba(255,255,255,0.15);
+    -moz-box-shadow: 5px 5px 6px rgba(255,255,255,0.15);
+         box-shadow: 5px 5px 6px rgba(255,255,255,0.15);
+    border-width: 0 1px 1px 0; border-style: solid; border-color: white;
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+    width: 60px;
+    height: 60px;
+}
+
 .Maps {
     position: relative;
     width: 100%;
@@ -1006,7 +1054,7 @@ box-shadow: 0 0 #565656, 321px 678px #565656, 2248px 1956px #565656, 1378px 1391
             align-self: center;
             margin-left: auto;
             margin-right: auto;
-            outline:none
+            outline:none;
         }
     }
 

@@ -10,7 +10,7 @@ const CardMission = (props) => {
                 <h3>{props.title}</h3>
                 <img style={{alignSelf: "center"}} src={props.image === "or" ? or : props.image === "threebp" ? threebp : moltoit} alt="typeofmission"/>
                 <p>{props.body}</p>
-                <button disabled={props.title === 'MOLTO-3BP' ? true : false} style={{ opacity: props.title === 'MOLTO-3BP' ? 0.3 : 0.8  }}onClick={() => props.history.push(`/${props.image}`)}> {props.title === 'MOLTO-3BP' ? 'SOON' : 'START'}</button>
+                <button disabled={props.title === 'MOLTO-3BP' ? true : false} style={{ opacity: props.title === 'MOLTO-3BP' ? 0.3 : 0.8  }} onClick={() => props.history.push(`/${props.image}`)}> {props.title === 'MOLTO-3BP' ? 'SOON' : 'START'}</button>
           </React.Fragment>
 }
 

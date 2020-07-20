@@ -1,27 +1,36 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
-import {connect} from 'react-redux'
 import App from './App'
-import {saveState} from '../services/appState'
+import { withLoginClient } from './apiHOCs';
 
 
-class AppRouter extends React.PureComponent {
-    render() {
+const AppRouter = ({loginApiClient}) => {
+
+        const [logged, setLogged] = useState(false)
+
+        useEffect(() => {
+            const fetch = async () => {
+            try {
+                const res = await loginApiClient.Login();
+                if (res) {
+                    if (res.jwt) {
+                        setLogged(true)
+                    }
+                    console.log('Logged.')
+                }
+            } catch (error) {
+                    console.log(error)
+            }
+            };
+        
+            fetch();
+        }, []);
+    
         return (
             <BrowserRouter>
                     <Route component={App}/>
             </BrowserRouter>
         )
-    }
-
-    componentDidUpdate(prevProps) {
-        if(this.props.admin !== prevProps.admin){
-            saveState("admin",this.props.admin);
-        }
-
-    }
 }
 
-export default connect(state => ({
-    admin: state.admin,
-}))(AppRouter)
+export default withLoginClient(AppRouter);
