@@ -9,6 +9,7 @@ import * as reducers from './reducers'
 import './styles/main.scss';
 import {unregister} from './registerServiceWorker'
 import WebService from './services/Webservice'
+import { ThemeProvider } from "@chakra-ui/core";
 
 let store;
 
@@ -36,9 +37,11 @@ const init = async () => {
 
     
     ReactDOM.render(
-        <Provider store={store}>
-            <AppRouter/>
-        </Provider>,
+        <ThemeProvider>
+            <Provider store={store}>
+                <AppRouter/>
+            </Provider>
+        </ThemeProvider>,
         document.getElementById('root')
     );
 };

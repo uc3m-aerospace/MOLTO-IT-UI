@@ -25,7 +25,19 @@ export default history => {
     }
   };
 
-  return { getPareto, getOrbits };
+  const saveMission = async (data) => {
+
+    const url = 'https://molto-admin.herokuapp.com/missions';
+    try {
+      const response = await axios.post(url, data);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+
+  return { getPareto, getOrbits, saveMission };
 };
 
 

@@ -1,37 +1,56 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch} from "react-redux";
 import {FORM_DATA} from '../../constants'
 import Switch from "react-switch";
 import { withMoltoItClient } from './../apiHOCs';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const FlightTime = ({ moltoItApiClient, newProps}) => {  
      
     const dispatch = useDispatch();
     const data = useSelector(state => state.moltoItData);
+    const [missionId, setMissionId] = useState()
     const [min, setMin] = useState(data.ToF[0])
     const [max, setMax] = useState(data.ToF[1])
     const [loader, setLoader] = useState(false)
     const [checked, setChecked] = useState(false)
     const [type, setType] = useState(data.ToF_type)
-   
-
+    const uuidMission = useRef(uuidv4());
+    
+    console.log(uuidMission)
     const fetch = async (data) => {
         
         delete data['ToF_type'];
         delete data['motor'];
         delete data['motorType'];
+
         if (data['response']) {
             return delete data['response']
         }
 
         try {
+            const data_cms = {
+                name: data.problem_name,
+                code: uuidMission.current,
+                configuration: data
+            }
+            const cms = await moltoItApiClient.saveMission(data_cms);            
+            console.log(cms.data.id)
+            setMissionId(cms.data.id)
+        } catch (error) {
+            console.log(error)
+        }
+
+        try {
+            //SEND GENERATED CODE!!
             const res = await moltoItApiClient.getPareto(data);            
         } catch (error) {
             console.log(error)
         }
-    };
 
+        
+    };
 
     const sendFlightTime = (min, max) => {
         let threshold = []
@@ -52,6 +71,7 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
         }     
 
     }
+
     useEffect(() => {
         sendFlightTime(min,max)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,8 +80,10 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+
     const handleClick = async () => {
         fetch(data);
+        
         setLoader(true)
         await sleep(1000);
         setLoader(false)

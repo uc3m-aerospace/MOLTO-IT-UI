@@ -4,15 +4,19 @@ import '../../../styles/main.scss'
 import Images from '../SectionAbout/Images'
 //import Typer from '../SectionAbout/Typer'
 //import constants from '../../../constants/cardsText';
+import { Skeleton } from "@chakra-ui/core";
 
 class SectionAbout extends Component {
 
     render() {
         return (
+            
             <React.Fragment>
-                <div className="SectionBackground" id="About">
-                    <Images/>
-                </div>
+                
+                    <div className="SectionBackground" id="About">
+                        <Images/>
+                    </div>
+                
             </React.Fragment>
         );
     }
