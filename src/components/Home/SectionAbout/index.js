@@ -5,6 +5,7 @@ import Images from '../SectionAbout/Images'
 //import Typer from '../SectionAbout/Typer'
 //import constants from '../../../constants/cardsText';
 import { Skeleton } from "@chakra-ui/core";
+import Hero from './Hero'
 
 class SectionAbout extends Component {
 
@@ -13,8 +14,9 @@ class SectionAbout extends Component {
             
             <React.Fragment>
                 
-                    <div className="SectionBackground" id="About">
-                        <Images/>
+                    <div className="SectionBackground" style={{height: "600px"}}id="About">
+                        {/*<Images/>*/}
+                        <Hero/>
                     </div>
                 
             </React.Fragment>

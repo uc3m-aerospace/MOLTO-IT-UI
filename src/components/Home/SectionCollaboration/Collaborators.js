@@ -24,8 +24,10 @@ const Collaboration = ({ homeApiClient }) => {
           } catch (error) {
             setCollaborators([{
                 "photo": "",
-                "name": "",
-                "description": ""
+                "collaborator_name": "",
+                "description": "",
+                "twitter": "",
+                "linkedin": ""
             }]);
             setIsLoading(false);
           }
@@ -42,8 +44,9 @@ const Collaboration = ({ homeApiClient }) => {
                         </div>                       
                         :    
                         Object.entries(collaborators).map(([key, value]) => {
+                            console.log(value)
                             return  <div className="CardCollaborators" key={key}>
-                                        <Card name={value.name} body={value.description} image={value.photo.url}/>
+                                        <Card name={value.collaborator_name} body={value.description} image={value.photo.url} twitter={value.twitter} linkedin={value.linkedin}/>
                                     </div>
                         })                
                     }   

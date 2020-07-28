@@ -31,7 +31,7 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
 
         try {
             const data_cms = {
-                name: data.problem_name,
+                mission_name: data.problem_name,
                 code: uuidMission.current,
                 configuration: data
             }
