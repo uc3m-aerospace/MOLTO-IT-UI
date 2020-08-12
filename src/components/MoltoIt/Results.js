@@ -6,6 +6,7 @@ import {
 import { useSelector, useDispatch} from "react-redux";
 import {FORM_DATA} from '../../constants'
 import { withMoltoItClient } from './../apiHOCs';
+import { useParams } from "react-router-dom";
 
 
 const Results = ({ moltoItApiClient, newProps}) => {  
@@ -13,106 +14,107 @@ const Results = ({ moltoItApiClient, newProps}) => {
     const [generationtwo, setGenerationTwo] = useState([])    
     const [lastGeneration, setLastGeneration] = useState('')
     const [loader, setLoader] = useState(true)
-    const moltoItData = useSelector(state => state.moltoItData);
+    const moltoItConfig = useSelector(state => state.moltoItConfig);
     const dispatch = useDispatch();
+    let { id } = useParams()
 
-const handleParetoPoint = (index) => {
-    dispatch({type: FORM_DATA, payload: {'plot': index }})
-}
+    const handleParetoPoint = (index) => {
+        dispatch({type: FORM_DATA, payload: {'plot': index }})
+    }
 
-const data_pretty = {
-    'Problem Type:': moltoItData.problem_type,
-    'Departure Body:': moltoItData.planet_dep,
-    'Arrival Body:': moltoItData.planet_arr,
-    'Available planets:': JSON.stringify(moltoItData.planet_fb), //'[4,3,2]',
-    'Min. Flyby Altitude:': moltoItData.rfb_min, //200,
-    'Min/Max # of possible flybys:': JSON.stringify(moltoItData.n_fb), //'[0,3]',
-    'Min/Max # of possible Revs:': JSON.stringify(moltoItData.rev), //[0,0],
-    'Min/Max transfer time/leg:': JSON.stringify(moltoItData.ToF), // '[100, 1000]',
-    'Motor:': moltoItData.motor, //Get data from other tab
-    'Type of Motor:': moltoItData.motorType, //Get data from other tab
-    'Specific Impulse:': moltoItData.Isp, //2600,
-    'Number of Thrusters:': moltoItData.nthrusters, // 1,
-    'Mass:': moltoItData.mass, //1000,
-    'Power:': moltoItData.power, //5000,
-    'Initial Date:': JSON.stringify(moltoItData.Initial_Date)//'["03-01-01","03-12-31"]'
-}
-    
-const arrayToJson = (json) => {
+    const data_pretty = {
+        'Problem Type:': moltoItConfig.problem_type,
+        'Departure Body:': moltoItConfig.planet_dep,
+        'Arrival Body:': moltoItConfig.planet_arr,
+        'Available planets:': JSON.stringify(moltoItConfig.planet_fb), //'[4,3,2]',
+        'Min. Flyby Altitude:': moltoItConfig.rfb_min, //200,
+        'Min/Max # of possible flybys:': JSON.stringify(moltoItConfig.n_fb), //'[0,3]',
+        'Min/Max # of possible Revs:': JSON.stringify(moltoItConfig.rev), //[0,0],
+        'Min/Max transfer time/leg:': JSON.stringify(moltoItConfig.ToF), // '[100, 1000]',
+        'Motor:': moltoItConfig.motor, //Get data from other tab
+        'Type of Motor:': moltoItConfig.motorType, //Get data from other tab
+        'Specific Impulse:': moltoItConfig.Isp, //2600,
+        'Number of Thrusters:': moltoItConfig.nthrusters, // 1,
+        'Mass:': moltoItConfig.mass, //1000,
+        'Power:': moltoItConfig.power, //5000,
+        'Initial Date:': JSON.stringify(moltoItConfig.Initial_Date)//'["03-01-01","03-12-31"]'
+    }
+        
+    const arrayToJson = (json) => {
 
-    let result = [];
-    let result_1 = [];
+        let result = [];
+        let result_1 = [];
 
-    delete json[Object.keys(json).length-1]
-    
-    Object.entries(json).map(([key, val]) => {
-        let jsonItem1 = {}
-        val.map((value, index) => {
-            jsonItem1[index === 0 ? 'x' : index === 1 ? 'y' : 'z' ] = value
-            return 'ok'
+        delete json[Object.keys(json).length-1]
+        
+        Object.entries(json).map(([key, val]) => {
+            let jsonItem1 = {}
+            val.map((value, index) => {
+                jsonItem1[index === 0 ? 'x' : index === 1 ? 'y' : 'z' ] = value
+                return 'ok'
+            })
+            result.push(jsonItem1)
+
+            result_1 =  result.filter(function (item) {
+                
+                return item['z'].includes("-1");
+            });
+            return ''
         })
-        result.push(jsonItem1)
+        setGenerationTwo(result_1)
+        setGeneration(result)
+    }
 
-        result_1 =  result.filter(function (item) {
+    useEffect(() => {
+        const socket = io('https://163.117.179.251',  {'sync disconnect on unload': true }, {transports: ['polling']})
+
+        socket.on('connect', () => {
             
-            return item['z'].includes("-1");
+            console.log("Socket Connected.")
+            
+            socket.emit('on_connect_data', {"problem_name": moltoItConfig.problem_name, "generations": moltoItConfig.maxGen})
+
+            socket.on('tmp', (data) => {
+                setLoader(true)
+                if (data.isAnyFile === false) {
+                    console.log("There is no information.")
+                } else if (data[10] === moltoItConfig.maxGen) {   
+                    console.log('Succesful Optimization')
+                }
+                else {
+                    setLoader(false)
+                    arrayToJson(data)
+                    setLastGeneration(data[Object.keys(data).sort().pop()])
+                }
+
+            })
         });
-        return ''
-    })
-    setGenerationTwo(result_1)
-    setGeneration(result)
-}
-
-useEffect(() => {
-    const socket = io('https://163.117.179.251',  {'sync disconnect on unload': true }, {transports: ['polling']})
-
-    socket.on('connect', () => {
-        
-        console.log("Socket Connected.")
-        
-        socket.emit('on_connect_data', {"problem_name": moltoItData.problem_name, "generations": moltoItData.maxGen})
-
-        socket.on('tmp', (data) => {
-            setLoader(true)
-            if (data.isAnyFile === false) {
-                console.log("There is no information.")
-            } else if (data[10] === moltoItData.maxGen) {   
-                console.log('Succesful Optimization')
-            }
-            else {
-                setLoader(false)
-                arrayToJson(data)
-                setLastGeneration(data[Object.keys(data).sort().pop()])
-            }
-
-        })
-    });
-    return () => socket.connect()
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [generation]); 
+        return () => socket.connect()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [generation]); 
 
 
-const fetch = async (data) => {
-        
-    delete data['ToF_type'];
-    delete data['motor'];
-    delete data['motorType'];
-    if (data['response']) {
-        return delete data['response']
+    const fetch = async (data) => {
+            
+        delete data['ToF_type'];
+        delete data['motor'];
+        delete data['motorType'];
+        if (data['response']) {
+            return delete data['response']
+        }
+
+        try {
+            const res = await moltoItApiClient.getOrbits(data);
+            return dispatch({type: FORM_DATA, payload: {'response': `data:${res.headers['content-type'].toLowerCase()};base64,` + res.data}})
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const handleClick = async () => {
+        fetch(moltoItConfig);
+        newProps.function(null, newProps.value !== 8 ? newProps.value + 1 : 0)
     }
-
-    try {
-        const res = await moltoItApiClient.getOrbits(data);
-        return dispatch({type: FORM_DATA, payload: {'response': `data:${res.headers['content-type'].toLowerCase()};base64,` + res.data}})
-    } catch (error) {
-        console.log(error)
-    }
-};
-
-const handleClick = async () => {
-    fetch(moltoItData);
-    newProps.function(null, newProps.value !== 8 ? newProps.value + 1 : 0)
-}
 
    return  <div className="constrain">
            { loader ?
@@ -175,8 +177,8 @@ const handleClick = async () => {
                                 {generation.map((value, index) => {  
                                     return <React.Fragment key={index}>
                                             <tr onClick={() => { handleParetoPoint(index+1)}} key={index}>
-                                                <td style={{backgroundColor: moltoItData.plot-1 === index ? '#70C483' : null, opacity: moltoItData.plot-1 === index ? 0.9 : null}}>{value['y']}</td>
-                                                <td style={{backgroundColor: moltoItData.plot-1 === index ? '#70C483' : null, opacity: moltoItData.plot-1 === index ? 0.9 : null}}>{value['x']}</td>
+                                                <td style={{backgroundColor: moltoItConfig.plot-1 === index ? '#70C483' : null, opacity: moltoItConfig.plot-1 === index ? 0.9 : null}}>{value['y']}</td>
+                                                <td style={{backgroundColor: moltoItConfig.plot-1 === index ? '#70C483' : null, opacity: moltoItConfig.plot-1 === index ? 0.9 : null}}>{value['x']}</td>
                                             </tr>
                                         </React.Fragment>
                                     })

@@ -4,7 +4,7 @@ import {FORM_DATA} from '../../constants'
 
 let badName;
 const Level = (props) => {  
-    const data = useSelector(state => state.moltoItData);
+    const data = useSelector(state => state.moltoItConfig);
     const [name, setName] = useState(data.problem_name)
     const [population, setPopulation] = useState(data.popsize)
     const [generations, setGenerations] = useState(data.maxGen)
@@ -45,14 +45,14 @@ const Level = (props) => {
             <p className="Title">SELECT YOUR CONFIGURATION</p>
             <div style={{marginBottom: "40px"}}>
                 <p>Name of the mission</p>
-                <input style={{borderBottom: badName ? "2px solid red" : "2px solid green"}} type="text" value={name} onChange={(event) => handleEvent(event) } placeholder="Name"/>
+                <input class="inputGA" style={{borderBottom: badName ? "2px solid red" : "2px solid green"}} type="text" value={name} onChange={(event) => handleEvent(event) } placeholder="Name"/>
             </div>
             <div style={{marginBottom: "40px"}}>
                 <p>Confirm Population  (Gen. Algorithm)</p>
-                <input type="number" max='1000' maxLength="3" value={population} onChange={(event) => handlePopulation(event) } placeholder="Population"/>
+                <input class="inputGA" type="number" max='1000' maxLength="3" value={population} onChange={(event) => handlePopulation(event) } placeholder="Population"/>
                 <div>&nbsp;&nbsp;&nbsp;</div>
                 <p>Confirm Generations (Gen. Algorithm)</p>
-                <input type="number" max="1000" maxLength="3" value={generations} onChange={(event) => handleGenerations(event) } placeholder="Generations"/>
+                <input class="inputGA" type="number" max="1000" maxLength="3" value={generations} onChange={(event) => handleGenerations(event) } placeholder="Generations"/>
             </div>
             <button onClick={() => props.function(null, props.value !== 7 ? props.value + 1 : 0)}>EASY</button>
             <p>OR</p>

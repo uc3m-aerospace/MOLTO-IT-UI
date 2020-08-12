@@ -35,9 +35,39 @@ export default history => {
       throw error;
     }
   };
-  
 
-  return { getPareto, getOrbits, saveMission };
+  const updateMission = async (data, missionid) => {
+
+    const url = `https://molto-admin.herokuapp.com/missions/${missionid}`;
+    try {
+      const response = await axios.put(url, data);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getMissionByCode = async (code) => {
+    const url = `https://molto-admin.herokuapp.com/missions?code=${code}`;
+    try {
+      const response = await axios.get(url);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+  const getMissionById = async (id) => {
+    const url = `https://molto-admin.herokuapp.com/missions/${id}`;
+    try {
+      const response = await axios.get(url);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  return { getPareto, getOrbits, saveMission, getMissionByCode, getMissionById, updateMission};
 };
 
 

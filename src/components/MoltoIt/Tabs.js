@@ -12,6 +12,7 @@ import Preview from './Preview'
 import FinalResults from './FinalResults'
 
 const TabTree = (props) => {
+    console.log(props.value)
     switch(props.value) {
         case 0:
             return <Level value={props.value} function={props.function}/>

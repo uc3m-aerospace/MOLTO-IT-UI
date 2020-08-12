@@ -37,7 +37,7 @@ const motors = [
 
 const MotorElectric = (props) => {  
     const dispatch = useDispatch();
-    const data = useSelector(state => state.moltoItData);
+    const data = useSelector(state => state.moltoItConfig);
     const [currentMotor, setCurrentMotor] = useState({
         name: data.motor,
         description: '',

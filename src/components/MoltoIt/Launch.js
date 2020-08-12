@@ -7,11 +7,11 @@ import {FORM_DATA} from '../../constants'
 
 const Launch = (props) => {  
     const dispatch = useDispatch();
-    const moltoItData = useSelector(state => state.moltoItData);
+    const moltoItConfig = useSelector(state => state.moltoItConfig);
 
     const [fixedState, setFixedState] = useState(false)
-    const [startDate, setStartDate] = useState(moltoItData.Initial_Date[0])
-    const [endDate, setEndDate] = useState(moltoItData.Initial_Date[1])
+    const [startDate, setStartDate] = useState(moltoItConfig.Initial_Date[0])
+    const [endDate, setEndDate] = useState(moltoItConfig.Initial_Date[1])
     
     const fixedValueDates = (date) => {
         setStartDate(date)
@@ -35,13 +35,13 @@ const Launch = (props) => {
                 <div className="Launch" style={{flexDirection: fixedState ? "column" : "row"}}>
                     { !fixedState ?
                         <React.Fragment>
-                            <input type="date" value={moltoItData.Initial_Date[0]} onChange={(event) => setStartDate(event.target.value)}/>
+                            <input type="date" value={moltoItConfig.Initial_Date[0]} onChange={(event) => setStartDate(event.target.value)}/>
                             <button onClick={() => setFixedState(true) } className="fixedDateButton">FIXED DATE</button>
-                            <input type="date" value={moltoItData.Initial_Date[1]} onChange={(event) => setEndDate(event.target.value)}/>
+                            <input type="date" value={moltoItConfig.Initial_Date[1]} onChange={(event) => setEndDate(event.target.value)}/>
                         </React.Fragment>
                         :
                         <React.Fragment>
-                            <input type="date" value={moltoItData.Initial_Date[0]} onChange={(event) => fixedValueDates(event.target.value)}/>
+                            <input type="date" value={moltoItConfig.Initial_Date[0]} onChange={(event) => fixedValueDates(event.target.value)}/>
                             <button onClick={() => setFixedState(false) } className={fixedState ? "fixedDateButtonActive" : "fixedDateButton" }>RANGE DATE</button>
                         </React.Fragment>
                     }
@@ -57,5 +57,5 @@ const Launch = (props) => {
   
 export default connect(state => ({
     admin: state.admin,
-    moltoItData: state,
+    moltoItConfig: state,
 }), {sendFormData})(Launch);

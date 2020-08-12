@@ -21,7 +21,7 @@ class Footer extends Component {
                     </footer>
                     <div style={{height: "60px", display: "flex",  alignItems: "center", flexDirection: "row", justifyContent: "center"}}>
                         <p style={{ display: "flex", color:"white",  alignSelf: "center", fontFamily:"HelveticaLT"}}>© Universidad Carlos III de Madrid</p>
-                        <span style={{ height: "100%" ,display: "flex", marginBottom: "10px", alignItems: "center", marginLeft: "10px", marginRight: "10px", color: "white"}}>|</span>
+                        <span style={{ height: "100%" ,display: "flex", alignItems: "center", marginLeft: "10px", marginRight: "10px", color: "white"}}>|</span>
                         <p style={{display: "flex", color:"white",  alignItems: "center", fontFamily:"HelveticaLT"}}>Aviso de Privacidad</p>
                     </div>
             </React.Fragment>

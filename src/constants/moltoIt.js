@@ -1,2 +1,3 @@
 export const FORM_DATA = 'MOLTOIT::FORM_DATA';
 export const RESET_DATA = 'MOLTOIT::RESET_DATA';
+export const RESULTS_DATA = 'MOLTOIT::RESULTS_DATA';

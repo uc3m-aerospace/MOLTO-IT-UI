@@ -8,6 +8,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MoltoItStart from '../components/MoltoIt/MissionCode'
 import MoltoIt from '../components/MoltoIt'
+import ParetoFront from '../components/MoltoIt/Results'
 import ScrollToTop from './ScrollToTop';
 import Background from '../components/Background';
 
@@ -28,6 +29,8 @@ const App = ()  => {
                             <RouteWithTitle exact path="/moltoit/new" title="MOLTO-IT" render={(props) => <MoltoIt/>}/>
                             <RouteWithTitle exact path="/moltoor" title="MOLTO-OR" render={(props) => <MoltoItStart/>}/>
                             <RouteWithTitle exact path="/molto3bp" title="MOLTO-3BP" render={(props) => <MoltoItStart/>}/>
+                            <RouteWithTitle exact path="/molto3bp" title="MOLTO-3BP" render={(props) => <MoltoItStart/>}/>
+                            <RouteWithTitle exact path="/moltoit/results/:id" title="Results" render={(props) => <ParetoFront/>}/>
                             <Redirect to="/"/>
                         </Switch>
                     </div>

@@ -5,7 +5,8 @@
 
 button {
     outline: none;
-    margin: 20px;
+    border: none;
+    background-color: transparent;
 }
 
 .typer {
@@ -59,6 +60,7 @@ button {
     left: 0; 
     right: 0;
     display: flex;
+    padding: 0 25px; 
     flex-direction: column;
     position: relative;
     flex-grow: 1;
@@ -73,7 +75,7 @@ button {
     left: 0; 
     right: 0;
     flex-direction: column;
-    z-index: 99999;
+    z-index: 5;
     position: absolute;    
 }
 
@@ -173,28 +175,32 @@ button {
         font-size: 10px;
         color: white;
         background-color: #70C483;
-        width: 25%;
+        width: 250px;
         height: 40px;
         border-radius: 4px;
         align-self: center;
         margin-left: auto;
         margin-right: auto;
         outline: none;
+        margin-bottom: 20px;
     }
 
     & input {
         height: 30px;
         width: 290px;
-        border-radius: 15px;
+        border-radius: 5px;
         outline: none;
         border: none;
         text-align: center;
-        margin: 20px;
+        margin: 20px 0;
+        align-self: center;
     }
 
 }
 
 .Header {
+    width: 90%;
+    height: 100px;
     justify-content: space-between;
     align-items: center;
     text-align: center;
@@ -202,10 +208,10 @@ button {
     color: white;
     display: flex;
     flex-direction: row;
-    padding-left: 5%;
-    padding-right: 5%;
     margin-top: 20px;
     margin-bottom: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
     //position: fixed; if header fixed
     //top: 0;
     //z-index: 9999;
@@ -217,6 +223,7 @@ button {
         align-items: center;
         align-content: center;
         padding-left: 5%;
+        position: relative;
 
         & ul {
             padding: 0;
@@ -247,7 +254,6 @@ button {
     
     & li {    
         list-style: none;
-        flex-grow: 1;
         text-align: center;
         font-family: AvertaRegular;
         align-self: flex-end;
@@ -337,7 +343,6 @@ button {
     display: flex;
     align-content: flex-end;
     align-self: flex-end; 
-    right: 5%;
 }
 
 .fixedIconsFooter { 
@@ -684,17 +689,17 @@ background-size: cover !important;
 }
   
 .fixedDateButton {
-    font-size:6px !important;
+    font-size:9px !important;
     color: white !important;
     width: 80px !important;
     height: 20px !important;
     border-radius: 15px !important;
-    margin: 0px 30px 0px 30px !important;
+    margin: 0px 15px 0px 15px !important;
     outline: none;
 }
 
 .fixedDateButtonActive {
-    font-size:6px !important;
+    font-size: 9px !important;
     color: white !important;
     width: 80px !important;
     height: 20px !important;
@@ -709,6 +714,7 @@ background-size: cover !important;
     text-align: center;
     margin-bottom: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 
     & p {
         font-family: 'HelveticaLT';
@@ -785,7 +791,7 @@ border-width: 1px 0;
 padding-top: 4px;
 padding-bottom: 4px;
 }
-.ParetoTable tbody tr:hover {background-color:  #70C483; opacity: 0.9; z-index: 9999}
+.ParetoTable tbody tr:hover {background-color:  #70C483; opacity: 0.9; z-index: 10}
 
 .ParetoTable tr {
 padding: 4px;
@@ -799,7 +805,7 @@ color: white;
 }
 
 .inputPlanets {
-width: 15px !important;
+width: 25px !important;
 margin-left: 30px !important;
 }
 
@@ -808,6 +814,7 @@ font-family: 'HelveticaLT';
 font-size: 12px;
 text-align: center;
 align-self: center;
+width: 100% !important;
 }
 
 .MotorSelected {
@@ -888,7 +895,47 @@ width: 1px;
 box-shadow: 0 0 #565656, 321px 678px #565656, 2248px 1956px #565656, 1378px 1391px #565656, 284px 167px #565656, 1881px 318px #565656, 774px 1132px #565656, 1343px 1558px #565656, 1363px 71px #565656, 1529px 1606px #565656, 2428px 487px #565656, 1142px 295px #565656, 2321px 1717px #565656, 843px 1411px #565656, 1761px 1651px #565656, 1257px 1px #565656, 609px 343px #565656, 1853px 2190px #565656, 2195px 390px #565656, 232px 1204px #565656, 728px 2083px #565656, 154px 2105px #565656, 1907px 229px #565656, 2276px 11px #565656, 2546px 1741px #565656, 1250px 841px #565656, 1879px 1319px #565656, 1307px 2000px #565656, 842px 604px #565656, 108px 490px #565656, 2235px 1480px #565656, 2179px 24px #565656, 193px 2406px #565656, 1192px 2199px #565656, 2339px 346px #565656, 453px 1435px #565656, 2480px 2198px #565656, 1784px 1113px #565656, 242px 154px #565656, 2384px 94px #565656, 1082px 1064px #565656, 1076px 2143px #565656, 541px 277px #565656, 703px 2441px #565656, 2073px 1354px #565656, 659px 2470px #565656, 909px 2435px #565656, 1560px 1451px #565656, 1828px 2240px #565656, 687px 503px #565656, 820px 374px #565656, 1495px 17px #565656, 2520px 971px #565656, 2508px 559px #565656, 2524px 234px #565656, 943px 435px #565656, 1892px 1252px #565656, 431px 1057px #565656, 1949px 2197px #565656, 308px 1779px #565656, 1952px 149px #565656, 2069px 2446px #565656, 611px 1500px #565656, 2121px 1463px #565656, 2319px 1825px #565656, 1245px 1484px #565656, 1485px 2456px #565656, 1539px 646px #565656, 1784px 424px #565656, 2018px 174px #565656, 489px 1627px #565656, 2514px 266px #565656, 1077px 193px #565656, 1509px 2520px #565656, 146px 1812px #565656, 1410px 2348px #565656, 1403px 1351px #565656, 345px 1813px #565656, 1074px 273px #565656, 1798px 826px #565656, 1710px 1558px #565656, 1859px 2444px #565656, 1276px 843px #565656, 1932px 904px #565656, 1597px 2346px #565656, 1651px 2141px #565656, 2355px 1615px #565656, 1501px 2345px #565656, 1417px 1520px #565656, 956px 1256px #565656, 2225px 834px #565656, 748px 705px #565656, 842px 491px #565656, 218px 1527px #565656, 1742px 1572px #565656, 2518px 179px #565656, 707px 1490px #565656, 1491px 1162px #565656, 1921px 142px #565656, 1906px 1279px #565656, 778px 575px #565656
 }
 
-@media only screen and (max-width: 910px) {
+@media only screen and (max-width: 768px) {
+
+    .inputGA {
+        width: 90% !important;
+    }
+    .SectionTabs {
+        margin-bottom: 30px !important;
+
+        & button {
+            width: 90%;
+        }
+    }
+
+    .fixedDateButton {
+        width: 100px !important;
+    }
+
+    .SectionTabs .Title {
+        font-size: 24px !important;
+    }
+}
+@media only screen and (max-width: 1024px) {
+
+    .buttonTabs {
+        display: flex;
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: white;
+        background-color: #70C483;
+        width: 200px;
+        height: 40px;
+        border-radius: 4px;
+        align-self: center;
+        justify-content: center;
+        align-items: center;
+        position: relative !important;
+        margin: 0 !important;
+        margin-bottom: 50px !important;
+    }
+
     .footer {
     text-align: center;
     align-content: center;
@@ -1140,12 +1187,14 @@ box-shadow: 0 0 #565656, 321px 678px #565656, 2248px 1956px #565656, 1378px 1391
         }        
     }
     .Header {
+        width: 100%;
         justify-content: space-between;
         align-items: center;
         text-align: center;
         align-content: center;
         min-width:100%;
         color: white;
+        position: relative;
 
     
         & ul {
@@ -1154,8 +1203,8 @@ box-shadow: 0 0 #565656, 321px 678px #565656, 2248px 1956px #565656, 1378px 1391
             text-align: center;
             align-items: center;
             align-content: center;
-            padding-right: 15%;
-            padding-left: 15%;
+            justify-content: space-between;
+            width: 90%;
     
             & ul {
                 padding: 0;

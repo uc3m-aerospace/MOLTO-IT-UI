@@ -16,7 +16,7 @@ class Center_1 extends Component {
                       
                       <ul className="fixedIconsFooter" style={{ padding: 0 }}>
                                   <li><a href="https://github.com/uc3m-aerospace/MOLTO-IT" ><FontAwesomeIcon icon={faEnvelope} size="2x"/></a></li>
-                                  <p style={{margin: "0px", paddingTop:"5px"}}>contact@molto.com</p>
+                                  <p style={{margin: "0px", paddingTop:"5px"}}><a style={{color: 'white'}} href="mailto:molto.space@gmail.com">molto.space@gmail.com</a></p>
                       </ul> 
                       
                 </div>

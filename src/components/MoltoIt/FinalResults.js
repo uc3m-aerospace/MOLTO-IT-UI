@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 
 const FinalResults = (props) => {  
-    const data = useSelector(state => state.moltoItData);
+    const data = useSelector(state => state.moltoItConfig);
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {

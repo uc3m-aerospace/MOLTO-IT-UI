@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch} from "react-redux";
 import {FORM_DATA} from '../../constants'
 import Coverflow from 'react-coverflow';
-import Mars from '../../assets/images/mars.png'
-import Earth from '../../assets/images/earth.png'
-import Mercury from '../../assets/images/mercurio.png'
-import Venus from '../../assets/images/venus.png'
-import Uranus from '../../assets/images/uranus.png'
-import Neptune from '../../assets/images/neptuno.png'
-import Jupyter from '../../assets/images/jupiter.png'
-import Saturn from '../../assets/images/saturn.png'
+import Mars from '../../assets/images/Planets/1024/mars.png'
+import Earth from '../../assets/images/Planets/1024/earth.png'
+import Mercury from '../../assets/images/Planets/1024/mercury.png'
+import Venus from '../../assets/images/Planets/1024/venus.png'
+import Uranus from '../../assets/images/Planets/1024/uranus.png'
+import Neptune from '../../assets/images/Planets/1024/neptune.png'
+import Jupyter from '../../assets/images/Planets/1024/jupyter.png'
+import Saturn from '../../assets/images/Planets/1024/saturn.png'
 
 const planets = [
     {index: 0, name: 'Mercury', image: Mercury},
@@ -24,7 +24,7 @@ const planets = [
 
 const CelestialBodies = (props) => {  
     const dispatch = useDispatch();
-    const data = useSelector(state => state.moltoItData);
+    const data = useSelector(state => state.moltoItConfig);
     const toOrFrom = props.component === 'From' ? 'planet_dep' : 'planet_arr'
     const [numberDep, setNumberDep] = useState()
     const [numberArr, setNumberArr] = useState()
@@ -58,10 +58,20 @@ const CelestialBodies = (props) => {
                     enableHeading={true}
                     enableScroll={false}
                     navigation={false}
-                    currentFigureScale={1.3}
+                    currentFigureScale={1.1}
                     otherFigureScale={0.5}
                     clickable={true}
                     active={toOrFrom === 'planet_dep' ? numberDep : numberArr}
+                    media={{
+                        '@media (max-width: 900px)': {
+                          width: '100%',
+                          height: '200px'
+                        },
+                        '@media (min-width: 900px)': {
+                          width: '100%',
+                          height: '390px'
+                        }
+                      }}
                 >
                 
                 {planets.map((planet, index) => 

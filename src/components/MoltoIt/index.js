@@ -11,6 +11,7 @@ import FinalResults from './FinalResults'
 
 
 const StyledTabs = withStyles({
+    
     indicator: {
       display: 'flex',
       justifyContent: 'center',
@@ -98,7 +99,6 @@ const useStyles = makeStyles(theme => ({
                                 <StyledTab label="Mission Type" />
                                 <StyledTab label="Motor" />
                                 <StyledTab label="Flight Time" />
-                                <StyledTab label="Pareto Front" />
                             </StyledTabs>
                         </div>
                     </div>

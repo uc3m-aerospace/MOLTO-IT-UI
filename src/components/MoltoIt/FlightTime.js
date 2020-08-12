@@ -4,21 +4,23 @@ import {FORM_DATA} from '../../constants'
 import Switch from "react-switch";
 import { withMoltoItClient } from './../apiHOCs';
 import { v4 as uuidv4 } from 'uuid';
+import ModalCode from './ModalCode';
+import { useToast } from "@chakra-ui/core";
 
-
+var missionid = 0;
 const FlightTime = ({ moltoItApiClient, newProps}) => {  
-     
+    const toast = useToast()
     const dispatch = useDispatch();
-    const data = useSelector(state => state.moltoItData);
-    const [missionId, setMissionId] = useState()
+    const data = useSelector(state => state.moltoItConfig);
+    const [status, setStatus] = useState(false)
     const [min, setMin] = useState(data.ToF[0])
     const [max, setMax] = useState(data.ToF[1])
     const [loader, setLoader] = useState(false)
     const [checked, setChecked] = useState(false)
     const [type, setType] = useState(data.ToF_type)
-    const uuidMission = useRef(uuidv4());
-    
-    console.log(uuidMission)
+    var lastResponse = false;
+    var uuidMission = useRef()
+
     const fetch = async (data) => {
         
         delete data['ToF_type'];
@@ -32,21 +34,55 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
         try {
             const data_cms = {
                 mission_name: data.problem_name,
-                code: uuidMission.current,
                 configuration: data
             }
+
             const cms = await moltoItApiClient.saveMission(data_cms);            
-            console.log(cms.data.id)
-            setMissionId(cms.data.id)
+            missionid = cms.data.id
+
         } catch (error) {
             console.log(error)
         }
 
         try {
-            //SEND GENERATED CODE!!
+            data['mission_id'] = missionid;
             const res = await moltoItApiClient.getPareto(data);            
+            
+            if (res.status === 200) {
+                uuidMission.current = res.data
+                try {
+                    const data_cms = {
+                        code: uuidMission.current
+                    }
+                    
+                    const cms = await moltoItApiClient.updateMission(data_cms, missionid);            
+                    if (cms.status === 200) {
+                        setStatus(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+                
+            } else {
+                toast({
+                    position: "top",
+                    title: "Sorry.",
+                    description: "we have a problem with your configuration, please try again.",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                })
+            }
         } catch (error) {
             console.log(error)
+            toast({
+                position: "top",
+                title: "Sorry.",
+                description: error,
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+            })
         }
 
         
@@ -87,9 +123,9 @@ const FlightTime = ({ moltoItApiClient, newProps}) => {
         setLoader(true)
         await sleep(1000);
         setLoader(false)
-        newProps.function(null, newProps.value !== 7 ? newProps.value + 1 : 0)
+        //newProps.function(null, newProps.value !== 7 ? newProps.value + 1 : 0)
     }
-
+ 
 return  <React.Fragment>
                 { loader ?
                 <div>
@@ -151,6 +187,12 @@ return  <React.Fragment>
                     </div>
 
                     <button className="newButton" onClick={() => handleClick()}>SEND</button>
+                    {status ?
+                        <ModalCode isOpen={true} code={uuidMission.current}/>
+                            : 
+                        null
+                    }
+                    
                     </React.Fragment>
   }
 

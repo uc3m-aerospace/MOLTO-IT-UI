@@ -45,7 +45,7 @@ const StyledTab = withStyles(theme => ({
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
-      width: "25%",
+      width: "40%",
       marginLeft: "auto",
       marginRight: "auto",
       marginTop: '10px'
@@ -99,7 +99,7 @@ const Motor = (props) => {
                     <p style={{marginBottom: '5px'}} className="Title">SELECT YOUR MOTOR</p>
                     <div className={classes.root}>
                         <div className={classes.demo2}>
-                            <StyledTabs variant="standard" value={value} onChange={handleChange}>
+                            <StyledTabs variant="fullWidth" value={value} onChange={handleChange}>
                                 <StyledTab style={{backgroundColor: "transparent"}} label="Nuclear" />
                                 <StyledTab style={{backgroundColor: "transparent"}} label="Electric" />
                                 <StyledTab style={{backgroundColor: "transparent"}} label="Chemical" />

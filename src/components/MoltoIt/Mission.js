@@ -17,7 +17,7 @@ const planets = [
 
 const Mission = (props) => {  
     const dispatch = useDispatch();
-    const data = useSelector(state => state.moltoItData);
+    const data = useSelector(state => state.moltoItConfig);
     const [missionType, setMissionType] = useState(data.problem_type)
     const [minFb, setMinFb] = useState(data.n_fb[0])
     const [maxFb, setMaxFb] = useState(data.n_fb[0])
@@ -67,7 +67,7 @@ const Mission = (props) => {
                     <React.Fragment>
                       <p className="Title">PLEASE INPUT NUMBER OF FLYBYS</p>
                       <div className="Launch">
-                            <div  style={{marginLeft: "80px"}}>
+                            <div>
                                 <p>Minimum</p>
                                 <input value={data.n_fb[0]} onChange={(event) => setMinFb(event.target.value)}  type="number" placeholder="Enter the min number of flybys"/>
                             </div>
@@ -94,16 +94,16 @@ const Mission = (props) => {
                     :
                     <React.Fragment>
                         <p className="Title">SELECT YOUR MISSION TYPE</p>
-                        <div style={{display: 'flex', flexDirection: 'row'}}>
+                        <div style={{display: 'flex', flexDirection: 'row', justifyContent:'center', alignItems: 'center', flexWrap: 'wrap'}}>
 
-                            <div style={{display: 'flex', flexDirection: 'column', width: "100%",  border: data.problem_type === 'flyby' ?  "1px solid #70C483" : null, backgroundColor: "transparent", opacity: data.problem_type === 'flyby' ? 0.9 : null}}>
+                            <div style={{display: 'flex', flexDirection: 'column', width: "400px", height: "400px", border: data.problem_type === 'flyby' ?  "1px solid #70C483" : null, backgroundColor: "transparent", opacity: data.problem_type === 'flyby' ? 0.9 : null, justifyContent:'center', alignItems:'center'}}>
                                 <p>Flyby</p>                    
-                                <button style={{outline: "none", width: "50%", backgroundColor: "transparent"}}><img style={{backgroundColor:"transparent"}} src={Flyby} alt="flyby" width="80%" onClick={() => {handleClick('FLYBY')}}/></button>
+                                <button style={{outline: "none", height: "90%", backgroundColor: "transparent"}}><img style={{backgroundColor:"transparent"}} src={Flyby} alt="flyby" width="90%" onClick={() => {handleClick('FLYBY')}}/></button>
                             </div>
                             
-                            <div style={{display: 'flex', flexDirection: 'column',  width: "100%", border:  data.problem_type === 'rendezvous' ?  "1px solid #70C483" : null, backgroundColor: "transparent", opacity: data.problem_type === 'rendezvous' ? 0.9 : null}}>                    
+                            <div style={{display: 'flex', flexDirection: 'column', height: "400px",  width: "400px", border:  data.problem_type === 'rendezvous' ?  "1px solid #70C483" : null, backgroundColor: "transparent", opacity: data.problem_type === 'rendezvous' ? 0.9 : null, justifyContent:'center', alignItems:'center'}}>                    
                                 <p>Rendezvous</p>
-                                <button style={{outline: "none", height: "90%", backgroundColor: "transparent"}}><img style={{backgroundColor: "transparent", transform: "translateX(-16px)"}} src={Rendezvous}  alt="rendezvous" width="125%" onClick={() => {handleClick('RENDEZVOUS')}}/></button>
+                                <button style={{outline: "none", height: "90%", backgroundColor: "transparent"}}><img style={{backgroundColor: "transparent"}} src={Rendezvous}  alt="rendezvous" width="150px" onClick={() => {handleClick('RENDEZVOUS')}}/></button>
                             </div>                    
                             
                         </div>
