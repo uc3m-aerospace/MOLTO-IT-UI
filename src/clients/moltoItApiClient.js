@@ -1,10 +1,9 @@
 import axiosWithAuth from './axiosWithAuth';
 import axios from 'axios';
-export default history => {
+export default (history) => {
   //const axios = axiosWithAuth(history);
 
   const getPareto = async (data) => {
-
     const url = 'https://molto-api-v1.studio/optimization/mission/json';
     try {
       const response = await axios.post(url, data);
@@ -15,8 +14,7 @@ export default history => {
   };
 
   const getOrbits = async (data) => {
-
-    const url = '/optimization/mission/json';
+    const url = 'https://molto-api-v1.studio/optimization/mission/json';
     try {
       const response = await axios.post(url, data);
       return response;
@@ -26,7 +24,6 @@ export default history => {
   };
 
   const saveMission = async (data) => {
-
     const url = 'https://molto-admin.herokuapp.com/missions';
     try {
       const response = await axios.post(url, data);
@@ -37,7 +34,6 @@ export default history => {
   };
 
   const updateMission = async (data, missionid) => {
-
     const url = `https://molto-admin.herokuapp.com/missions/${missionid}`;
     try {
       const response = await axios.put(url, data);
@@ -56,7 +52,7 @@ export default history => {
       throw error;
     }
   };
-  
+
   const getMissionById = async (id) => {
     const url = `https://molto-admin.herokuapp.com/missions/${id}`;
     try {
@@ -67,7 +63,12 @@ export default history => {
     }
   };
 
-  return { getPareto, getOrbits, saveMission, getMissionByCode, getMissionById, updateMission};
+  return {
+    getPareto,
+    getOrbits,
+    saveMission,
+    getMissionByCode,
+    getMissionById,
+    updateMission
+  };
 };
-
-
