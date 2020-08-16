@@ -4,6 +4,22 @@
     format('opentype');
 }
 
+.loader {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  opacity: 0.9;
+  display: flex;
+  transform: scale(1.5);
+  z-index: 999;
+}
 button {
   outline: none;
   border: none;
@@ -837,7 +853,7 @@ h1 {
   text-align: left !important;
 }
 .ParetoContentR {
-  color: rgb(105, 110, 108);
+  color: white;
   font-family: 'HelveticaNeueLTS';
   font-size: 14px !important;
   width: 130px;
@@ -935,6 +951,7 @@ h1 {
   padding: 0 5%;
   height: 390px;
   overflow: hidden;
+  margin: 50px;
 }
 
 .buttonTabsResults {

@@ -26,6 +26,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-animated-slider": "^1.1.4",
+    "react-base64-downloader": "^2.1.6",
     "react-coverflow": "^0.2.20",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.12.0",

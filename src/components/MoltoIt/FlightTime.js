@@ -124,27 +124,8 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
   return (
     <React.Fragment>
       {loader ? (
-        <div>
-          <div
-            style={{
-              backgroundColor: 'black',
-              opacity: 0.9,
-              position: 'absolute',
-              zIndex: 995,
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0
-            }}
-          ></div>
+        <div className="loader">
           <img
-            style={{
-              position: 'absolute',
-              width: '10%',
-              left: '45%',
-              top: '22%',
-              zIndex: 999
-            }}
             src={
               'https://d2vrnm4zvhq6yi.cloudfront.net/assets/loader_puntos-df9857dfaf7eeb01c9cb2c2d1d208a8365ea4cdab85e1adeadaceff0c8f27964.gif'
             }

@@ -12,14 +12,16 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { FORM_DATA } from '../../constants';
 import { withMoltoItClient } from './../apiHOCs';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect, useLocation, useHistory } from 'react-router-dom';
 import { Spinner } from '@chakra-ui/core';
 import DropdownGenerations from './DropdownGenerations';
 
 const Results = ({ moltoItApiClient, newProps }) => {
+  let location = useLocation();
+  const history = useHistory();
   const [pareto, setPareto] = useState({});
   const [paretoWithFlyby, setParetoWithFlyby] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [mission, setMission] = useState({});
   const [currentPareto, setCurrentPareto] = useState('gen_1');
   const moltoItConfig = useSelector((state) => state.moltoItConfig);
@@ -78,7 +80,7 @@ const Results = ({ moltoItApiClient, newProps }) => {
         setPareto(paretoResults);
         setParetoWithFlyby(paretoResultsFlyby);
       });
-      console.log(res.data[0]);
+
       setMission(res.data[0]);
 
       dispatch({
@@ -103,9 +105,10 @@ const Results = ({ moltoItApiClient, newProps }) => {
     }
 
     try {
+      data['mission_id'] = mission.id;
       const res = await moltoItApiClient.getOrbits(data);
       console.log(res);
-      return dispatch({
+      dispatch({
         type: FORM_DATA,
         payload: {
           response:
@@ -113,16 +116,24 @@ const Results = ({ moltoItApiClient, newProps }) => {
             res.data
         }
       });
+      return res;
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleClick = async () => {
-    fetch(moltoItConfig);
-    //newProps.function(null, newProps.value !== 8 ? newProps.value + 1 : 0);
+    setIsLoading(true);
+    const res = await fetch(moltoItConfig);
+    console.log(res);
+
+    if (res.status === 200) {
+      setIsLoading(false);
+      console.log('que paso auqi');
+      return history.push('/moltoit/finalresults');
+    }
   };
-  console.log(mission);
+
   const data_pretty = {
     'Name:': missionStatus.current ? mission.mission_name : '',
     'Problem Type:': missionStatus.current
@@ -166,6 +177,17 @@ const Results = ({ moltoItApiClient, newProps }) => {
 
   return (
     <div className="pareto__container">
+      {isLoading ? (
+        <div className="loader">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </div>
+      ) : null}
       <div className="pareto__dropdown">
         <DropdownGenerations
           handlerSelectedGen={handlerSelectedGen}

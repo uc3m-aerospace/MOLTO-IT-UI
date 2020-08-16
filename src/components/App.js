@@ -66,7 +66,7 @@ const App = () => {
           <RouteWithTitle
             exact
             path="/moltoit/finalresults"
-            title="Results"
+            title="Final Results"
             render={(props) => <FinalResults />}
           />
           <Redirect to="/" />
