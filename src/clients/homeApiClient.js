@@ -1,6 +1,6 @@
 import axiosWithAuth from './axiosWithAuth';
 
-export default history => {
+export default (history) => {
   const axios = axiosWithAuth(history);
 
   const getSliders = async () => {
@@ -13,9 +13,7 @@ export default history => {
     }
   };
 
-
   const getCollaborators = async () => {
-
     const url = '/collaborators';
     try {
       const response = await axios.get(url);
@@ -27,5 +25,3 @@ export default history => {
 
   return { getSliders, getCollaborators };
 };
-
-

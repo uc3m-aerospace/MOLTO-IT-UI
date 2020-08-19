@@ -1,20 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Spinner } from '@chakra-ui/core';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const FinalResults = (props) => {
   const data = useSelector((state) => state.moltoItConfig);
   const [loader, setLoader] = useState(false);
   const [url, setUrl] = useState('');
+  let location = useLocation();
+  let history = useHistory();
 
   useEffect(() => {
     setLoader(data.response);
-    let dataRaw = data.response;
-    let base64 = dataRaw.split(',')[1];
-
-    setUrl(base64);
+    if (location.state) {
+      if (location.state.fromResults) {
+        let dataRaw = data.response;
+        let base64 = dataRaw.split(',')[1];
+        setUrl(base64);
+        let state = { ...location.state };
+        delete state.fromResults;
+        history.replace({ ...location, state });
+      } else {
+        history.push('/');
+      }
+    } else {
+      history.push('/');
+    }
   }, [data.response]);
-  console.log(`data:image/png;base64," + ${url}`);
+
   return (
     <React.Fragment>
       {loader ? null : (
@@ -30,12 +43,8 @@ const FinalResults = (props) => {
       )}
       <p className="TitleFinalResults">RESULTS</p>
 
-      <div className="ResultsContainer">
-        <div style={{ flex: 1, backgroundColor: 'transparent' }} />
-
-        <div
-          style={{ margin: '20px', flex: 3, backgroundColor: 'transparent' }}
-        >
+      <div className="finalresults__container">
+        <div className="finalresults__image">
           <img
             src={data.response}
             width="100%"
@@ -44,9 +53,9 @@ const FinalResults = (props) => {
           />
         </div>
 
-        <div style={{ flex: 1, backgroundColor: 'transparent' }}>
+        <div className="finalresults__options">
           <p
-            className="TitleFinalResults"
+            className="finalresults__title"
             style={{
               fontSize: '14px',
               marginLeft: '60px',
@@ -56,7 +65,7 @@ const FinalResults = (props) => {
             Options
           </p>
 
-          <button className="buttonTabsResults">
+          <button className="finalresults__button">
             <a href={`data:image/png;base64,${url}`} download="orbit.png">
               Download Image
             </a>

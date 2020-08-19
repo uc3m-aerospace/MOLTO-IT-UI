@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { withMoltoItClient } from './../apiHOCs';
 import { useToast } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
-import Results from './Results';
 import ModalResults from './ModalResults';
 
 const MissionCode = ({ moltoItApiClient, props }) => {
@@ -82,7 +81,7 @@ const MissionCode = ({ moltoItApiClient, props }) => {
 
   return (
     <React.Fragment>
-      <div className="SectionTabs">
+      <div className="moltoit__missioncode">
         <p className="Title">Do you have a mission code?</p>
         <p style={{ color: 'white' }}>
           If you have a mission code, please introduce it within the next input,

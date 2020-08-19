@@ -10,12 +10,11 @@ async function getToken() {
   }
 }
 
-const client = history => {
-  
+const client = (history) => {
   const defaultOptions = {
     baseURL: 'https://molto-admin.herokuapp.com/', //https://molto-api-v1.studio/
     method: 'get',
-    httpsAgent: new https.Agent({  
+    httpsAgent: new https.Agent({
       rejectUnauthorized: false
     }),
     headers: {
@@ -27,14 +26,13 @@ const client = history => {
   const instance = axios.create(defaultOptions);
 
   // Set the AUTH token for any request
-  instance.interceptors.request.use(async config => {
+  instance.interceptors.request.use(async (config) => {
     const token = await getToken();
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   });
-  
-  return instance;
 
+  return instance;
 };
 
 export default client;

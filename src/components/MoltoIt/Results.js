@@ -107,7 +107,7 @@ const Results = ({ moltoItApiClient, newProps }) => {
     try {
       data['mission_id'] = mission.id;
       const res = await moltoItApiClient.getOrbits(data);
-      console.log(res);
+
       dispatch({
         type: FORM_DATA,
         payload: {
@@ -125,12 +125,13 @@ const Results = ({ moltoItApiClient, newProps }) => {
   const handleClick = async () => {
     setIsLoading(true);
     const res = await fetch(moltoItConfig);
-    console.log(res);
 
     if (res.status === 200) {
       setIsLoading(false);
-      console.log('que paso auqi');
-      return history.push('/moltoit/finalresults');
+      return history.push({
+        pathname: '/moltoit/finalresults',
+        state: { fromResults: true }
+      });
     }
   };
 

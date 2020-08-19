@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import TabDecision from './Tabs';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import FinalResults from './FinalResults';
+import Joyride from 'react-joyride';
 
 const StyledTabs = withStyles({
   indicator: {
@@ -60,6 +61,21 @@ const useStyles = makeStyles((theme) => ({
 const MoltoIt = (props) => {
   const [value, setValue] = useState(0);
   const classes = useStyles();
+  const [steps, setSteps] = useState([
+    {
+      title: 'Code',
+      target: '.moltoit__missioncode',
+      content: 'This is my awesome feature!'
+    },
+    {
+      target: '.buttonTabs',
+      content: 'Here you cant start your next mission!'
+    },
+    {
+      target: `.${classes.root}`,
+      content: 'Here you cant start your next mission!'
+    }
+  ]);
 
   const handleChange = (event, newValue) => {
     if (newValue === 9) {
@@ -80,6 +96,25 @@ const MoltoIt = (props) => {
 
   return (
     <React.Fragment>
+      <Joyride
+        run={true}
+        steps={steps}
+        continuous={true}
+        debug={true}
+        showSkipButton={true}
+        showProgress={true}
+        styles={{
+          options: {
+            arrowColor: 'white',
+            backgroundColor: 'white',
+            overlayColor: 'rgba(255,255,255,.5)',
+            primaryColor: 'rgb(49, 130, 205)',
+            textColor: 'black',
+            width: 400,
+            zIndex: 1000
+          }
+        }}
+      />
       {value !== 8 ? (
         <div className={classes.root}>
           <div className={classes.demo2}>
@@ -104,25 +139,25 @@ const MoltoIt = (props) => {
       {<TabContainer value={value} function={handleChange} />}
 
       {value === 0 || value === 6 || value === 7 ? null : (
-        <button
-          className="buttonTabs"
-          onClick={() =>
-            handleChange(null, value !== 7 ? value + 1 : value + 1)
-          }
-        >
-          {value === 8 ? 'NEW MISSION' : 'SUBMIT'}
-        </button>
-      )}
+        <>
+          <button
+            className="buttonTabs"
+            onClick={() =>
+              handleChange(null, value !== 7 ? value + 1 : value + 1)
+            }
+          >
+            {value === 8 ? 'NEW MISSION' : 'SUBMIT'}
+          </button>
 
-      {value === 8 ? (
-        <button
-          className="buttonTabs"
-          style={{ left: 0, backgroundColor: 'gray', marginLeft: '60px' }}
-          onClick={() => handleChange(null, value - 1)}
-        >
-          <span>BACK</span>
-        </button>
-      ) : null}
+          <button
+            className="buttonTabs"
+            style={{ left: 0, backgroundColor: 'gray', marginLeft: '60px' }}
+            onClick={() => handleChange(null, value - 1)}
+          >
+            <span>Back</span>
+          </button>
+        </>
+      )}
     </React.Fragment>
   );
 };

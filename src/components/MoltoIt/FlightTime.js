@@ -53,7 +53,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
             code: uuidMission.current,
             status: 'running'
           };
-          console.log(data_cms);
+
           const cms = await moltoItApiClient.updateMission(data_cms, missionid);
           if (cms.status === 200) {
             setStatus(true);
@@ -197,7 +197,9 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
       <button className="newButton" onClick={() => handleClick()}>
         SEND
       </button>
-      {status ? <ModalCode isOpen={true} code={uuidMission.current} /> : null}
+      {status ? (
+        <ModalCode {...newProps} open={true} code={uuidMission.current} />
+      ) : null}
     </React.Fragment>
   );
 };

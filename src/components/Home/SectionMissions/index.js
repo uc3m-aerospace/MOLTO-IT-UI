@@ -1,20 +1,23 @@
-import React, { Component} from 'react';
-import '../../../styles/main.scss'
-import Missions from './Missions'
+import React from 'react';
+import '../../../styles/main.scss';
+import Missions from './Missions';
 
-class SectionMissions extends Component {
+const SectionMissions = () => {
+  return (
+    <section className="mission__container" id="Missions">
+      <div
+        style={{
+          width: '90%',
+          height: '2px',
+          backgroundColor: 'white',
+          alignSelf: 'center'
+        }}
+      />
 
-    render() {
-        return (
-            <React.Fragment>
-                <div style={{width: "90%", height: "2px", backgroundColor: "white", alignSelf: "center"}}/>
-                <div className="SectionBackground" id="Missions">
-                      <p className="paragraph">Space Missions</p>
-                      <Missions/>
-                </div>
-            </React.Fragment>
-        );
-    }
-}
+      <p className="paragraph">Space Missions</p>
+      <Missions />
+    </section>
+  );
+};
 
 export default SectionMissions;
