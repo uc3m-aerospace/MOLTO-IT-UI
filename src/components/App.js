@@ -1,4 +1,4 @@
-import React, { useState, lazy } from 'react';
+import React, { lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import Home from '../components/Home';

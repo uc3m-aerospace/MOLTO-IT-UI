@@ -19,7 +19,7 @@ const Level = (props) => {
     }
   };
 
-  const [steps, setSteps] = useState([
+  const steps = [
     {
       title: 'Code',
       target: '.input__name',
@@ -37,7 +37,7 @@ const Level = (props) => {
       target: '.level__button',
       content: 'Here you cant start your next mission!'
     }
-  ]);
+  ];
 
   const handleEvent = (event) => {
     let cleanValue = event.target.value.toLowerCase();

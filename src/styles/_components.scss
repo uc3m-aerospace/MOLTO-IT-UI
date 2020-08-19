@@ -704,12 +704,14 @@ h1 {
 .CardCollaborators {
   height: 600px;
   align-self: center;
-  width: 10px;
+  width: 100%;
   margin: 30px;
   flex-grow: 1;
   position: relative;
   background-color: rgba(111, 111, 111, 0.1);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 
   & h3 {
     font-family: 'HelveticaLT';

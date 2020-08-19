@@ -6,9 +6,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  InputRightAddon,
   InputLeftElement,
-  Stack,
   Icon,
   InputRightElement,
   InputGroup,
@@ -47,27 +45,44 @@ const ModalCode = ({ newProps, moltoItApiClient }) => {
   const [sent, setSent] = useState(false);
   const toast = useToast();
 
-  console.log(newProps);
   useEffect(() => {
     if (newProps.open) {
       onOpen();
     }
   }, []);
 
-  const handleSendEmail = (code) => {
+  const handleSendEmail = async (code) => {
     var pattern = new RegExp(
       /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
     );
     if (!pattern.test(email)) {
-      console.log('ES MALO ');
+      toast({
+        position: 'top',
+        title: 'Email',
+        description:
+          'We have detected you are not using a correct email. Please try again.',
+        status: 'error',
+        duration: 4000,
+        isClosable: true
+      });
+
       return;
     }
-    console.log('PASO X QUE EL CORREO ES BUENO!!!!!');
-    return;
+
     if (!sent) {
-      const res = fetch(code, email);
+      const res = await fetch(code, email);
+
       if (res.status === 200) {
         setSent(true);
+        toast({
+          position: 'top',
+          description:
+            "Please look into your mail, and if you can't see the our mail, please check into your spam folder.",
+          title: 'Your code is on its way. ✉️',
+          status: 'success',
+          duration: 4000,
+          isClosable: true
+        });
       } else {
         setSent(false);
         toast({
@@ -105,13 +120,18 @@ const ModalCode = ({ newProps, moltoItApiClient }) => {
       console.log(error);
     }
   };
-  console.log(email);
+
   return (
     <>
       <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Your mission has started! 🚀</ModalHeader>
+          <ModalHeader>
+            Your mission has started!{' '}
+            <span role="img" aria-label="emoji" aria-labelledby="emoji">
+              🚀
+            </span>
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text fontWeight="light" mb="1rem">

@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 const MoltoIt = (props) => {
   const [value, setValue] = useState(0);
   const classes = useStyles();
-  const [steps, setSteps] = useState([
+  const steps = [
     {
       title: 'Code',
       target: '.moltoit__missioncode',
@@ -75,7 +75,7 @@ const MoltoIt = (props) => {
       target: `.${classes.root}`,
       content: 'Here you cant start your next mission!'
     }
-  ]);
+  ];
 
   const handleChange = (event, newValue) => {
     if (newValue === 9) {

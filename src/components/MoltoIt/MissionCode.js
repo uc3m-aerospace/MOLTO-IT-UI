@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withMoltoItClient } from './../apiHOCs';
 import { useToast } from '@chakra-ui/core';
@@ -44,7 +44,7 @@ const MissionCode = ({ moltoItApiClient, props }) => {
       const res = await moltoItApiClient.getMissionByCode(code);
 
       if (res.status === 200 && res.data.length > 0) {
-        if (res.data[0].status != 'finished') {
+        if (res.data[0].status !== 'finished') {
           toast({
             position: 'top',
             title: `Mission found - Generation ${

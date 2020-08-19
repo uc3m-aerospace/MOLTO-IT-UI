@@ -1,12 +1,7 @@
 import React from 'react';
 import '../../../styles/main.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebook,
-  faTwitter,
-  faLinkedin,
-  faYoutube
-} from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const CardCollaborators = (props) => {
   return (

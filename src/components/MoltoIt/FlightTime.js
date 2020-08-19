@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FORM_DATA } from '../../constants';
 import Switch from 'react-switch';
 import { withMoltoItClient } from './../apiHOCs';
-import { v4 as uuidv4 } from 'uuid';
 import ModalCode from './ModalCode';
 import { useToast } from '@chakra-ui/core';
 
@@ -17,8 +16,6 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
   const [max, setMax] = useState(data.ToF[1]);
   const [loader, setLoader] = useState(false);
   const [checked, setChecked] = useState(false);
-  const [type, setType] = useState(data.ToF_type);
-  var lastResponse = false;
   var uuidMission = useRef();
 
   const fetch = async (data) => {
@@ -95,11 +92,11 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
   const handleChange = () => {
     if (!checked) {
       setChecked(true);
-      setType('years');
+
       dispatch({ type: FORM_DATA, payload: { ToF_type: 'years' } });
     } else {
       setChecked(false);
-      setType('days');
+
       dispatch({ type: FORM_DATA, payload: { ToF_type: 'days' } });
     }
   };

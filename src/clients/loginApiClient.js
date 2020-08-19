@@ -1,14 +1,9 @@
 import axios from 'axios';
 import { setCookie } from './../helpers';
-import { useEffect, useState } from 'react';
 
 export default () => {
-  const [identifier, setIdentifier] = useState(
-    process.env.REACT_APP_IDENTIFIER
-  );
-  const [password, setPassword] = useState(process.env.REACT_APP_PASSWORD);
-
-  useEffect(() => {}, []);
+  const identifier = process.env.REACT_APP_IDENTIFIER;
+  const password = process.env.REACT_APP_PASSWORD;
 
   const Login = async () => {
     const url = 'https://molto-admin.herokuapp.com/auth/local'; //https://molto-api-v1.studio/login

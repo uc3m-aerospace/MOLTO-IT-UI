@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/core';
 import { useDisclosure } from '@chakra-ui/core';
 import React, { useEffect } from 'react';
-import { Button, Text, Flex, Input } from '@chakra-ui/core';
+import { Button, Text } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 
 const ModalResults = (props) => {
@@ -39,7 +39,10 @@ const ModalResults = (props) => {
           <ModalBody>
             <Text fontWeight="light" mb="1rem">
               If you want to see your results please click in Go to results, but
-              don't worry remember you can always come later. 😁
+              don't worry remember you can always come later.
+              <span aria-label="emoji" aria-labelledby="emoji" role="img">
+                😁
+              </span>
             </Text>
           </ModalBody>
 

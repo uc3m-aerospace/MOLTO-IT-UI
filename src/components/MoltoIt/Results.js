@@ -12,12 +12,11 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { FORM_DATA } from '../../constants';
 import { withMoltoItClient } from './../apiHOCs';
-import { useParams, Redirect, useLocation, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Spinner } from '@chakra-ui/core';
 import DropdownGenerations from './DropdownGenerations';
 
-const Results = ({ moltoItApiClient, newProps }) => {
-  let location = useLocation();
+const Results = ({ moltoItApiClient }) => {
   const history = useHistory();
   const [pareto, setPareto] = useState({});
   const [paretoWithFlyby, setParetoWithFlyby] = useState({});
