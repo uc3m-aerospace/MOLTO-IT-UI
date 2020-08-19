@@ -22,7 +22,7 @@ const AppRouter = ({ loginApiClient }) => {
     };
 
     fetch();
-  }, []);
+  }, [process.env]);
 
   return (
     <BrowserRouter>

@@ -22,9 +22,9 @@ const LazyParetoFront = lazy(() => import('../components/MoltoIt/Results'));
 const App = () => {
   return (
     <div className="mainContainer">
-      <Header />
       <Background />
-      <React.Suspense fallback={<span>...Loading</span>}>
+      <Header />
+      <React.Suspense fallback={<div className="Apps">...Loading</div>}>
         <div className="Apps">
           <LazyScrollToTop />
           <Switch>
