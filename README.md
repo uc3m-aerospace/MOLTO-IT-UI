@@ -1,5 +1,5 @@
 # MOLTO-UI
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f9de1372-6e5d-47d2-87e5-7818778129f6/deploy-status)](https://app.netlify.com/sites/molto/deploys)
 MOLTO-UI is the user interface of MOLTO project, it was created using React/Redux architecture. 
 
 ## Getting Started
