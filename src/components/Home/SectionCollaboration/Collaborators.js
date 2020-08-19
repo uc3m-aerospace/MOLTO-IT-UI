@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../../styles/main.scss';
 import Card from '../SectionCollaboration/CardCollaborators';
 import { withHomeApiClient } from './../../apiHOCs';
+import { getCookie } from './../../../helpers';
 
 const Collaboration = ({ homeApiClient }) => {
   const [collaborators, setCollaborators] = useState([
@@ -13,24 +14,36 @@ const Collaboration = ({ homeApiClient }) => {
   ]);
   const [isLoading, setIsLoading] = useState();
 
+  const getToken = async () => {
+    try {
+      return await getCookie('jwt');
+    } catch (error) {
+      return null;
+    }
+  };
+
   useEffect(() => {
     const fetch = async () => {
       setIsLoading(true);
-      try {
-        const res = await homeApiClient.getCollaborators();
-        setCollaborators(res.data);
-        setIsLoading(false);
-      } catch (error) {
-        setCollaborators([
-          {
-            photo: '',
-            collaborator_name: '',
-            description: '',
-            twitter: '',
-            linkedin: ''
-          }
-        ]);
-        setIsLoading(false);
+      const token = await getToken();
+
+      if (token) {
+        try {
+          const res = await homeApiClient.getCollaborators();
+          setCollaborators(res.data);
+          setIsLoading(false);
+        } catch (error) {
+          setCollaborators([
+            {
+              photo: '',
+              collaborator_name: '',
+              description: '',
+              twitter: '',
+              linkedin: ''
+            }
+          ]);
+          setIsLoading(false);
+        }
       }
     };
     fetch();
