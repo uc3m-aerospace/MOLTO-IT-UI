@@ -5,6 +5,7 @@ import Switch from 'react-switch';
 import { withMoltoItClient } from './../apiHOCs';
 import ModalCode from './ModalCode';
 import { useToast } from '@chakra-ui/core';
+import { getCookie } from './../../helpers';
 
 var missionid = 0;
 const FlightTime = ({ moltoItApiClient, newProps }) => {
@@ -22,10 +23,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
     delete data['ToF_type'];
     delete data['motor'];
     delete data['motorType'];
-
-    if (data['response']) {
-      return delete data['response'];
-    }
+    const cookie = await getCookie('jwt');
 
     try {
       const data_cms = {
@@ -41,6 +39,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
 
     try {
       data['mission_id'] = missionid;
+      data['jwt'] = cookie;
       const res = await moltoItApiClient.getPareto(data);
 
       if (res.status === 200) {

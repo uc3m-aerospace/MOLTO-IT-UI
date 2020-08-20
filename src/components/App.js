@@ -2,13 +2,11 @@ import React, { lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import Home from '../components/Home';
-//import Background from '../assets/images/Sky.jpeg'
 import '../styles/main.scss';
-
 import Background from '../components/Background';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
+import { Spinner } from '@chakra-ui/core';
 const LazyMoltoIt = lazy(() => import('../components/MoltoIt'));
 const LazyMoltoItStart = lazy(() =>
   import('../components/MoltoIt/MissionCode')
@@ -19,12 +17,31 @@ const LazyFinalResults = lazy(() =>
 );
 const LazyParetoFront = lazy(() => import('../components/MoltoIt/Results'));
 
+const Loader = () => {
+  return (
+    <div className="loader">
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    </div>
+  );
+};
 const App = () => {
   return (
     <div className="mainContainer">
       <Background />
       <Header />
-      <React.Suspense fallback={<div className="Apps">...Loading</div>}>
+      <React.Suspense
+        fallback={
+          <div className="Apps fake__div">
+            <Loader />
+          </div>
+        }
+      >
         <div className="Apps">
           <LazyScrollToTop />
           <Switch>
