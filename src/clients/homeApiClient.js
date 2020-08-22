@@ -1,4 +1,4 @@
-import axiosWithAuth from './axiosWithAuth';
+import axiosWithAuth from './axiosWithAuthCms';
 
 export default (history) => {
   const axios = axiosWithAuth(history);

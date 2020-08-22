@@ -63,6 +63,7 @@ const MoltoIt = (props) => {
   const classes = useStyles();
   const steps = [
     {
+      disableBeacon: true,
       title: 'Code',
       target: '.moltoit__missioncode',
       content: 'This is my awesome feature!'

@@ -1,10 +1,15 @@
 import axios from 'axios';
-import { getCookie } from './../helpers';
 import https from 'https';
 
-async function getToken() {
+async function getParams() {
   try {
-    return await getCookie('jwt');
+    let user = process.env.REACT_APP_BASIC_AUTH_USER;
+    let password = process.env.REACT_APP_PASSWORD;
+    let auth = {
+      username: user,
+      password: password
+    };
+    return auth;
   } catch (error) {
     return null;
   }
@@ -12,7 +17,7 @@ async function getToken() {
 
 const client = (history) => {
   const defaultOptions = {
-    baseURL: 'https://molto-admin.herokuapp.com/', //https://molto-api-v1.studio/
+    baseURL: 'https://molto-api-v1.studio/',
     method: 'get',
     httpsAgent: new https.Agent({
       rejectUnauthorized: false
@@ -27,8 +32,12 @@ const client = (history) => {
 
   // Set the AUTH token for any request
   instance.interceptors.request.use(async (config) => {
-    const token = await getToken();
-    if (token) config.headers.Authorization = `Bearer ${token}`;
+    const auth = await getParams();
+    const usernamePasswordBuffer = Buffer.from(
+      auth.username + ':' + auth.password
+    );
+    const base64data = usernamePasswordBuffer.toString('base64');
+    if (auth) config.headers.Authorization = `Basic ${base64data}`;
     return config;
   });
 

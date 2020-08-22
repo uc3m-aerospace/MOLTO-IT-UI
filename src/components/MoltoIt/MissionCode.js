@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withMoltoItClient } from './../apiHOCs';
 import { useToast } from '@chakra-ui/core';
@@ -74,6 +74,19 @@ const MissionCode = ({ moltoItApiClient, props }) => {
       console.log(error);
     }
   };
+
+  const fetchStatus = async (code) => {
+    try {
+      const res = await moltoItApiClient.getMissionStatus(code);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchStatus(code);
+  });
 
   const handleStatus = () => {
     setStatus(false);

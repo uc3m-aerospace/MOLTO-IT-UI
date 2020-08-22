@@ -1,7 +1,9 @@
-import axiosWithAuth from './axiosWithAuth';
+import axiosWithAuthCms from './axiosWithAuthCms';
+import axiosWithAuthApi from './axiosWithAuthApi';
 import axios from 'axios';
 export default (history) => {
-  const axiosAuth = axiosWithAuth(history);
+  const axiosAuthCms = axiosWithAuthCms(history);
+  const axiosAuthApi = axiosWithAuthApi(history);
 
   const getPareto = async (data) => {
     const url = 'https://molto-api-v1.studio/optimization/mission/json';
@@ -26,7 +28,7 @@ export default (history) => {
   const saveMission = async (data) => {
     const url = 'https://molto-admin.herokuapp.com/missions';
     try {
-      const response = await axiosAuth.post(url, data);
+      const response = await axiosAuthCms.post(url, data);
       return response;
     } catch (error) {
       throw error;
@@ -36,7 +38,7 @@ export default (history) => {
   const updateMission = async (data, missionid) => {
     const url = `https://molto-admin.herokuapp.com/missions/${missionid}`;
     try {
-      const response = await axiosAuth.put(url, data);
+      const response = await axiosAuthCms.put(url, data);
       return response;
     } catch (error) {
       throw error;
@@ -46,7 +48,7 @@ export default (history) => {
   const getMissionByCode = async (code) => {
     const url = `https://molto-admin.herokuapp.com/missions?code=${code}`;
     try {
-      const response = await axiosAuth.get(url);
+      const response = await axiosAuthCms.get(url);
       return response;
     } catch (error) {
       throw error;
@@ -56,7 +58,7 @@ export default (history) => {
   const getMissionById = async (id) => {
     const url = `https://molto-admin.herokuapp.com/missions/${id}`;
     try {
-      const response = await axiosAuth.get(url);
+      const response = await axiosAuthCms.get(url);
       return response;
     } catch (error) {
       throw error;
@@ -73,7 +75,17 @@ export default (history) => {
     };
     const url = `https://molto-admin.herokuapp.com/email-code`;
     try {
-      const response = await axiosAuth.post(url, data);
+      const response = await axiosAuthCms.post(url, data);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getMissionStatus = async (uuid) => {
+    const url = `flower/api/task/info/${uuid}`;
+    try {
+      const response = await axiosAuthApi.get(url);
       return response;
     } catch (error) {
       throw error;
@@ -87,6 +99,7 @@ export default (history) => {
     getMissionByCode,
     getMissionById,
     updateMission,
-    sendEmail
+    sendEmail,
+    getMissionStatus
   };
 };

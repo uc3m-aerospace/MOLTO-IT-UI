@@ -21,20 +21,37 @@ const Level = (props) => {
 
   const steps = [
     {
+      disableBeacon: true,
       title: 'Code',
       target: '.input__name',
-      content: 'This is my awesome feature!'
+      content: 'This is my awesome feature!',
+      placement: 'bottom',
+      spotlightClicks: true,
+      styles: {
+        options: {
+          zIndex: 10000
+        }
+      }
     },
     {
+      disableBeacon: true,
       target: '.input__population',
       content: 'Here you cant start your next mission!'
     },
     {
+      disableBeacon: true,
       target: '.input__generations',
       content: 'Here you cant start your next mission!'
     },
     {
+      disableBeacon: true,
       target: '.level__button',
+      content: 'Here you cant start your next mission!'
+    },
+    {
+      disableBeacon: true,
+      target:
+        '#root > div > div.Apps > div.SectionTabs > div > input[type=date]:nth-child(1)',
       content: 'Here you cant start your next mission!'
     }
   ];
