@@ -28,6 +28,7 @@ const client = (history) => {
   // Set the AUTH token for any request
   instance.interceptors.request.use(async (config) => {
     const token = await getToken();
+
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   });

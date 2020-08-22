@@ -83,7 +83,7 @@ export default (history) => {
   };
 
   const getMissionStatus = async (uuid) => {
-    const url = `flower/api/task/info/${uuid}`;
+    const url = `https://molto-api-v1.studio/flower/api/task/info/${uuid}`;
     try {
       const response = await axiosAuthApi.get(url);
       return response;

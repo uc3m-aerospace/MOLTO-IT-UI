@@ -4,7 +4,7 @@ import https from 'https';
 async function getParams() {
   try {
     let user = process.env.REACT_APP_BASIC_AUTH_USER;
-    let password = process.env.REACT_APP_PASSWORD;
+    let password = process.env.REACT_APP_API_CELERY_PASSWORD;
     let auth = {
       username: user,
       password: password
@@ -17,7 +17,7 @@ async function getParams() {
 
 const client = (history) => {
   const defaultOptions = {
-    baseURL: 'https://molto-api-v1.studio/',
+    baseURL: 'http://molto-api-v1.studio/',
     method: 'get',
     httpsAgent: new https.Agent({
       rejectUnauthorized: false
@@ -37,7 +37,9 @@ const client = (history) => {
       auth.username + ':' + auth.password
     );
     const base64data = usernamePasswordBuffer.toString('base64');
+    console.log(base64data);
     if (auth) config.headers.Authorization = `Basic ${base64data}`;
+    console.log(config.headers.Authorization);
     return config;
   });
 
