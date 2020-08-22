@@ -27,7 +27,7 @@ const client = (history) => {
     }
   };
 
-  // Create instance
+  // Create instance _
   const instance = axios.create(defaultOptions);
 
   // Set the AUTH token for any request
