@@ -49,6 +49,7 @@ export default (history) => {
     const url = `https://molto-admin.herokuapp.com/missions?code=${code}`;
     try {
       const response = await axiosAuthCms.get(url);
+      console.log(response);
       return response;
     } catch (error) {
       throw error;
