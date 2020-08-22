@@ -49,7 +49,6 @@ export default (history) => {
     const url = `https://molto-admin.herokuapp.com/missions?code=${code}`;
     try {
       const response = await axiosAuthCms.get(url);
-      console.log(response);
       return response;
     } catch (error) {
       throw error;
@@ -82,6 +81,20 @@ export default (history) => {
       throw error;
     }
   };
+
+  async function getParams() {
+    try {
+      let user = process.env.REACT_APP_BASIC_AUTH_USER;
+      let password = process.env.REACT_APP_API_CELERY_PASSWORD;
+      let auth = {
+        username: user,
+        password: password
+      };
+      return auth;
+    } catch (error) {
+      return null;
+    }
+  }
 
   const getMissionStatus = async (uuid) => {
     const url = `https://molto-api-v1.studio/flower/api/task/info/${uuid}`;

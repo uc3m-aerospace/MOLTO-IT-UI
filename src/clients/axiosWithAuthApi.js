@@ -17,13 +17,14 @@ async function getParams() {
 
 const client = (history) => {
   const defaultOptions = {
-    baseURL: 'http://molto-api-v1.studio/',
+    baseURL: 'https://molto-api-v1.studio/',
     method: 'get',
     httpsAgent: new https.Agent({
       rejectUnauthorized: false
     }),
     headers: {
       'Content-Type': 'application/json'
+      //'Authorization': 'Basic bW9sdG86YWRtaW5Nb2x0bzIwMjA='
     }
   };
 
@@ -36,10 +37,10 @@ const client = (history) => {
     const usernamePasswordBuffer = Buffer.from(
       auth.username + ':' + auth.password
     );
-    const base64data = usernamePasswordBuffer.toString('base64');
-    console.log(base64data);
-    if (auth) config.headers.Authorization = `Basic ${base64data}`;
-    console.log(config.headers.Authorization);
+    //const base64data = usernamePasswordBuffer.toString('base64');
+    //console.log(base64data);
+    //if (auth) config.headers.Authorization = `Basic ${base64data}`;
+
     return config;
   });
 

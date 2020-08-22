@@ -174,7 +174,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
           <input
             type="number"
             value={min}
-            onChange={(event) => setMin(event.target.value)}
+            onChange={(event) => setMin(parseInt(event.target.value))}
             placeholder="Enter the min number of flybys"
           />
         </div>
@@ -184,7 +184,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
           <input
             type="number"
             value={max}
-            onChange={(event) => setMax(event.target.value)}
+            onChange={(event) => setMax(parseInt(event.target.value))}
             placeholder="Enter the max number of flybys"
           />
         </div>

@@ -39,54 +39,62 @@ const MissionCode = ({ moltoItApiClient, props }) => {
     setCode(event.target.value);
   };
 
+  const customToast = (title, description, status) => {
+    toast({
+      position: 'top',
+      title: title,
+      description: description,
+      status: status,
+      duration: 4000,
+      isClosable: true
+    });
+  };
+
   const fetch = async (code) => {
     try {
       const res = await moltoItApiClient.getMissionByCode(code);
+      const status = await moltoItApiClient.getMissionStatus(code);
 
-      if (res.status === 200 && res.data.length > 0) {
-        if (res.data[0].status !== 'finished') {
-          toast({
-            position: 'top',
-            title: `Mission found - Generation ${
-              res.data[0].progress === 'null'
-                ? 'Starting'
-                : res.data[0].progress
-            } / ${res.data[0].configuration.maxGen}`,
-            description: `We have found a mission with your code and its status is ${res.data[0].status}.`,
-            status: 'success',
-            duration: 4000,
-            isClosable: true
-          });
-        } else {
+      switch (status.data.state) {
+        case 'FAILURE':
+          customToast(
+            'Mission failed',
+            'Your mission has failed, please try again with a different configuration.',
+            'error'
+          );
+          break;
+        case 'SUCCESS':
           setStatus(true);
-        }
-      } else if (res.data.length <= 0) {
-        toast({
-          position: 'top',
-          title: 'Mission not found',
-          description: "We haven't found a mission with your code.",
-          status: 'warning',
-          duration: 9000,
-          isClosable: true
-        });
+          break;
+        case 'PENDING':
+          customToast(
+            'We have received your mission but it is waiting to be executed',
+            `Your mission will start as soon as possible.`,
+            'success'
+          );
+          break;
+        case 'STARTED':
+          customToast(
+            `Mission found - Generation ${res.data[0].progress} / ${res.data[0].configuration.maxGen}`,
+            `We have found a mission with your code and its status is ${res.data[0].status}.`,
+            'success'
+          );
+          break;
+        default:
+          return customToast(
+            `Mission found - Generation ${res.data[0].progress} / ${res.data[0].configuration.maxGen}`,
+            `We have found a mission with your code and its status is ${res.data[0].status}.`,
+            'success'
+          );
       }
     } catch (error) {
-      console.log(error);
+      customToast(
+        'Mission not found.',
+        "We haven't found a mission with your code.",
+        'warning'
+      );
     }
   };
-
-  const fetchStatus = async (code) => {
-    try {
-      const res = await moltoItApiClient.getMissionStatus(code);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchStatus(code);
-  });
 
   const handleStatus = () => {
     setStatus(false);
