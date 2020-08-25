@@ -6,7 +6,7 @@ import { withMoltoItClient } from './../apiHOCs';
 import ModalCode from './ModalCode';
 import { useToast } from '@chakra-ui/core';
 import { getCookie } from './../../helpers';
-
+import IconTime from '../../assets/images/icons/FLIGHT.svg';
 var missionid = 0;
 const FlightTime = ({ moltoItApiClient, newProps }) => {
   const toast = useToast();
@@ -129,13 +129,17 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
           />
         </div>
       ) : null}
-      <p className="Title">FLIGHT TIME</p>
+      <div className="container__title">
+        <img src={IconTime} alt="config" />
+        <p className="Title">FLIGHT TIME</p>
+      </div>
+
       <label>
         <Switch
           onChange={() => handleChange()}
           checked={checked}
-          offColor="#70C483"
-          onColor="#70C483"
+          offColor="#3a59fa"
+          onColor="#3a59fa"
           uncheckedIcon={
             <div
               style={{
@@ -168,7 +172,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
           }
         />
       </label>
-      <div className="Launch">
+      <div className="time__container">
         <div>
           <p>Minimum</p>
           <input

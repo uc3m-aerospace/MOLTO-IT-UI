@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FORM_DATA } from '../../constants';
 import Joyride from 'react-joyride';
-
+import IconConfig from '../../assets/images/icons/CONFIGURATION.svg';
 let badName;
 const Level = (props) => {
   const data = useSelector((state) => state.moltoItConfig);
@@ -105,15 +105,18 @@ const Level = (props) => {
             arrowColor: 'white',
             backgroundColor: 'white',
             overlayColor: 'rgba(255,255,255,.5)',
-            primaryColor: 'rgb(49, 130, 205)',
+            primaryColor: '#3a59fa',
             textColor: 'black',
             width: 400,
             zIndex: 1000
           }
         }}
       />
-      <p className="Title">SELECT YOUR CONFIGURATION</p>
-      <div style={{ marginBottom: '40px' }}>
+      <div className="container__title">
+        <img src={IconConfig} alt="config" />
+        <p className="Title">SELECT YOUR CONFIGURATION</p>
+      </div>
+      <div style={{ marginBottom: '25px' }}>
         <p>Name of the mission</p>
         <input
           className="input__name"
@@ -155,7 +158,7 @@ const Level = (props) => {
           props.function(null, props.value !== 7 ? props.value + 1 : 0)
         }
       >
-        EASY
+        Easy
       </button>
       {/*<p>OR</p>
             <button disabled style={{opacity: 0.3}}onClick={() => props.function(null, props.value !== 7 ? props.value + 1 : 0)}>ADVANCED</button>*/}

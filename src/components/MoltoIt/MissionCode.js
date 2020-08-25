@@ -101,7 +101,7 @@ const MissionCode = ({ moltoItApiClient, props }) => {
   };
 
   return (
-    <React.Fragment>
+    <section>
       <div className="moltoit__missioncode">
         <p className="Title">Do you have a mission code?</p>
         <p style={{ color: 'white' }}>
@@ -123,7 +123,7 @@ const MissionCode = ({ moltoItApiClient, props }) => {
       {status ? (
         <ModalResults handleStatus={handleStatus} isOpen={true} code={code} />
       ) : null}
-    </React.Fragment>
+    </section>
   );
 };
 

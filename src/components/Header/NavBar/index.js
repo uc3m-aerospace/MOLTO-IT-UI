@@ -142,26 +142,26 @@ const NavBar = (props) => {
             >
               <UnorderedList>
                 <List whileHover={{ scale: 1.2 }}>
-                  <ListLink whileHover={{ color: 'blue' }} href="/#Missions">
+                  <ListLink whileHover={{ color: '#3a59fa' }} href="/#Missions">
                     Space Missions
                   </ListLink>
                 </List>
                 <List whileHover={{ scale: 1.2 }}>
                   <ListLink
-                    whileHover={{ color: 'blue' }}
+                    whileHover={{ color: '#3a59fa' }}
                     href="/#Collaboration"
                   >
                     Collaborators
                   </ListLink>
                 </List>
                 <List whileHover={{ scale: 1.2 }}>
-                  <ListLink whileHover={{ color: 'blue' }} href="/moltoit">
+                  <ListLink whileHover={{ color: '#3a59fa' }} href="/moltoit">
                     MOLTO-IT
                   </ListLink>
                 </List>
                 <List whileHover={{ scale: 1.2 }}>
                   <ListLink
-                    whileHover={{ color: 'blue' }}
+                    whileHover={{ color: '#3a59fa' }}
                     href="https://github.com/uc3m-aerospace/MOLTO-IT"
                   >
                     <FontAwesomeIcon icon={faGithub} size="2x" />
