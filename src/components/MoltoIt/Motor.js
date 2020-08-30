@@ -15,10 +15,10 @@ const StyledTabs = withStyles({
     justifyContent: 'center',
     backgroundColor: 'transparent',
     '& > div': {
-      maxWidth: '90px',
+      maxWidth: '200px',
       width: '100%',
       height: '2px',
-      backgroundColor: '#70C483'
+      backgroundColor: '#3a59fa;'
     }
   }
 })((props) => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
@@ -44,7 +44,7 @@ const StyledTab = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: '40%',
+    width: '70%',
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '10px'
@@ -104,15 +104,27 @@ const Motor = (props) => {
         <div className={classes.demo2}>
           <StyledTabs variant="fullWidth" value={value} onChange={handleChange}>
             <StyledTab
-              style={{ backgroundColor: 'transparent' }}
+              style={{
+                fontFamily: 'AvertaRegular',
+                fontSize: '16px',
+                backgroundColor: 'transparent'
+              }}
               label="Nuclear"
             />
             <StyledTab
-              style={{ backgroundColor: 'transparent' }}
+              style={{
+                fontFamily: 'AvertaRegular',
+                fontSize: '16px',
+                backgroundColor: 'transparent'
+              }}
               label="Electric"
             />
             <StyledTab
-              style={{ backgroundColor: 'transparent' }}
+              style={{
+                fontFamily: 'AvertaRegular',
+                fontSize: '16px',
+                backgroundColor: 'transparent'
+              }}
               label="Chemical"
             />
           </StyledTabs>

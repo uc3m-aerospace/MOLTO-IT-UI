@@ -7,6 +7,10 @@ import ModalCode from './ModalCode';
 import { useToast } from '@chakra-ui/core';
 import { getCookie } from './../../helpers';
 import IconTime from '../../assets/images/icons/FLIGHT.svg';
+import { Spinner } from '@chakra-ui/core';
+import SubmitIcon from '../../assets/images/arrows/submit.svg';
+import TitleTooltip from './TitleTooltip';
+
 var missionid = 0;
 const FlightTime = ({ moltoItApiClient, newProps }) => {
   const toast = useToast();
@@ -64,7 +68,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
           description:
             'we have a problem with your configuration, please try again.',
           status: 'error',
-          duration: 9000,
+          duration: 4000,
           isClosable: true
         });
       }
@@ -75,7 +79,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
         title: 'Sorry.',
         description: error,
         status: 'error',
-        duration: 9000,
+        duration: 4000,
         isClosable: true
       });
     }
@@ -110,22 +114,21 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
 
   const handleClick = async () => {
     fetch(data);
-
     setLoader(true);
     await sleep(1000);
     setLoader(false);
-    //newProps.function(null, newProps.value !== 7 ? newProps.value + 1 : 0)
   };
 
   return (
     <React.Fragment>
       {loader ? (
         <div className="loader">
-          <img
-            src={
-              'https://d2vrnm4zvhq6yi.cloudfront.net/assets/loader_puntos-df9857dfaf7eeb01c9cb2c2d1d208a8365ea4cdab85e1adeadaceff0c8f27964.gif'
-            }
-            alt="loading..."
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
           />
         </div>
       ) : null}
@@ -134,7 +137,7 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
         <p className="Title">FLIGHT TIME</p>
       </div>
 
-      <label>
+      <label className="flight__time__label">
         <Switch
           onChange={() => handleChange()}
           checked={checked}
@@ -174,7 +177,12 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
       </label>
       <div className="time__container">
         <div>
-          <p>Minimum</p>
+          <TitleTooltip
+            title="Minimum"
+            description="Minimum date in days or years for the flight time range."
+            tooltipTitle="Flight Time"
+            recommendation="Remember you can change the range between days or years in the switch that is above the inputs."
+          />
           <input
             type="number"
             value={min}
@@ -184,7 +192,12 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
         </div>
         <div>&nbsp;&nbsp;&nbsp;</div>
         <div>
-          <p>Maximum</p>
+          <TitleTooltip
+            title="Maximum"
+            description="Maximum date in days or years for the flight time range."
+            tooltipTitle="Flight Time"
+            recommendation="Remember you can change the range between days or years in the switch that is above the inputs."
+          />
           <input
             type="number"
             value={max}
@@ -194,9 +207,15 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
         </div>
       </div>
 
-      <button className="newButton" onClick={() => handleClick()}>
-        SEND
+      <button
+        style={{ marginBottom: '25px', margin: '0 auto' }}
+        className="tabs__button"
+        onClick={() => handleClick()}
+      >
+        Submit
+        <img className="submit__icon" src={SubmitIcon} alt="submit" />
       </button>
+
       {status ? (
         <ModalCode {...newProps} open={true} code={uuidMission.current} />
       ) : null}

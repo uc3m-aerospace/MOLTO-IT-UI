@@ -4,11 +4,11 @@ import { useSelector, useDispatch, connect } from 'react-redux';
 import { sendFormData } from '../../actions';
 import { FORM_DATA } from '../../constants';
 import IconSat from '../../assets/images/icons/SATELLITE.svg';
+import TitleTooltip from './TitleTooltip';
 
 const Launch = (props) => {
   const dispatch = useDispatch();
   const moltoItConfig = useSelector((state) => state.moltoItConfig);
-
   const [fixedState, setFixedState] = useState(false);
   const [startDate, setStartDate] = useState(moltoItConfig.Initial_Date[0]);
   const [endDate, setEndDate] = useState(moltoItConfig.Initial_Date[1]);
@@ -17,6 +17,7 @@ const Launch = (props) => {
     setStartDate(date);
     setEndDate(date);
   };
+
   const sendDates = (start, end) => {
     let dates = [];
     dates.push(start);
@@ -46,7 +47,12 @@ const Launch = (props) => {
         {!fixedState ? (
           <div className="launch__inputs">
             <div className="input__container">
-              <label htmlFor="start_date">Start date</label>
+              <TitleTooltip
+                title="Start date"
+                description="This is the start date of the launch window of your mission."
+                tooltipTitle="Launch dates"
+                recommendation="Needs to be < than End date"
+              />
               <input
                 type="date"
                 id="start_date"
@@ -55,7 +61,12 @@ const Launch = (props) => {
               />
             </div>
             <div className="input__container">
-              <label htmlFor="end_date">End date</label>
+              <TitleTooltip
+                title="End date"
+                description="This is the end date of the launch window of your mission."
+                tooltipTitle="Launch dates"
+                recommendation="Needs to be > than Start date"
+              />
               <input
                 type="date"
                 id="end_date"
@@ -66,6 +77,11 @@ const Launch = (props) => {
           </div>
         ) : (
           <React.Fragment>
+            <TitleTooltip
+              title="Fixed date"
+              description="This is a pre-fixed date, it means is the exact day your mission will start."
+              tooltipTitle="Launch date"
+            />
             <input
               type="date"
               value={moltoItConfig.Initial_Date[0]}

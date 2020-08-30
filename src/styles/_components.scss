@@ -9,10 +9,36 @@
   src: url('./../assets/fonts/BebasNeue-Regular.otf') format('opentype');
 }
 
+.mission__button {
+  height: 30px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  font-family: AvertaRegular;
+  font-size: 12px;
+  cursor: default;
+}
+
+.mission__img_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.moltoit__question_icon {
+  position: absolute;
+  right: 0;
+}
 .container__check {
   position: absolute;
-  top: 17px;
-  right: 20px;
+  top: 0;
+  left: 0;
+  padding: 12px;
 }
 
 .flyby__check__container {
@@ -65,7 +91,7 @@
   align-items: center;
   border-radius: 15px;
   height: 250px;
-  z-index: 999;
+  z-index: 5;
 }
 .container__title {
   display: flex;
@@ -149,7 +175,13 @@
   height: 100%;
   flex-direction: column;
   color: white;
+  position: relative;
 
+  & img {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+  }
   & p {
     width: 80%;
     color: white;
@@ -213,7 +245,6 @@
   background-color: black;
   opacity: 0.9;
   display: flex;
-  transform: scale(1.5);
   z-index: 999;
 }
 button {
@@ -404,6 +435,7 @@ button {
   background-color: rgba(255, 255, 255, 0.3);
 }
 .menu__items {
+  overflow-x: hidden;
   background-color: #2e3648;
   display: flex;
   flex-direction: column;
@@ -561,19 +593,20 @@ button {
     top: 17px;
   }
 
-  & button {
+  & button[class='tabs__button'] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 280px;
     padding: 20px;
+
     height: 40px;
     color: white;
     background-color: #3a59fa;
     border-radius: 5px;
   }
 
-  & button:hover {
+  & button:hover[class='tabs__button'] {
     background-color: rgba(58, 89, 250, 0.9);
     transform: scale(1.05);
   }
@@ -593,7 +626,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 300px;
   width: 100%;
   z-index: 999;
   backdrop-filter: blur(3px);
@@ -665,7 +698,7 @@ button {
   }
 
   & button:hover {
-    background-color: rgba(58, 89, 250, 0.9);
+    color: #3a59fa;
     transform: scale(1.05);
   }
   & input {
@@ -693,9 +726,6 @@ button {
   margin-bottom: 20px;
   max-width: 1300px;
   margin: 0 auto;
-  //position: fixed; if header fixed
-  //top: 0;
-  //z-index: 9999;
 
   & ul {
     display: flex;
@@ -724,7 +754,7 @@ button {
       }
 
       & a:hover {
-        color: white;
+        color: #3a59fa;
       }
     }
   }
@@ -952,6 +982,10 @@ button {
     color: white;
     background-color: #3a59fa;
     border-radius: 5px;
+  }
+  button:hover {
+    background-color: #3b57e9;
+    transform: scale(1.05);
   }
 }
 
@@ -1213,6 +1247,20 @@ section {
   left: 0;
 }
 
+.title__tooltip {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 260px;
+  margin: 0 auto;
+}
+.flight__time__label {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
 .back__icon {
   transform: rotate(180deg);
   width: 22px;
@@ -1229,6 +1277,7 @@ section {
   margin-right: 10px;
 }
 .back {
+  margin-top: 10px;
   background-color: transparent !important;
   border: 1px solid white;
 
@@ -1270,9 +1319,11 @@ section {
   margin: 10px !important;
   height: 30px !important;
   padding: 0 !important;
+  background-color: #3a59fa;
 }
 
 .fixedDateButtonActive {
+  background-color: #3a59fa;
   font-size: 9px !important;
   color: white !important;
   width: 115px !important;
@@ -1291,6 +1342,7 @@ section {
 
 .celestial__bodies__container {
   display: flex;
+  height: 200px;
   flex-direction: row;
   width: 80%;
   justify-content: center;
@@ -1321,19 +1373,15 @@ section {
 }
 
 .time__container {
+  margin-top: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   justify-content: center;
   flex-wrap: wrap;
-
-  & p {
-    font-family: 'HelveticaLT';
-    font-size: 12px;
-  }
 }
 
 .launch__flyby {
@@ -1352,8 +1400,11 @@ section {
   justify-content: center;
 
   & p {
-    font-family: 'HelveticaLT';
-    font-size: 12px;
+    color: white;
+    font-family: AvertaRegular;
+    font-size: 16px;
+    font-style: normal;
+    text-align: center;
   }
 }
 .pareto__container {
@@ -1362,6 +1413,9 @@ section {
   display: flex;
   height: 100%;
   flex-direction: column;
+  border-bottom: 1px solid white;
+  border-image: linear-gradient(to left, black 1%, #fafbfc 50%, black 100%) 0 0
+    100% 0/0.5px 0 0.5px 0 stretch;
 
   h1 {
     text-align: center;
@@ -1379,8 +1433,6 @@ section {
 .pareto__select {
   width: 100%;
   height: 40px;
-  background-color: red;
-  color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1400,6 +1452,11 @@ section {
 }
 .pareto__objectives {
   position: relative;
+  background-color: #27293d;
+  justify-content: center;
+  margin: 10px;
+  border-radius: 15px;
+  z-index: 5;
   color: white;
   width: 400px;
   height: 472px;
@@ -1419,8 +1476,7 @@ section {
   align-items: center;
   position: sticky;
   bottom: 0px;
-  border: 1px solid white;
-  background: black;
+  background: #27293d;
   padding: 20px;
 
   & button {
@@ -1439,16 +1495,31 @@ section {
 }
 
 .pareto__chart {
+  padding: 20px 0;
+  height: 432px;
   width: 400px;
-  height: 400px;
-  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #27293d;
+  justify-content: center;
+  margin: 10px;
+  border-radius: 15px;
+  z-index: 5;
   color: white;
 }
 
 .pareto__configuration {
-  width: 400px;
   padding: 20px 0;
-  border: 1px solid white;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #27293d;
+  justify-content: center;
+  margin: 10px;
+  border-radius: 15px;
+  z-index: 5;
 }
 .pareto__data {
   width: 100%;
@@ -1472,15 +1543,14 @@ section {
 .ParetoTitles {
   position: sticky;
   top: 0px;
-  background: black;
+  background: #27293d;
   z-index: 800;
   margin: 0;
   color: white;
-  font-family: 'HelveticaNeueLTS';
+  font-family: AvertaRegular;
   font-size: 16px !important;
   font-style: normal;
   text-align: center;
-  border: 1px solid white;
   height: 50px;
   display: flex;
   justify-content: center;
@@ -1498,7 +1568,7 @@ section {
 }
 .ParetoContentR {
   color: white;
-  font-family: 'HelveticaNeueLTS';
+  font-family: AvertaRegular;
   font-size: 14px !important;
   width: 130px;
   font-style: normal;
@@ -1506,9 +1576,8 @@ section {
 }
 
 .ParetoTable {
-  border: 1px solid white;
   text-align: center;
-  font-family: 'HelveticaNeueLTS';
+  font-family: AvertaRegular;
   border-collapse: collapse;
   width: 100%;
   height: 80%;
@@ -1571,16 +1640,34 @@ section {
 }
 
 .flyby__button {
-  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: transparent !important;
   border: 1px solid white;
-  background: transparent !important;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  padding: 20px;
+  height: 35px;
+  color: white;
   border-radius: 5px;
   display: flex;
-  flex-direction: row !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin: 0 auto;
+  flex-direction: row;
   margin-top: 40px;
+  margin-bottom: 40px;
+
+  &:hover {
+    background-color: rgba(58, 89, 250, 0.9);
+    transform: scale(1.05);
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.05);
+  }
+  & span {
+    margin-left: 10px;
+  }
 }
 
 .MotorSelected {
@@ -1604,6 +1691,9 @@ section {
 }
 
 .finalresults__container {
+  border-bottom: 1px solid white;
+  border-image: linear-gradient(to left, black 1%, #fafbfc 50%, black 100%) 0 0
+    100% 0/0.5px 0 0.5px 0 stretch;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -1639,7 +1729,7 @@ section {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: white;
-  background-color: #70c483;
+  background-color: #3a59fa;
   width: 200px;
   height: 40px;
   border-radius: 5px;
@@ -1676,7 +1766,25 @@ section {
   overflow: hidden;
   margin: 50px;
 }
+.flight__button {
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  margin-bottom: 50px;
+  padding: 20px;
+  height: 35px;
+  color: white;
+  background-color: #3a59fa;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
 
+  &:hover {
+    background-color: rgba(58, 89, 250, 0.9);
+    transform: scale(1.05);
+  }
+}
 .tabs__button__container {
   display: flex;
   flex-direction: row;
@@ -1919,7 +2027,7 @@ section {
   .tabs__button {
     justify-content: center;
     align-items: center;
-    width: 260px;
+    width: 260px !important;
     margin: 15px;
     padding: 20px;
     height: 35px;

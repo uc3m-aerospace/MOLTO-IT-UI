@@ -14,70 +14,70 @@ import Destination from './Destination';
 import MissionType from './Mission';
 import Motor from './Motor';
 import FlightTtime from './FlightTime';
+import { useWindowSize } from '../../components/Hooks/useWindowSize';
+
+const HeaderTabList = [
+  'Configuration',
+  'Launch',
+  'From',
+  'Destination',
+  'Maneuvers',
+  'Motor',
+  'Flight Time'
+];
 
 const MoltoIt = (props) => {
-  const steps = [
-    {
-      disableBeacon: true,
-      title: 'Code',
-      target: '.moltoit__missioncode',
-      content: 'This is my awesome feature!'
-    },
-    {
-      target: '.buttonTabs',
-      content: 'Here you cant start your next mission!'
-    },
-    {
-      target: '.buttontabs',
-      content: 'Here you cant start your next mission!'
-    }
-  ];
+  const size = useWindowSize();
+  const [index, setIndex] = useState(0);
+
+  const handleIndex = (i) => {
+    setIndex(i);
+  };
 
   return (
     <section>
       <div
-        className={
-          props.value === 2 || props.value === 3
-            ? 'section__tabs__planets'
-            : 'section__tabs'
+        style={
+          index === 2 || index === 3 || index === 5
+            ? { maxWidth: '900px' }
+            : null
         }
+        className="section__tabs"
       >
-        <Joyride
-          run={true}
-          steps={steps}
-          continuous={true}
-          debug={true}
-          showSkipButton={true}
-          showProgress={true}
-          styles={{
-            options: {
-              arrowColor: 'white',
-              backgroundColor: 'white',
-              overlayColor: 'rgba(255,255,255,.5)',
-              primaryColor: 'rgb(49, 130, 205)',
-              textColor: 'black',
-              width: 400,
-              zIndex: 1000
-            }
-          }}
-        />
-
-        <Tabs variant="soft-rounded" orientation="vertical">
-          <TabList>
-            <Tab>Configuration</Tab>
-            <Tab>Launch</Tab>
-            <Tab>From</Tab>
-            <Tab>Destination</Tab>
-            <Tab>Mission Type</Tab>
-            <Tab>Motor</Tab>
-            <Tab>Flight Time</Tab>
-          </TabList>
+        <Tabs
+          defaultIndex={0}
+          onChange={(i) => handleIndex(i)}
+          index={index}
+          variant="line"
+          isFitted="True"
+        >
+          {size.width > 1024 ? (
+            <TabList height="50px">
+              {HeaderTabList.map((Title) => {
+                return (
+                  <Tab
+                    color="white"
+                    width="90px"
+                    fontSize="AvertaRegular"
+                    _selected={{
+                      color: 'white',
+                      bg: 'transparent',
+                      borderBottom: '3px solid',
+                      borderBottomColor: '#3a59fa'
+                    }}
+                  >
+                    {Title}
+                  </Tab>
+                );
+              })}
+            </TabList>
+          ) : null}
 
           <TabPanels>
-            <TabPanel>
-              <Level value={props.value} function={props.function} />;
+            <TabPanel data-id="tab_level">
+              <Level handleIndex={handleIndex} />;
             </TabPanel>
-            <TabPanel>
+            <TabPanel data-id="tab_launch">
               <LaunchWindow />;
             </TabPanel>
             <TabPanel style={{ overflow: 'hidden' }}>
@@ -93,24 +93,31 @@ const MoltoIt = (props) => {
               <Motor />;
             </TabPanel>
             <TabPanel>
-              <FlightTtime value={props.value} function={props.function} />
+              <FlightTtime />
             </TabPanel>
           </TabPanels>
         </Tabs>
 
         <div className="tabs__button__container">
-          <button className="back tabs__button">
-            <img className="back__icon" src={BackIcon} alt="back" />
-            <span>Back</span>
-          </button>
-
-          <button
-            className="tabs__button"
-            onClick={() => console.log('hola osy adelante')}
-          >
-            Submit
-            <img className="submit__icon" src={SubmitIcon} alt="submit" />
-          </button>
+          {index === 0 ? null : (
+            <button
+              className="back tabs__button"
+              onClick={() => setIndex(index - 1)}
+            >
+              <img className="back__icon" src={BackIcon} alt="back" />
+              <span>Back</span>
+            </button>
+          )}
+          {index === 6 ? null : (
+            <button
+              className="tabs__button"
+              id="submit"
+              onClick={() => setIndex(index + 1)}
+            >
+              Submit
+              <img className="submit__icon" src={SubmitIcon} alt="submit" />
+            </button>
+          )}
         </div>
       </div>
     </section>

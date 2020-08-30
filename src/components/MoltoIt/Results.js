@@ -99,12 +99,14 @@ const Results = ({ moltoItApiClient }) => {
     delete data['ToF_type'];
     delete data['motor'];
     delete data['motorType'];
+
     if (data['response']) {
       return delete data['response'];
     }
 
     try {
       data['mission_id'] = mission.id;
+      data['jwt'] = 'null';
       const res = await moltoItApiClient.getOrbits(data);
 
       dispatch({
@@ -195,7 +197,9 @@ const Results = ({ moltoItApiClient }) => {
           generations={pareto}
         />
       </div>
-      <h1>Generation {currentPareto.split('_')[1]}</h1>
+      <h1 style={{ fontFamily: 'AvertaRegular' }}>
+        Generation {currentPareto.split('_')[1]}
+      </h1>
 
       <p className="Title">PARETO FRONT</p>
       <div className="pareto__data">
@@ -210,9 +214,7 @@ const Results = ({ moltoItApiClient }) => {
           })}
         </div>
         <div className="pareto__objectives">
-          <p className="ParetoTitles">
-            Please select one pareto point once the process is finished
-          </p>
+          <p className="ParetoTitles">Please select one pareto point</p>
           <table className="ParetoTable">
             <thead>
               <tr>
@@ -239,7 +241,7 @@ const Results = ({ moltoItApiClient }) => {
                             style={{
                               backgroundColor:
                                 moltoItConfig.plot - 1 === index
-                                  ? '#70C483'
+                                  ? '#3a59fa'
                                   : null,
                               opacity:
                                 moltoItConfig.plot - 1 === index ? 0.9 : null
@@ -251,7 +253,7 @@ const Results = ({ moltoItApiClient }) => {
                             style={{
                               backgroundColor:
                                 moltoItConfig.plot - 1 === index
-                                  ? '#70C483'
+                                  ? '#3a59fa'
                                   : null,
                               opacity:
                                 moltoItConfig.plot - 1 === index ? 0.9 : null
@@ -291,7 +293,7 @@ const Results = ({ moltoItApiClient }) => {
               <Scatter
                 name="0 Flyby"
                 data={pareto[currentPareto]}
-                fill="#8884d8"
+                fill="#3a59fa"
                 shape="circle"
               />
               <Scatter

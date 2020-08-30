@@ -2,11 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import '../../../styles/main.scss';
 import { Link } from 'react-router-dom';
-import { ButtonGroup, Button } from '@chakra-ui/core';
+import { ButtonGroup, Button, Scale } from '@chakra-ui/core';
 import Hero from './Hero';
 import GitHubButton from 'react-github-btn';
-import Image from '../../../assets/images/Planets/SVGS/EARTH.svg';
-
+import Image from '../../../assets/images/satellite/1024.png';
+import Bg from '../../../assets/images/bg/1024.jpg';
 const SectionAbout = () => {
   return (
     <section className="section__hero" id="About">
@@ -19,8 +19,8 @@ const SectionAbout = () => {
             r="50mm"
             style={{
               fill: 'transparent',
-              stroke: 'white',
-              strokeWidth: '0.4mm'
+              stroke: '#53c7ef',
+              strokeWidth: '0.7mm'
             }}
           />
         </svg>
@@ -38,15 +38,18 @@ const SectionAbout = () => {
           </GitHubButton>
         </div>
         <div className="hero__buttons">
-          <ButtonGroup spacing={4} className="hero__buttoncontainer">
+          <ButtonGroup spacing={2} className="hero__buttoncontainer">
             <Button
               size="lg"
-              width="220px"
+              width="270px"
               backgroundColor="#3a59fa"
               rightIcon="arrow-forward"
               color="white"
               variant="solid"
-              _hover={{ backgroundColor: 'red' }}
+              _hover={{
+                backgroundColor: '#3b57e9',
+                transform: 'scale(1.05)'
+              }}
             >
               <Link className="link" to="moltoit/new">
                 Get Started
@@ -55,10 +58,14 @@ const SectionAbout = () => {
 
             <Button
               size="lg"
-              width="220px"
+              width="270px"
               variantColor="white"
               variant="outline"
               borderColor="white"
+              _hover={{
+                backgroundColor: 'rgba(255,255,255, 0.2)',
+                transform: 'scale(1.05)'
+              }}
             >
               <a
                 className="link"

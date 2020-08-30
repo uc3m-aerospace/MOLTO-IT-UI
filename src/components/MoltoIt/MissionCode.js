@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withMoltoItClient } from './../apiHOCs';
 import { useToast } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 import ModalResults from './ModalResults';
-
+import CodeIcon from '../../assets/images/icons/code.svg';
 const MissionCode = ({ moltoItApiClient, props }) => {
   const [code, setCode] = useState('');
   const [isValidCode, setIsValidCode] = useState(false);
@@ -103,7 +103,10 @@ const MissionCode = ({ moltoItApiClient, props }) => {
   return (
     <section>
       <div className="moltoit__missioncode">
-        <p className="Title">Do you have a mission code?</p>
+        <div className="container__title">
+          <img src={CodeIcon} alt="config" />
+          <p className="Title">¿Do you have a mission code?</p>
+        </div>
         <p style={{ color: 'white' }}>
           If you have a mission code, please introduce it within the next input,
           if not please continue and click the create button.

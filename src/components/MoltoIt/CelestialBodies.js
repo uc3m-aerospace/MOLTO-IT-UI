@@ -32,7 +32,7 @@ const planets = [
   { index: 3, name: 'Venus', image: Venus, position: 80, position_mobile: 175 },
   {
     index: 4,
-    name: 'Jupyter',
+    name: 'Jupiter',
     image: Jupyter,
     position: -85,
     position_mobile: -10
@@ -200,7 +200,6 @@ const CelestialBodies = (props) => {
       _handleChange(nextPlanet);
     }
   };
-  console.log(positionPlanet);
 
   return (
     <div className="celestial__bodies__section">

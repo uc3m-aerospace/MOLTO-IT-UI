@@ -1,10 +1,10 @@
 import { FORM_DATA, RESET_DATA } from '../constants';
 
 const initialState = {
-  problem_name: 'Jupyter', //Definir nombre de mision FINISH
+  problem_name: 'Jupiter', //Definir nombre de mision FINISH
   problem_type: 'rendezvous',
   planet_dep: 'Earth',
-  planet_arr: 'Jupyter',
+  planet_arr: 'Jupiter',
   vinf0_max: 1.6, //Definir por usuario y que sea definida en el tab de ventana de lanzamiento. ?? % Hyperbolic excess velocity at departure planet (km/s)
   planet_fb: [],
   rfb_min: 200,

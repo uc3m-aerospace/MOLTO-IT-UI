@@ -23,7 +23,7 @@ const CardMission = (props) => {
       <p className="mission__paragraph">{props.body}</p>
       <button
         disabled={props.title === 'MOLTO-3BP' ? true : false}
-        style={{ opacity: props.title === 'MOLTO-3BP' ? 0.3 : 0.8 }}
+        style={{ opacity: props.title === 'MOLTO-3BP' ? 0.3 : 1 }}
         onClick={() => props.history.push(`/${props.image}`)}
       >
         {' '}

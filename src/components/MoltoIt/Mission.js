@@ -6,6 +6,9 @@ import Flyby from '../../assets/images/flyby.png';
 import { Icon, Checkbox } from '@chakra-ui/core';
 import { motion } from 'framer-motion';
 import ReturnIcon from '../../assets/images/arrows/RETURN.svg';
+import ManeuverIcon from '../../assets/images/icons/flybys2.svg';
+import TitleTooltip from './TitleTooltip';
+
 const planets = [
   'Mercury',
   'Venus',
@@ -88,11 +91,22 @@ const Mission = (props) => {
                 <label className="flyby__label">{planet}</label>
               </div>
             ))}
+            <TitleTooltip
+              title=""
+              description="Select the possible planets where your mission can do a flyby maneuver."
+              tooltipTitle="Flyby"
+              customWidth="220px"
+            />
           </div>
 
           <div className="launch__flyby">
             <div>
-              <p>Minimum</p>
+              <TitleTooltip
+                title="Minimum"
+                description="Minimum number of possible flybys."
+                tooltipTitle="Flyby"
+                customWidth="220px"
+              />
               <input
                 value={data.n_fb[0]}
                 onChange={(event) => setMinFb(event.target.value)}
@@ -102,7 +116,13 @@ const Mission = (props) => {
             </div>
             <div>&nbsp;&nbsp;&nbsp;</div>
             <div>
-              <p>Maximum</p>
+              <TitleTooltip
+                title="Maximum"
+                description="Maximum number of possible flybys."
+                tooltipTitle="Flyby"
+                customWidth="220px"
+              />
+
               <input
                 value={data.n_fb[1]}
                 onChange={(event) => setMaxFb(event.target.value)}
@@ -124,7 +144,11 @@ const Mission = (props) => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <p className="Title">SELECT YOUR MISSION TYPE</p>
+          <div className="container__title">
+            <img src={ManeuverIcon} alt="config" />
+            <p className="Title">SELECT YOUR MANEUVER</p>
+          </div>
+
           <div className="mission__types">
             <motion.div
               whileHover={{ scale: 1.1 }}
@@ -138,13 +162,21 @@ const Mission = (props) => {
                   <Icon name="check-circle" size="30px" color="green.400" />
                 </div>
               ) : null}
-              <p>Flyby</p>
-              <img
-                style={{ backgroundColor: 'transparent' }}
-                src={Flyby}
-                alt="flyby"
-                width="90%"
+              <TitleTooltip
+                title="Flyby"
+                description="The flyby technique can add or subtract momentum to increase or decrease the energy of a spacecraft's orbit."
+                tooltipTitle="Flyby"
+                customWidth="220px"
               />
+
+              <div className="mission__img_container">
+                <img
+                  style={{ backgroundColor: 'transparent' }}
+                  src={Flyby}
+                  alt="flyby"
+                  width="90%"
+                />
+              </div>
             </motion.div>
 
             <motion.div
@@ -159,14 +191,20 @@ const Mission = (props) => {
                   <Icon name="check-circle" size="30px" color="green.400" />
                 </div>
               ) : null}
-              <p>Rendezvous</p>
-
-              <img
-                style={{ backgroundColor: 'transparent' }}
-                src={Rendezvous}
-                alt="rendezvous"
-                width="150px"
+              <TitleTooltip
+                title="Rendezvous"
+                description="A space rendezvous is an orbital maneuver during which two spacecraft, arrive at the same orbit and approach to a very close distance"
+                tooltipTitle="Rendezvous"
+                customWidth="220px"
               />
+              <div className="mission__img_container">
+                <img
+                  style={{ backgroundColor: 'transparent' }}
+                  src={Rendezvous}
+                  alt="rendezvous"
+                  width="150px"
+                />
+              </div>
             </motion.div>
           </div>
         </React.Fragment>

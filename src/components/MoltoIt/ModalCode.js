@@ -17,6 +17,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Text, Flex, Input } from '@chakra-ui/core';
 import { useClipboard } from '@chakra-ui/core';
 import { withMoltoItClient } from './../apiHOCs';
+import { useWindowSize } from '../Hooks/useWindowSize';
 
 function Code({ value }) {
   const { onCopy, hasCopied } = useClipboard(value);
@@ -40,6 +41,7 @@ function Code({ value }) {
 }
 
 const ModalCode = ({ newProps, moltoItApiClient }) => {
+  const size = useWindowSize();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
@@ -123,7 +125,14 @@ const ModalCode = ({ newProps, moltoItApiClient }) => {
 
   return (
     <>
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <Modal
+        style={{ width: '200px !important' }}
+        blockScrollOnMount={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered={true}
+        size="sm"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
@@ -154,6 +163,7 @@ const ModalCode = ({ newProps, moltoItApiClient }) => {
               <InputRightElement width="4.5rem">
                 <Button
                   backgroundColor={sent ? 'rgb(56, 161, 104)' : '#e1e8f0'}
+                  color={sent ? 'white' : 'null'}
                   h="1.75rem"
                   size="sm"
                   onClick={() => handleSendEmail(newProps.code)}

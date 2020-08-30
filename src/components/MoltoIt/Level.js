@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FORM_DATA } from '../../constants';
-import Joyride from 'react-joyride';
 import IconConfig from '../../assets/images/icons/CONFIGURATION.svg';
+import TitleTooltip from './TitleTooltip';
 let badName;
 const Level = (props) => {
   const data = useSelector((state) => state.moltoItConfig);
@@ -18,43 +18,6 @@ const Level = (props) => {
       badName = false;
     }
   };
-
-  const steps = [
-    {
-      disableBeacon: true,
-      title: 'Code',
-      target: '.input__name',
-      content: 'This is my awesome feature!',
-      placement: 'bottom',
-      spotlightClicks: true,
-      styles: {
-        options: {
-          zIndex: 10000
-        }
-      }
-    },
-    {
-      disableBeacon: true,
-      target: '.input__population',
-      content: 'Here you cant start your next mission!'
-    },
-    {
-      disableBeacon: true,
-      target: '.input__generations',
-      content: 'Here you cant start your next mission!'
-    },
-    {
-      disableBeacon: true,
-      target: '.level__button',
-      content: 'Here you cant start your next mission!'
-    },
-    {
-      disableBeacon: true,
-      target:
-        '#root > div > div.Apps > div.SectionTabs > div > input[type=date]:nth-child(1)',
-      content: 'Here you cant start your next mission!'
-    }
-  ];
 
   const handleEvent = (event) => {
     let cleanValue = event.target.value.toLowerCase();
@@ -93,31 +56,17 @@ const Level = (props) => {
 
   return (
     <React.Fragment>
-      <Joyride
-        run={true}
-        steps={steps}
-        continuous={true}
-        debug={true}
-        showSkipButton={true}
-        showProgress={true}
-        styles={{
-          options: {
-            arrowColor: 'white',
-            backgroundColor: 'white',
-            overlayColor: 'rgba(255,255,255,.5)',
-            primaryColor: '#3a59fa',
-            textColor: 'black',
-            width: 400,
-            zIndex: 1000
-          }
-        }}
-      />
       <div className="container__title">
         <img src={IconConfig} alt="config" />
         <p className="Title">SELECT YOUR CONFIGURATION</p>
       </div>
       <div style={{ marginBottom: '25px' }}>
-        <p>Name of the mission</p>
+        <TitleTooltip
+          title="Name of the mission"
+          description="Select the name of the mission."
+          tooltipTitle="Name"
+        />
+
         <input
           className="input__name"
           style={{
@@ -130,7 +79,12 @@ const Level = (props) => {
         />
       </div>
       <div style={{ marginBottom: '40px' }}>
-        <p>Confirm Population (Gen. Algorithm)</p>
+        <TitleTooltip
+          title="Confirm Population"
+          description="Number of population for the Genetic Algorithm configuration."
+          tooltipTitle="Genetic Algorith"
+          recommendation="Between 50-500"
+        />
         <input
           className="input__population"
           type="number"
@@ -141,7 +95,12 @@ const Level = (props) => {
           placeholder="Population"
         />
         <div>&nbsp;&nbsp;&nbsp;</div>
-        <p>Confirm Generations (Gen. Algorithm)</p>
+        <TitleTooltip
+          title="Confirm Generations"
+          description="Number of generations for the Genetic Algorithm configuration."
+          tooltipTitle="Genetic Algorithm"
+          recommendation="Between 50-300"
+        />
         <input
           className="input__generations"
           type="number"
@@ -152,16 +111,7 @@ const Level = (props) => {
           placeholder="Generations"
         />
       </div>
-      <button
-        className="level__button"
-        onClick={() =>
-          props.function(null, props.value !== 7 ? props.value + 1 : 0)
-        }
-      >
-        Easy
-      </button>
-      {/*<p>OR</p>
-            <button disabled style={{opacity: 0.3}}onClick={() => props.function(null, props.value !== 7 ? props.value + 1 : 0)}>ADVANCED</button>*/}
+      <button className="level__button">Easy</button>
     </React.Fragment>
   );
 };
