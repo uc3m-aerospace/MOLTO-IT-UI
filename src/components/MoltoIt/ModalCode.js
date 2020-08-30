@@ -17,7 +17,6 @@ import React, { useEffect, useState } from 'react';
 import { Button, Text, Flex, Input } from '@chakra-ui/core';
 import { useClipboard } from '@chakra-ui/core';
 import { withMoltoItClient } from './../apiHOCs';
-import { useWindowSize } from '../Hooks/useWindowSize';
 
 function Code({ value }) {
   const { onCopy, hasCopied } = useClipboard(value);
@@ -41,7 +40,6 @@ function Code({ value }) {
 }
 
 const ModalCode = ({ newProps, moltoItApiClient }) => {
-  const size = useWindowSize();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);

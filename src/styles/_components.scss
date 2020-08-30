@@ -9,6 +9,10 @@
   src: url('./../assets/fonts/BebasNeue-Regular.otf') format('opentype');
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .mission__button {
   height: 30px;
   width: 200px;
@@ -215,7 +219,7 @@
   margin-bottom: 50px;
 }
 .hero__title {
-  font-size: 46px;
+  font-size: 40px;
   color: white;
   font-family: AvertaRegular;
   width: 80%;
@@ -238,7 +242,7 @@
   bottom: 0px;
   right: 0px;
   left: 0px;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -261,10 +265,6 @@ button {
 }
 
 .App {
-  background: url('../assets/images/sky3.jpeg');
-  background-size: 100% 100%;
-  background-attachment: scroll;
-  background-repeat: repeat-y;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -306,10 +306,16 @@ button {
   flex-grow: 1;
 }
 
-.mainContainer {
-  background-size: contain;
+.main__background_image {
+  background-image: url('./../assets/images/hero/1600.jpg');
+}
+
+.main__container {
+  background-position: left;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
-  background-color: black;
   top: 0;
   left: 0;
   right: 0;
@@ -1385,6 +1391,7 @@ section {
 }
 
 .launch__flyby {
+  margin-top: 30px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1865,7 +1872,15 @@ section {
     1906px 1279px #565656, 778px 575px #565656;
 }
 
+@media only screen and (max-width: 368px) {
+  .main__background_image {
+    background-image: url('./../assets/images/hero/368.jpg');
+  }
+}
 @media only screen and (max-width: 768px) {
+  .main__background_image {
+    background-image: url('./../assets/images/hero/768.jpg');
+  }
   .motor__container__electric {
     flex-direction: column;
   }
@@ -2017,6 +2032,9 @@ section {
   }
 }
 @media only screen and (max-width: 1024px) {
+  .main__background_image {
+    background-image: url('./../assets/images/hero/1024.jpg');
+  }
   .section__mission {
     flex-direction: column;
   }

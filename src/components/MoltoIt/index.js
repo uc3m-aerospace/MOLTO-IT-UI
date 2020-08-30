@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 //import {useStyle} from 'react';
 import './../../styles/main.scss';
 import { withRouter } from 'react-router';
-import Joyride from 'react-joyride';
 import BackIcon from '../../assets/images/arrows/right.svg';
 import SubmitIcon from '../../assets/images/arrows/submit.svg';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/core';
@@ -52,7 +51,7 @@ const MoltoIt = (props) => {
           isFitted="True"
         >
           {size.width > 1024 ? (
-            <TabList height="50px">
+            <TabList borderBottom="none" height="50px">
               {HeaderTabList.map((Title) => {
                 return (
                   <Tab

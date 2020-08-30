@@ -82,7 +82,7 @@ const Level = (props) => {
         <TitleTooltip
           title="Confirm Population"
           description="Number of population for the Genetic Algorithm configuration."
-          tooltipTitle="Genetic Algorith"
+          tooltipTitle="Genetic Algorithm"
           recommendation="Between 50-500"
         />
         <input

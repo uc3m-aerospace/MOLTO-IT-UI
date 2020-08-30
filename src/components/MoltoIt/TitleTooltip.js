@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Icon } from '@chakra-ui/core';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Divider } from '@chakra-ui/core';
-import { Flex, Box } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/core';
 
 const TitleTooltip = ({
   title,

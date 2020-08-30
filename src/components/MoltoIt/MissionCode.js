@@ -120,7 +120,7 @@ const MissionCode = ({ moltoItApiClient, props }) => {
         />
         <button onClick={() => handleClick()}>Send</button>
         <Link to="moltoit/new">
-          <button>Create</button>
+          <button>Create Mission</button>
         </Link>
       </div>
       {status ? (

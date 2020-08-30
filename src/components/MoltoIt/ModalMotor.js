@@ -8,9 +8,8 @@ import {
   ModalCloseButton
 } from '@chakra-ui/core';
 import { useDisclosure } from '@chakra-ui/core';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, Text } from '@chakra-ui/core';
-import { useWindowSize } from '../Hooks/useWindowSize';
 
 const ModalCode = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -33,10 +33,10 @@ const client = (history) => {
 
   // Set the AUTH token for any request
   instance.interceptors.request.use(async (config) => {
-    const auth = await getParams();
-    const usernamePasswordBuffer = Buffer.from(
+    //const auth = await getParams();
+    /*const usernamePasswordBuffer = Buffer.from(
       auth.username + ':' + auth.password
-    );
+    );*/
     //const base64data = usernamePasswordBuffer.toString('base64');
     //console.log(base64data);
     //if (auth) config.headers.Authorization = `Basic ${base64data}`;

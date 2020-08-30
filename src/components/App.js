@@ -32,7 +32,7 @@ const Loader = () => {
 };
 const App = () => {
   return (
-    <div className="mainContainer">
+    <div className="main__container main__background_image">
       <Background />
       <Header />
       <React.Suspense

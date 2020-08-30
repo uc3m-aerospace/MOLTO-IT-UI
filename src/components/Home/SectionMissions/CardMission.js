@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import '../../../styles/main.scss';
 import threebp from '../../../assets/images/molto/MOLTO-IT.svg';
-import or from '../../../assets/images/or.png';
 import moltoit from '../../../assets/images/molto/MOLTO3BP.svg';
 
 const CardMission = (props) => {
@@ -10,13 +9,7 @@ const CardMission = (props) => {
     <React.Fragment>
       <img
         className="card__mission__image"
-        src={
-          props.image === 'or'
-            ? or
-            : props.image === 'threebp'
-            ? threebp
-            : moltoit
-        }
+        src={props.image === 'threebp' ? threebp : moltoit}
         alt="typeofmission"
       />
       <h3>{props.title}</h3>

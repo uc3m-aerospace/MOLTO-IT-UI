@@ -2,11 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import '../../../styles/main.scss';
 import { Link } from 'react-router-dom';
-import { ButtonGroup, Button, Scale } from '@chakra-ui/core';
+import { ButtonGroup, Button } from '@chakra-ui/core';
 import Hero from './Hero';
 import GitHubButton from 'react-github-btn';
 import Image from '../../../assets/images/satellite/1024.png';
-import Bg from '../../../assets/images/bg/1024.jpg';
+
 const SectionAbout = () => {
   return (
     <section className="section__hero" id="About">
@@ -40,6 +40,7 @@ const SectionAbout = () => {
         <div className="hero__buttons">
           <ButtonGroup spacing={2} className="hero__buttoncontainer">
             <Button
+              borderRadius="10px"
               size="lg"
               width="270px"
               backgroundColor="#3a59fa"
@@ -59,6 +60,7 @@ const SectionAbout = () => {
             <Button
               size="lg"
               width="270px"
+              borderRadius="10px"
               variantColor="white"
               variant="outline"
               borderColor="white"

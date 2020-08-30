@@ -67,7 +67,6 @@ const CelestialBodies = (props) => {
   const toOrFrom = props.component === 'From' ? 'planet_dep' : 'planet_arr';
   const [isSelected, setIsSelected] = useState();
   const [planetSelected, setPlanetSelected] = useState(data[toOrFrom]);
-  const [positionPlanet, setPositionPlanet] = useState('');
   const [positionX, setPositionX] = useState(
     size.width <= 768
       ? planets.find((record) => record.name === data[toOrFrom]).position_mobile
@@ -155,8 +154,6 @@ const CelestialBodies = (props) => {
           planets.find((record) => record.name === previousPlanet.name).position
         );
       }
-
-      setPositionPlanet('left');
       setPlanetSelected(previousPlanet.name);
       _handleChange(previousPlanet);
     } else {
@@ -194,8 +191,6 @@ const CelestialBodies = (props) => {
           planets.find((record) => record.name === nextPlanet.name).position
         );
       }
-
-      setPositionPlanet('right');
       setPlanetSelected(nextPlanet.name);
       _handleChange(nextPlanet);
     }
