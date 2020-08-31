@@ -64,7 +64,7 @@ const Collaboration = ({ homeApiClient }) => {
       </p>
       <div className="SectionCollaboration">
         {isLoading ? (
-          <div className="loader">
+          <div className="loader__collaborators">
             <Spinner
               thickness="4px"
               speed="0.65s"
