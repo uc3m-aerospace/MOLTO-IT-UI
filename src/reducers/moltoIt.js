@@ -57,6 +57,7 @@ const initialState_ = {
 
 export const moltoItConfig = (state = initialState, action) => {
   let { type, payload } = action;
+
   switch (type) {
     case FORM_DATA:
       return Object.assign({}, state, payload);

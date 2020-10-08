@@ -23,6 +23,18 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
   const [checked, setChecked] = useState(false);
   var uuidMission = useRef();
 
+  const Planets = {
+    Mercury: '1',
+    Venus: '2',
+    Earth: '3',
+    Mars: '4',
+    Jupiter: '5',
+    Saturn: '6',
+    Uranus: '7',
+    Neptune: '8',
+    Pluton: '9'
+  };
+
   const fetch = async (data) => {
     delete data['ToF_type'];
     delete data['motor'];
@@ -42,9 +54,13 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
     }
 
     try {
-      data['mission_id'] = missionid;
-      data['jwt'] = cookie;
-      const res = await moltoItApiClient.getPareto(data);
+      let data_pareto = { ...data };
+      data_pareto['mission_id'] = missionid;
+      data_pareto['jwt'] = cookie;
+      data_pareto['planet_dep'] = Planets[data_pareto['planet_dep']];
+      data_pareto['planet_arr'] = Planets[data_pareto['planet_arr']];
+
+      const res = await moltoItApiClient.getPareto(data_pareto);
 
       if (res.status === 200) {
         uuidMission.current = res.data;

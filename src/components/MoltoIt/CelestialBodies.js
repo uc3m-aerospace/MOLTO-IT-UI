@@ -17,6 +17,7 @@ const planets = [
   {
     index: 0,
     name: 'Mercury',
+    value: '1',
     image: Mercury,
     position: 575,
     position_mobile: 730
@@ -24,15 +25,31 @@ const planets = [
   {
     index: 1,
     name: 'Earth',
+    value: '3',
     image: Earth,
     position: 410,
     position_mobile: 540
   },
-  { index: 2, name: 'Mars', image: Mars, position: 245, position_mobile: 360 },
-  { index: 3, name: 'Venus', image: Venus, position: 80, position_mobile: 175 },
+  {
+    index: 2,
+    name: 'Mars',
+    value: '4',
+    image: Mars,
+    position: 245,
+    position_mobile: 360
+  },
+  {
+    index: 3,
+    name: 'Venus',
+    value: '2',
+    image: Venus,
+    position: 80,
+    position_mobile: 175
+  },
   {
     index: 4,
     name: 'Jupiter',
+    value: '5',
     image: Jupyter,
     position: -85,
     position_mobile: -10
@@ -41,6 +58,7 @@ const planets = [
     index: 5,
     name: 'Saturn',
     image: Saturn,
+    value: '6',
     position: -250,
     position_mobile: -280
   },
@@ -48,6 +66,7 @@ const planets = [
     index: 6,
     name: 'Uranus',
     image: Uranus,
+    value: '7',
     position: -415,
     position_mobile: -535
   },
@@ -55,6 +74,7 @@ const planets = [
     index: 7,
     name: 'Neptune',
     image: Neptune,
+    value: '8',
     position: -580,
     position_mobile: -722
   }
@@ -73,7 +93,10 @@ const CelestialBodies = (props) => {
       : planets.find((record) => record.name === data[toOrFrom]).position
   );
   const _handleChange = (planet) => {
-    dispatch({ type: FORM_DATA, payload: { [toOrFrom]: planet.name } });
+    dispatch({
+      type: FORM_DATA,
+      payload: { [toOrFrom]: planet.name, type: 'CHANGE_PLANET' }
+    });
 
     if (size.width >= 768) {
       const distance = parseInt(planetSelected.index) - parseInt(planet.index);
