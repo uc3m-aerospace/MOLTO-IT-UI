@@ -17,7 +17,7 @@ async function getParams() {
 
 const client = (history) => {
   const defaultOptions = {
-    baseURL: 'https://molto-api-v1.studio/',
+    baseURL: 'https://api.molto.uc3m.es/',
     method: 'get',
     httpsAgent: new https.Agent({
       rejectUnauthorized: false

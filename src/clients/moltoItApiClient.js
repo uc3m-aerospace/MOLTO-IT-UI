@@ -6,7 +6,7 @@ export default (history) => {
   const axiosAuthApi = axiosWithAuthApi(history);
 
   const getPareto = async (data) => {
-    const url = 'https://molto-api-v1.studio/optimization/mission/json';
+    const url = 'https://api.molto.uc3m.es/optimization/mission/json';
     try {
       const response = await axios.post(url, data);
       return response;
@@ -16,7 +16,7 @@ export default (history) => {
   };
 
   const getOrbits = async (data) => {
-    const url = 'https://molto-api-v1.studio/optimization/mission/json';
+    const url = 'https://api.molto.uc3m.es/optimization/mission/json';
     try {
       const response = await axios.post(url, data, { timeout: 100000 });
       return response;
@@ -97,7 +97,7 @@ export default (history) => {
   }
 
   const getMissionStatus = async (uuid) => {
-    const url = `https://molto-api-v1.studio/flower/api/task/info/${uuid}`;
+    const url = `https://api.molto.uc3m.es/flower/api/task/info/${uuid}`;
     try {
       const response = await axiosAuthApi.get(url);
       return response;

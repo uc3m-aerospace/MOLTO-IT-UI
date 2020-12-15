@@ -9,6 +9,8 @@ import {
   Legend,
   ResponsiveContainer
 } from 'recharts';
+
+import { getCookie } from './../../helpers';
 import { useSelector, useDispatch } from 'react-redux';
 import { FORM_DATA } from '../../constants';
 import { withMoltoItClient } from './../apiHOCs';
@@ -26,6 +28,18 @@ const Results = ({ moltoItApiClient }) => {
   const moltoItConfig = useSelector((state) => state.moltoItConfig);
   const dispatch = useDispatch();
   let { id } = useParams();
+
+  const Planets = {
+    Mercury: '1',
+    Venus: '2',
+    Earth: '3',
+    Mars: '4',
+    Jupiter: '5',
+    Saturn: '6',
+    Uranus: '7',
+    Neptune: '8',
+    Pluton: '9'
+  };
 
   const missionStatus = useRef(false);
 
@@ -99,15 +113,20 @@ const Results = ({ moltoItApiClient }) => {
     delete data['ToF_type'];
     delete data['motor'];
     delete data['motorType'];
+    delete data['type'];
+    const cookie = await getCookie('jwt');
 
     if (data['response']) {
       return delete data['response'];
     }
 
     try {
-      data['mission_id'] = mission.id;
-      data['jwt'] = 'null';
-      const res = await moltoItApiClient.getOrbits(data);
+      let data_copy = { ...data };
+      data_copy['mission_id'] = mission.id;
+      data_copy['jwt'] = cookie;
+      data_copy['planet_dep'] = Planets[data_copy['planet_dep']];
+      data_copy['planet_arr'] = Planets[data_copy['planet_arr']];
+      const res = await moltoItApiClient.getOrbits(data_copy);
 
       dispatch({
         type: FORM_DATA,
@@ -126,7 +145,7 @@ const Results = ({ moltoItApiClient }) => {
   const handleClick = async () => {
     setIsLoading(true);
     const res = await fetch(moltoItConfig);
-
+    console.log(res);
     if (res.status === 200) {
       setIsLoading(false);
       return history.push({
