@@ -8,10 +8,10 @@ const Missions = () => {
     <React.Fragment>
       <div className="section__mission">
         <div className="mission__card">
-          <Card title="MOLTO-IT" body={constants.molto_it} image="moltoit" />
+          <Card title="MOLTO-IT" body={constants.molto_3bp} image="moltoit" />
         </div>
         <div className="mission__card">
-          <Card title="MOLTO-3BP" body={constants.molto_3bp} image="threebp" />
+          <Card title="MOLTO-3BP" body={constants.molto_it} image="threebp" />
         </div>
       </div>
     </React.Fragment>
