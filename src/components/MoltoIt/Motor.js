@@ -72,7 +72,7 @@ const TabTree = (props) => {
 };
 
 const Motor = (props) => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
   const classes = useStyles();
 
   const handleChange = (event, newValue) => {
