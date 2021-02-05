@@ -90,14 +90,14 @@ const FlightTime = ({ moltoItApiClient, newProps }) => {
       }
     } catch (error) {
       console.log(error);
-      toast({
+      /*toast({
         position: 'top',
         title: 'Sorry.',
         description: error,
         status: 'error',
         duration: 4000,
         isClosable: true
-      });
+      });*/
     }
   };
 

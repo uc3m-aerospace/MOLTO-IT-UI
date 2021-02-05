@@ -5,6 +5,7 @@ import { useToast } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 import ModalResults from './ModalResults';
 import CodeIcon from '../../assets/images/icons/code.svg';
+
 const MissionCode = ({ moltoItApiClient, props }) => {
   const [code, setCode] = useState('');
   const [isValidCode, setIsValidCode] = useState(false);
