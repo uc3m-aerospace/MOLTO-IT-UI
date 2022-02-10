@@ -22,7 +22,7 @@
     "google-maps-react": "^2.0.6",
     "js-base64": "^2.6.4",
     "mdbreact": "^4.27.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-animated-slider": "^1.1.4",
